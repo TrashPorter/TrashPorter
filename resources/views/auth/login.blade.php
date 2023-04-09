@@ -9,7 +9,7 @@
         @csrf
 
         <!-- Email Address -->
-        <div class="mt-4 pt-6">
+        <div class="mt-4 pt-4">
             <x-input-label for="email" :value="__('')" />
             <x-text-input id="email" class="block mt-1 w-full" placeholder="Enter Email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
