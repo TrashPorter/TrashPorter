@@ -108,6 +108,29 @@
             </div>
         </section>
 
+        <section>
+            <div class="relative w-10/12 m-auto mt-12 ">
+                <div class=" p-4 ">
+                    <div class="flex text-black my-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+
+                        <h2 class="font-medium text-xl mx-1">Alamat Penjemputan</h2>
+                        <div
+                            class="absolute top-3 right-3 text-black transition-transform duration-500 rotate-0 peer-checked:bg-sky-700 mt-2">
+
+                            <button
+                                class="bg-sky-200 p-2 my-auto rounded-md font-medium text-black hover:drop-shadow-md">Ganti
+                                Alamat
+                            </button>
+                        </div>
+                    </div>
+        </section>
     </form>
 
 </body>
