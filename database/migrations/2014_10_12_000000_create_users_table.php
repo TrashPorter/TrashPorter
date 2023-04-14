@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('pengguna');
+            $table->enum('role',['user','driver','admin'])->default('user');
         });
     }
 
