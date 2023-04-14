@@ -9,6 +9,5 @@
 <body>
       <h1>TrashPorter</h1>
       <p>asu</p>
-      <h2>apa lu</h2>
 </body>
 </html>
