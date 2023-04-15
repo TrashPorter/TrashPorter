@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('landingPage');
 });
 
+Route::get('/t', function () {
+    return view('welcome');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,6 +35,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->middleware('role:admin');
-Route::get('/driver_dashboard',[DashboardController::class,'index'])->middleware('role:driver');
+Route::get('/driver_dashboard', [DashboardController::class, 'index'])->middleware('role:driver');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
