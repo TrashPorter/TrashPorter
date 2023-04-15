@@ -379,8 +379,11 @@
                             <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk membuat akun pada website
                                 TrashPorter, anda dapat menekan tombol register pada bagian navigation bar. Anda
                                 kemudian dapat mengisi form registrasi untuk penyelesaian pembuatan akun.</p>
-                            <p class="text-gray-500 dark:text-gray-400">Anda juga dapat melakukan registrasi akun <a
-                                    href="#" class="text-sky-600 dark:text-sky-500 hover:underline">disini</a>.
+                            <p class="text-gray-500 dark:text-gray-400">Anda juga dapat melakukan registrasi akun
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"
+                                        class="text-sky-600 dark:text-sky-500 hover:underline">disini</a>.
+                                @endif
                             </p>
                         </div>
                     </div>
