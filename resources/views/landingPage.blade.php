@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <link rel="canonical" href="https://https://demo.themesberg.com/landwind/" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrashPorter</title>
-    @include('layouts.partials.metaSEO')
-    @include('layouts.partials.metaSocial')
-    @include('layouts.partials.favicon')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet">
-
-    <script defer src="{{ asset('js/flowbite.js') }}"></script>
-    <script src="{{ asset('backend/flowbite/dist/flowbite.js') }}"></script>
-</head>
-
-<body>
+@section('container')
     @include('layouts.partials.header')
     <!-- Start block -->
     <section class="bg-white dark:bg-gray-900">
@@ -116,8 +99,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span
-                                class="text-base font-medium leading-tight text-gray-900 dark:text-white">Pengoptimalan
+                            <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Pengoptimalan
                                 pengelolaan sampah</span>
                         </li>
                         <li class="flex space-x-3">
@@ -128,8 +110,7 @@
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span
-                                class="text-base font-medium leading-tight text-gray-900 dark:text-white">Meminimalisir
+                            <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Meminimalisir
                                 emisi karbon</span>
                         </li>
                         <li class="flex space-x-3">
@@ -393,8 +374,8 @@
                             data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
                             aria-controls="accordion-flush-body-2">
                             <span>Fitur-fitur apa saja yang ada pada website ini?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                     clip-rule="evenodd"></path>
@@ -425,8 +406,8 @@
                             data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
                             aria-controls="accordion-flush-body-3">
                             <span>Bagaimana cara saya melakukan pemesanan?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                     clip-rule="evenodd"></path>
@@ -447,8 +428,8 @@
                             aria-controls="accordion-flush-body-4">
                             <span>Apakah situs web ini memiliki forum atau ruang obrolan untuk berinteraksi <br> dengan
                                 pengguna lain?</span>
-                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                     clip-rule="evenodd"></path>
@@ -586,7 +567,4 @@
             </div>
         </div>
     </footer>
-    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
-</body>
-
-</html>
+@endsection

@@ -17,11 +17,21 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 */
 
 Route::get('/', function () {
-    return view('landingPage');
+    return view('landingPage', [
+        "title" => "TrashPorter",
+    ]);
 });
 
-Route::get('/t', function () {
-    return view('welcome');
+Route::get('/product', function () {
+    return view('products.product', [
+        "title" => "Product",
+    ]);
+});
+
+Route::get('/catalog', function () {
+    return view('catalogs.catalog', [
+        "title" => "Catalog",
+    ]);
 });
 
 Route::get('/dashboard', function () {
