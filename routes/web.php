@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 
 Route::get('/', function () {
     return view('landingPage', [
-        "title" => "TrashPorter",
+        "title" => "Home",
     ]);
 });
 
@@ -31,6 +31,12 @@ Route::get('/product', function () {
 Route::get('/catalog', function () {
     return view('catalogs.catalog', [
         "title" => "Catalog",
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('aboutUs.about', [
+        "title" => "About Us",
     ]);
 });
 
