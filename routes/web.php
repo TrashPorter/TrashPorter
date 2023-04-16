@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Driver\DashboardController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landingPage');
+    return view('landingPage', [
+        "title" => "Home",
+    ]);
+});
+
+Route::get('/product', function () {
+    return view('products.product', [
+        "title" => "Product",
+    ]);
+});
+
+Route::get('/catalog', function () {
+    return view('catalogs.catalog', [
+        "title" => "Catalog",
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('aboutUs.about', [
+        "title" => "About Us",
+    ]);
 });
 
 Route::get('/dashboard', function () {
@@ -28,4 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->middleware('role:admin');
+Route::get('/driver_dashboard', [DashboardController::class, 'index'])->middleware('role:driver');
+
+require __DIR__ . '/auth.php';
