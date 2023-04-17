@@ -14,19 +14,23 @@
 -->
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
-    <title>Soft UI Dashboard Tailwind</title>
-    @include('admin.layouts.partials.link')
-  </head>
+    <link rel="logo_aja" sizes="76x76" href="./assets/img/logo_aja.png" />
+    <link rel="icon" type="image/png" href="./assets/img/white_logo.png" />
+    <title>TrashPorter | Admin</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-  <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-      @include('admin.layouts.partials.header')
-      @yield('content')
-      @include('admin.layouts.partials.footer')
-  </body>
-  @include('admin.layouts.partials.script')
+    @include('admin.layouts.partials.link')
+</head>
+
+<body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
+    @include('admin.layouts.partials.header')
+    @yield('content')
+    @include('admin.layouts.partials.footer')
+</body>
+@include('admin.layouts.partials.script')
+
 </html>

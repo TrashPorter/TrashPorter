@@ -14,7 +14,7 @@
                                     <button
                                         class="inline-flex items-center py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none transition ease-in-out duration-150">
                                         <div>
-                                            <img class="w-6 h-6 pr-2 rounded-full" src="assets/img/profile.svg"
+                                            <img class="w-6 h-6 mr-2 rounded-full" src="assets/img/team-4.jpg"
                                                 alt="profile">
                                         </div>
                                         <div>{{ Auth::user()->name }}</div>
