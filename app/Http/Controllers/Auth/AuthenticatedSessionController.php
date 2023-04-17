@@ -58,7 +58,7 @@ class AuthenticatedSessionController extends Controller
         return '/driver_dashboard';
         break;
       case 'user':
-        return '/dashboard';
+        return '/';
         break;
       default:
         return '/home';

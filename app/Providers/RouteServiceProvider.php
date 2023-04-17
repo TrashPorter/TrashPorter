@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         return '/driver_dashboard';
         break;
       case 'user':
-        return '/dashboard';
+        return '/';
         break;
       default:
         return '/home';
