@@ -16,6 +16,12 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 |
 */
 
+Route::get('/pesan', function () {
+    return view('layouts.pesan' , [
+        "title" => "Pesan"
+    ]);
+});
+
 Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",
