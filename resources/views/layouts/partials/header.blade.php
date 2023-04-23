@@ -38,7 +38,13 @@
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('dashboard') }}"
+                                        <a href="
+                                        @if (Auth::user()->role == 'admin') {{ route('admin.dashboard') }}
+                                            @elseif(Auth::user()->role == 'driver')
+                                                {{ route('admin.dashboard') }} 
+                                            @else
+                                                {{ route('dashboard') }} @endif
+                                        "
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                     </li>
                                     <li>

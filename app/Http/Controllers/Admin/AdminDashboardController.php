@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 
 class AdminDashboardController extends Controller
 {
@@ -24,5 +25,10 @@ class AdminDashboardController extends Controller
             'driver' => $driver,
             'user' => $user,
         ]);
+    }
+
+    public function redirectAdmin()
+    {
+        return redirect()->intended(RouteServiceProvider::redirectTo());
     }
 }

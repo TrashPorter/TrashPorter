@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 */
 
 Route::get('/pesan', function () {
-    return view('layouts.pesan' , [
+    return view('layouts.pesan', [
         "title" => "Pesan"
     ]);
 });
@@ -56,7 +56,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->middleware('role:admin');
-Route::get('/driver_dashboard', [DashboardController::class, 'index'])->middleware('role:driver');
+// Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->middleware('role:admin');
+// Route::get('/driver_dashboard', [DashboardController::class, 'index'])->middleware('role:driver');
+
+Route::middleware('role:admin')->group(function () {
+    Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});
+
+Route::middleware('role:driver')->group(function () {
+    Route::get('/driver_dashboard', [DashboardController::class, 'index'])->name('driver.dashboard');
+});
 
 require __DIR__ . '/auth.php';
