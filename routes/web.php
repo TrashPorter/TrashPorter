@@ -22,6 +22,12 @@ Route::get('/pesan', function () {
     ]);
 });
 
+Route::get('/testing', function () {
+    return view('layouts.testing' , [
+        "title" => "Testing"
+    ]);
+});
+
 Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",
