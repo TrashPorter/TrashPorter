@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
 
         /*
          * Application Service Providers...
