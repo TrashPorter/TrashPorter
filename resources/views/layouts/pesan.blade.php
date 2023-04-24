@@ -378,6 +378,9 @@
 
                                     success: function(msg) {
                                         $('#kota').html(msg);
+                                        $('#kecamatan').html(
+                                            '<option selected disabled>Pilih Kecamatan</option>');
+                                        $('#desa').html('<option selected disabled>Pilih Desa</option>');
                                     },
 
                                     error: function(data) {
@@ -400,6 +403,7 @@
 
                                     success: function(msg) {
                                         $('#kecamatan').html(msg);
+                                        $('#desa').html('<option selected disabled>Pilih Desa</option>');
                                     },
 
                                     error: function(data) {

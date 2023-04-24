@@ -25,9 +25,12 @@ class PesanController extends Controller
         $id_provinsi = $request->id_prov;
         $kotas = Regency::where('province_id', $id_provinsi)->get();
 
+        $opt = "<option selected disabled>Pilih Kabupaten/Kota</option>";
         foreach ($kotas as $kota) {
-            echo "<option value='$kota->id'>$kota->name</option>";
+            $opt .= "<option value='$kota->id'>$kota->name</option>";
         }
+
+        echo $opt;
     }
 
     public function getKecamatan(request $request)
@@ -35,9 +38,11 @@ class PesanController extends Controller
         $id_kota = $request->id_kota;
         $kecamatans = District::where('regency_id', $id_kota)->get();
 
+        $opt = "<option selected disabled>Pilih Kecamatan</option>";
         foreach ($kecamatans as $kecamatan) {
-            echo "<option value='$kecamatan->id'>$kecamatan->name</option>";
+            $opt .= "<option value='$kecamatan->id'>$kecamatan->name</option>";
         }
+        echo $opt;
     }
 
     public function getDesa(request $request)
@@ -45,8 +50,10 @@ class PesanController extends Controller
         $id_kecamatan = $request->id_kecamatan;
         $desas = Village::where('district_id', $id_kecamatan)->get();
 
+        $opt = "<option selected disabled>Pilih Desa</option>";
         foreach ($desas as $desa) {
-            echo "<option value='$desa->id'>$desa->name</option>";
+            $opt .= "<option value='$desa->id'>$desa->name</option>";
         }
+        echo $opt;
     }
 }
