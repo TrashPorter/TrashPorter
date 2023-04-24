@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\PesanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,19 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 |
 */
 
-Route::get('/pesan', function () {
-    return view('layouts.pesan', [
-        "title" => "Pesan"
-    ]);
-});
+
+
+Route::get('/pesan', [PesanController::class, 'index']);
+Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
+Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
+Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
+
+
+// Route::get('/pesan', function () {
+//     return view('layouts.pesan', [
+//         "title" => "Pesan",
+//     ]);
+// });
 
 Route::get('/', function () {
     return view('landingPage', [
