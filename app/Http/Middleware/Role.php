@@ -19,10 +19,12 @@ class Role
         if (!Auth::check()) // This isnt necessary, it should be part of your 'auth' middleware
             return redirect('/home');
 
+
         $user = Auth::user();
         if ($user->role == $role)
             return $next($request);
 
-        return redirect('/home');
+        // return redirect('/home');
+        return abort(403);
     }
 }

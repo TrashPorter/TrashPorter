@@ -15,7 +15,7 @@
                     dan driver. TrashPorter melayani antar jemput sampah dan penjualan hasil penjualan hasil pengelolaan
                     sampah. </p>
                 <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4 justify-center">
-                    <a href="#"
+                    <a href="/pesan"
                         class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 hover:text-sky-500 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Order
                         Now
                     </a>
