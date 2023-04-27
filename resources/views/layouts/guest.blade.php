@@ -26,21 +26,21 @@
         </header>
 
         <div
-            class="min-h-screen flex flex-col sm:justify-center items-center sm:pt-0 bg-gradient-to-r from-cyan-500 to-blue-500">
+            class="flex flex-col items-center min-h-screen sm:justify-center sm:pt-0 bg-gradient-to-r from-cyan-500 to-blue-500">
 
             <div class="flex justify-center">
-                <div class="mx-5 justify-center">
-                    <h2 class="font-bold text-3xl w-full tracking-tight text-white">TrashPorter</h2>
+                <div class="justify-center mx-5">
+                    <h2 class="w-full text-3xl font-bold tracking-tight text-white">TrashPorter</h2>
                 </div>
             </div>
-            <div class="flex justify-center mt-1 px-6">
+            <div class="flex justify-center px-6 mt-1">
                 <p class="text-white"> Reduce, reuse, and recycle to prevent further damage to our environment</p>
             </div>
             <div
-                class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden sm:rounded-lg ">
-                <div class="w-24 mx-auto flex justify-center mb-4">
+                class="w-full px-6 py-4 mt-6 overflow-hidden bg-white border border-gray-200 rounded-lg shadow sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:rounded-lg ">
+                <div class="flex justify-center w-24 mx-auto mb-4">
                     <a href="/">
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                        <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
                     </a>
                 </div>
 
