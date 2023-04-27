@@ -83,7 +83,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="botol" name="jenis_sampah" value="botol" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_botol();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="botol" class="font-medium text-black">Botol Plastik</label>
@@ -104,7 +104,7 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_botol"
                                                 class="bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-400"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kaleng" name="jenis_sampah" value="kaleng" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kaleng();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kaleng" class="font-medium">Kaleng</label>
@@ -137,7 +137,7 @@
                                                 (kg)</label>
                                             <input type="number" id="jumlah_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kardus" name="jenis_sampah" value="kardus" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kardus();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kardus" class="font-medium">Kardus</label>
@@ -169,7 +169,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +180,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="organik" name="jenis_sampah" value="organik" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_organik();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="organik" class="font-medium">Sampah Organik</label>
@@ -201,7 +202,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -217,75 +219,7 @@
                             Total Berat Sampah</label>
                     </div> --}}
 
-                            <script>
-                                // const bt1 = document.getElementsByName("botol");
-                                // for (const btn of bt1) {
-                                //     btn.onclick = changeBg;
-                                // }
 
-                                // function changeBg() {
-                                //     document.body.style.background = "blue";
-                                // }
-
-                                function toggle() {
-                                    if (document.getElementById("botol").checked) {
-                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("kaleng").checked) {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("kardus").checked) {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("organik").checked) {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
-                                    }
-                                }
-
-
-                                (function() {
-                                    const form = document.querySelector('form');
-                                    const checkboxes = form.querySelectorAll('input[type=checkbox]');
-                                    const checkboxLength = checkboxes.length;
-                                    const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
-
-                                    function init() {
-                                        if (firstCheckbox) {
-                                            for (let i = 0; i < checkboxLength; i++) {
-                                                checkboxes[i].addEventListener('change', checkValidity);
-                                            }
-
-                                            checkValidity();
-                                        }
-                                    }
-
-                                    function isChecked() {
-                                        for (let i = 0; i < checkboxLength; i++) {
-                                            if (checkboxes[i].checked) return true;
-                                        }
-
-                                        return false;
-                                    }
-
-                                    function checkValidity() {
-                                        const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
-                                        firstCheckbox.setCustomValidity(errorMessage);
-                                    }
-
-                                    init();
-                                })();
-                            </script>
                         </fieldset>
                     </div>
 
@@ -445,17 +379,10 @@
                 <div id="summary"
                     class="md:w-7/12 md:mx-auto xl:w-full px-8 py-10 mt-60  mr-16 shadow-lg border-2 border-slate-100 bg-slate-100 rounded-lg">
                     <h1 class="font-semibold text-2xl border-b pb-8">Rincian</h1>
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Botol Plastik</span>
-                        <span class="font-medium text-sm">Rp. 25.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
-
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Kaleng</span>
-                        <span class="font-medium text-sm">Rp. 48.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
+                    <div id="botol_plastik"></div>
+                    <div id="sampahkaleng"></div>
+                    <div id="kertasKardus"></div>
+                    <div id="sampahOrganik"></div>
 
                     <div class="mt-8 border-t pt-6">
                         {{-- <label class="font-medium inline-block mb-3 text-sm uppercase">Ongkir</label>
@@ -473,11 +400,6 @@
                                 <option>Standard shipping - $10.00</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="py-10">
-                        <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                        <input type="text" id="promo" placeholder="Enter your code"
-                            class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400">
                     </div>
 
                     <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
