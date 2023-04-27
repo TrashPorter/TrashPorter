@@ -22,9 +22,9 @@ Route::get('/pesan', function () {
     ]);
 });
 
-Route::get('/testing', function () {
-    return view('layouts.testing' , [
-        "title" => "Testing"
+Route::get('/profil', function () {
+    return view('layouts.profil' , [
+        "title" => "Profil"
     ]);
 });
 
