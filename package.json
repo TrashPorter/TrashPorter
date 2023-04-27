@@ -26,6 +26,7 @@
     "license": "ISC",
     "dependencies": {
         "aos": "^2.3.4",
-        "flowbite": "^1.6.5"
+        "flowbite": "^1.6.5",
+        "jquery": "^3.6.4"
     }
 }
