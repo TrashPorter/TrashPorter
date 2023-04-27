@@ -137,7 +137,8 @@
                                                 (kg)</label>
                                             <input type="number" id="jumlah_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-                                                min="5" max="25" value="5" required onchange="jm_botol()">
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_kaleng()">
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +171,7 @@
                                             <input type="number" id="jumlah_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 min="5" max="25" value="5" required
-                                                onchange="jm_botol()">
+                                                onchange="jm_kardus()">
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +204,7 @@
                                             <input type="number" id="jumlah_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 min="5" max="25" value="5" required
-                                                onchange="jm_botol()">
+                                                onchange="jm_organik()">
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +220,205 @@
                             Total Berat Sampah</label>
                     </div> --}}
 
+                            <script>
+                                // const bt1 = document.getElementsByName("botol");
+                                // for (const btn of bt1) {
+                                //     btn.onclick = changeBg;
+                                // }
 
+                                // function changeBg() {
+                                //     document.body.style.background = "blue";
+                                // }
+
+                                function h_botol() {
+                                    if (document.getElementById("botol").checked) {
+                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_botol =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
+
+                                        document.getElementById("botol_plastik").innerHTML = cart_botol;
+
+
+                                        var Botol = document.getElementById("jumlah_botol").value;
+                                        TotalBotol = Botol * 5000;
+                                        document.getElementById("br_botol").innerHTML = Botol + " Kg"
+
+                                    } else {
+                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
+                                        TotalBotol = 0;
+                                        document.getElementById("br_botol").innerHTML = 0 + " Kg"
+                                        document.getElementById("botol_plastik").innerHTML = "";
+                                    }
+
+                                    document.getElementById("isi_botol").innerHTML = "Rp. " + TotalBotol;
+                                }
+
+                                function jm_botol() {
+                                    addEventListener("change", h_botol());
+                                }
+
+                                // Kaleng
+                                function h_kaleng() {
+                                    if (document.getElementById("kaleng").checked) {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kaleng =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm' id='isi_kaleng'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kaleng'>5 kg</span>";
+                                        document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
+
+                                        var kaleng = document.getElementById("jumlah_kaleng").value;
+                                        Totalkaleng = kaleng * 8000;
+                                        document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
+
+                                    } else {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahkaleng").innerHTML = "";
+                                        Totalkaleng = 0;
+                                        document.getElementById("br_kaleng").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kaleng").innerHTML = "Rp. " + Totalkaleng;
+                                }
+
+                                function jm_kaleng() {
+                                    addEventListener("change", h_kaleng());
+                                }
+
+                                // Kardus
+                                function h_kardus() {
+                                    if (document.getElementById("kardus").checked) {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kardus =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm' id='isi_kardus'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kardus'>5 kg</span>";
+                                        document.getElementById("kertasKardus").innerHTML = cart_kardus;
+
+                                        var kardus = document.getElementById("jumlah_kardus").value;
+                                        Totalkardus = kardus * 6000;
+                                        document.getElementById("br_kardus").innerHTML = kardus + " Kg";
+
+                                    } else {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
+                                        document.getElementById("kertasKardus").innerHTML = "";
+                                        Totalkardus = 0;
+                                        document.getElementById("br_kardus").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kardus").innerHTML = "Rp. " + Totalkardus;
+                                }
+
+                                function jm_kardus() {
+                                    addEventListener("change", h_kardus());
+                                }
+
+                                // Organik
+                                function h_organik() {
+                                    if (document.getElementById("organik").checked) {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_organik =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>organik</span><span class='font-medium text-sm' id='isi_so'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_so'>5 kg</span>";
+                                        document.getElementById("sampahOrganik").innerHTML = cart_organik;
+
+                                        var organik = document.getElementById("jumlah_so").value;
+                                        Totalorganik = organik * 5000;
+                                        document.getElementById("br_so").innerHTML = organik + " Kg";
+
+
+
+                                    } else {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahOrganik").innerHTML = "";
+                                        Totalorganik = 0;
+                                        document.getElementById("br_so").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_so").innerHTML = "Rp. " + Totalorganik;
+                                }
+
+                                function jm_organik() {
+                                    addEventListener("change", h_organik());
+                                }
+
+                                // function toggle() {
+                                //     if (document.getElementById("botol").checked) {
+                                //         document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+
+                                //         var cart_botol =
+                                //             "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm'>Rp. <span class='harga-bp'>5</span>.000</span></div><span class='font-light text-sm berat'>5 kg</span>";
+
+                                //         document.getElementById("botol_plastik").innerHTML = cart_botol;
+
+                                //     } else {
+                                //         document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
+                                //         document.getElementById("botol_plastik").innerHTML = "";
+
+                                //     }
+
+                                //     if (document.getElementById("kaleng").checked) {
+                                //         document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
+                                //         var cart_kaleng =
+                                //             "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm harga-bp'>Rp. 25.000</span></div><span class='font-light text-sm'>5 kg</span>";
+
+                                //         document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
+                                //     } else {
+                                //         document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
+                                //         document.getElementById("sampahkaleng").innerHTML = "";
+                                //     }
+
+                                //     if (document.getElementById("kardus").checked) {
+                                //         document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
+                                //         var cart_kardus =
+                                //             "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm harga-bp'>Rp. 25.000</span></div><span class='font-light text-sm'>5 kg</span>";
+                                //         document.getElementById("kertasKardus").innerHTML = cart_kardus;
+                                //     } else {
+                                //         document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
+                                //         document.getElementById("kertasKardus").innerHTML = "";
+                                //     }
+
+                                //     if (document.getElementById("organik").checked) {
+                                //         document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
+                                //         var cart_organik =
+                                //             "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>Organik</span><span class='font-medium text-sm harga-bp'>Rp. 25.000</span></div><span class='font-light text-sm'>5 kg</span>";
+                                //         document.getElementById("sampahOrganik").innerHTML = cart_organik;
+                                //     } else {
+                                //         document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
+                                //         document.getElementById("sampahOrganik").innerHTML = "";
+                                //     }
+                                // }
+
+
+                                (function() {
+                                    const form = document.querySelector('form');
+                                    const checkboxes = form.querySelectorAll('input[type=checkbox]');
+                                    const checkboxLength = checkboxes.length;
+                                    const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+
+                                    function init() {
+                                        if (firstCheckbox) {
+                                            for (let i = 0; i < checkboxLength; i++) {
+                                                checkboxes[i].addEventListener('change', checkValidity);
+                                            }
+
+                                            checkValidity();
+                                        }
+                                    }
+
+                                    function isChecked() {
+                                        for (let i = 0; i < checkboxLength; i++) {
+                                            if (checkboxes[i].checked) return true;
+                                        }
+
+                                        return false;
+                                    }
+
+                                    function checkValidity() {
+                                        const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+                                        firstCheckbox.setCustomValidity(errorMessage);
+                                    }
+
+                                    init();
+                                })();
+                            </script>
                         </fieldset>
                     </div>
 
@@ -397,14 +596,12 @@
                             <select type="text" id="ongkir"
                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
                                 required>
-                                <option>Standard shipping - $10.00</option>
+                                <option>Standard shipping - Rp.10.000</option>
                             </select>
                         </div>
                     </div>
 
-                    <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
-                        {{ __('Apply') }}
-                    </x-primary-button>
+
 
                     <div class="border-t mt-8">
                         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
