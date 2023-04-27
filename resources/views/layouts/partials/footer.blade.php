@@ -1,6 +1,6 @@
 <footer class="bg-white dark:bg-gray-800">
     <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
-        <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
             <div>
                 <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h3>
                 <ul class="text-gray-500 dark:text-gray-400">
