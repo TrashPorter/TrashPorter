@@ -1,0 +1,139 @@
+{-- <div class="flex items-center justify-center py-8">
+    <button onclick="checkoutHandler(false)" class="px-10 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700">Open Modal</button>
+</div> --}}
+<div class="top-0 w-full h-full pt-10 overflow-x-hidden overflow-y-auto pd-fixed bg-gray-50 dark:bg-gray-900 bg-opacity-90 sticky-0" id="chec-div">
+    <div class="absolute right-0 z-10 w-full h-full overflow-x-hidden transition duration-700 ease-in-out transform translate-x-0" id="checkout">
+        <div class="flex flex-col items-end justify-end lg:flex-row" id="cart">
+            <div class="w-full h-auto px-4 py-4 overflow-x-hidden overflow-y-hidden bg-white lg:w-1/2 md:w-8/12 lg:px-8 lg:py-14 md:px-6 md:py-8 dark:bg-gray-800 lg:h-screen" id="scroll">
+                <div class="flex items-center text-gray-500 cursor-pointer hover:text-gray-600 dark:text-white" onclick="checkoutHandler(false)">
+                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1.svg" alt="previous"/>
+                     <img class="hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1dark.svg" alt="previous"/>
+                    <p class="pl-2 text-sm leading-none dark:hover:text-gray-200">Back</p>
+                </div>
+                <p class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl dark:text-white">Bag</p>
+                <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                    <div class="w-full md:w-4/12 2xl:w-1/4">
+                        <img src="https://i.ibb.co/SX762kX/Rectangle-36-1.png" alt="Black Leather Bag" class="hidden object-cover object-center h-full md:block" />
+                        <img src="https://i.ibb.co/g9xsdCM/Rectangle-37.pngg" alt="Black Leather Bag" class="object-cover object-center w-full h-full md:hidden" />
+                    </div>
+                    <div class="flex flex-col justify-center md:pl-3 md:w-8/12 2xl:w-3/4">
+                        <p class="pt-4 text-xs leading-3 text-gray-800 dark:text-white md:pt-0">RF293</p>
+                        <div class="flex items-center justify-between w-full pt-1">
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">North wolf bag</p>
+                            <select aria-label="Select quantity" class="px-1 py-2 mr-6 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                            </select>
+                        </div>
+                        <p class="pt-2 text-xs leading-3 text-gray-600 dark:text-white">Height: 10 inches</p>
+                        <p class="py-4 text-xs leading-3 text-gray-600 dark:text-white">Color: Black</p>
+                        <p class="text-xs leading-3 text-gray-600 w-96 dark:text-white">Composition: 100% calf leather</p>
+                        <div class="flex items-center justify-between pt-5">
+                            <div class="flex itemms-center">
+                                <p class="text-xs leading-3 text-gray-800 underline cursor-pointer dark:text-white">Add to favorites</p>
+                                <p class="pl-5 text-xs leading-3 text-red-500 underline cursor-pointer">Remove</p>
+                            </div>
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">$9,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                    <div class="w-full md:w-4/12 2xl:w-1/4">
+                        <img src="https://i.ibb.co/c6KyDXN/Rectangle-5-1.png" alt="Gray Sneakers" class="hidden object-cover object-center h-full md:block" />
+                        <img src="https://i.ibb.co/yVSpYqx/Rectangle-6.png" alt="Gray Sneakers" class="object-cover object-center w-full h-full md:hidden" />
+                    </div>
+                    <div class="flex flex-col justify-center md:pl-3 md:w-8/12 2xl:w-3/4">
+                        <p class="pt-4 text-xs leading-3 text-gray-800 dark:text-white md:pt-0">RF293</p>
+                        <div class="flex items-center justify-between w-full pt-1">
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">LW sneakers</p>
+                            <select aria-label="Select quantity" class="px-1 py-2 mr-6 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                            </select>
+                        </div>
+                        <p class="pt-2 text-xs leading-3 text-gray-600 dark:text-white">Height: 10 inches</p>
+                        <p class="py-4 text-xs leading-3 text-gray-600 dark:text-white">Color: Black</p>
+                        <p class="text-xs leading-3 text-gray-600 w-96 dark:text-white">Composition: 100% calf leather</p>
+                        <div class="flex items-center justify-between pt-5">
+                            <div class="flex itemms-center">
+                                <p class="text-xs leading-3 text-gray-800 underline cursor-pointer dark:text-white">Add to favorites</p>
+                                <p class="pl-5 text-xs leading-3 text-red-500 underline cursor-pointer">Remove</p>
+                            </div>
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">$9,000</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                    <div class="w-full md:w-4/12 2xl:w-1/4">
+                        <img src="https://i.ibb.co/6gzWwSq/Rectangle-20-1.png" alt="Black Leather Purse" class="hidden object-cover object-center h-full md:block" />
+                        <img src="https://i.ibb.co/TTnzMTf/Rectangle-21.png" alt="Black Leather Purse" class="object-cover object-center w-full h-full md:hidden" />
+                    </div>
+                    <div class="flex flex-col justify-center md:pl-3 md:w-8/12 2xl:w-3/4">
+                        <p class="pt-4 text-xs leading-3 text-gray-800 dark:text-white md:pt-0">RF293</p>
+                        <div class="flex items-center justify-between w-full">
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">Luxe card holder</p>
+                            <select aria-label="Select quantity" class="px-1 py-2 mr-6 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                            </select>
+                        </div>
+                        <p class="pt-2 text-xs leading-3 text-gray-600 dark:text-white">Height: 10 inches</p>
+                        <p class="py-4 text-xs leading-3 text-gray-600 dark:text-white">Color: Black</p>
+                        <p class="text-xs leading-3 text-gray-600 w-96 dark:text-white">Composition: 100% calf leather</p>
+                        <div class="flex items-center justify-between pt-5">
+                            <div class="flex itemms-center">
+                                <p class="text-xs leading-3 text-gray-800 underline cursor-pointer dark:text-white">Add to favorites</p>
+                                <p class="pl-5 text-xs leading-3 text-red-500 underline cursor-pointer">Remove</p>
+                            </div>
+                            <p class="text-base font-black leading-none text-gray-800 dark:text-white">$9,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-full bg-gray-100 lg:w-96 md:w-8/12 dark:bg-gray-900">
+                <div class="flex flex-col justify-between h-auto px-4 py-6 overflow-y-auto lg:h-screen lg:px-8 md:px-7 lg:py-20 md:py-10">
+                    <div>
+                        <p class="text-3xl font-black leading-9 text-gray-800 lg:text-4xl dark:text-white">Summary</p>
+                        <div class="flex items-center justify-between pt-16">
+                            <p class="text-base leading-none text-gray-800 dark:text-white">Subtotal</p>
+                            <p class="text-base leading-none text-gray-800 dark:text-white">$9,000</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-5">
+                            <p class="text-base leading-none text-gray-800 dark:text-white">Shipping</p>
+                            <p class="text-base leading-none text-gray-800 dark:text-white">$30</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-5">
+                            <p class="text-base leading-none text-gray-800 dark:text-white">Tax</p>
+                            <p class="text-base leading-none text-gray-800 dark:text-white">$35</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between pt-20 pb-6 lg:pt-5">
+                            <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
+                            <p class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">$10,240</p>
+                        </div>
+                        <button onclick="checkoutHandler1(true)" class="w-full py-5 text-base leading-none text-white bg-gray-800 border border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 dark:hover:bg-gray-700">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* width */
+        #scroll::-webkit-scrollbar {
+            width: 1px;
+        }
+
+        /* Track */
+        #scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        #scroll::-webkit-scrollbar-thumb {
+            background: rgb(133, 132, 132);
+        }
+    </style>
