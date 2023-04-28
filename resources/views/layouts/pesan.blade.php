@@ -566,6 +566,13 @@
             </div>
         </section>
     </form>
+    <script>
+        total_keseluruhan =0;
+        function h_botol() {
+            if (document.getElementById("botol").checked) {
+                document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+                var cart_botol =
+                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
 
     {{-- <script>
         function countTotal() {
