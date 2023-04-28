@@ -83,7 +83,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="botol" name="jenis_sampah" value="botol" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_botol();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="botol" class="font-medium text-black">Botol Plastik</label>
@@ -104,7 +104,7 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_botol"
                                                 class="bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-400"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kaleng" name="jenis_sampah" value="kaleng" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kaleng();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kaleng" class="font-medium">Kaleng</label>
@@ -137,7 +137,8 @@
                                                 (kg)</label>
                                             <input type="number" id="jumlah_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_kaleng()">
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +148,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kardus" name="jenis_sampah" value="kardus" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kardus();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kardus" class="font-medium">Kardus</label>
@@ -169,7 +170,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_kardus()">
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +181,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="organik" name="jenis_sampah" value="organik" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_organik();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="organik" class="font-medium">Sampah Organik</label>
@@ -201,7 +203,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_organik()">
                                         </div>
                                     </div>
                                 </div>
@@ -217,75 +220,6 @@
                             Total Berat Sampah</label>
                     </div> --}}
 
-                            <script>
-                                // const bt1 = document.getElementsByName("botol");
-                                // for (const btn of bt1) {
-                                //     btn.onclick = changeBg;
-                                // }
-
-                                // function changeBg() {
-                                //     document.body.style.background = "blue";
-                                // }
-
-                                function toggle() {
-                                    if (document.getElementById("botol").checked) {
-                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("kaleng").checked) {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("kardus").checked) {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("organik").checked) {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
-                                    }
-                                }
-
-
-                                (function() {
-                                    const form = document.querySelector('form');
-                                    const checkboxes = form.querySelectorAll('input[type=checkbox]');
-                                    const checkboxLength = checkboxes.length;
-                                    const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
-
-                                    function init() {
-                                        if (firstCheckbox) {
-                                            for (let i = 0; i < checkboxLength; i++) {
-                                                checkboxes[i].addEventListener('change', checkValidity);
-                                            }
-
-                                            checkValidity();
-                                        }
-                                    }
-
-                                    function isChecked() {
-                                        for (let i = 0; i < checkboxLength; i++) {
-                                            if (checkboxes[i].checked) return true;
-                                        }
-
-                                        return false;
-                                    }
-
-                                    function checkValidity() {
-                                        const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
-                                        firstCheckbox.setCustomValidity(errorMessage);
-                                    }
-
-                                    init();
-                                })();
-                            </script>
                         </fieldset>
                     </div>
 
@@ -445,17 +379,10 @@
                 <div id="summary"
                     class="md:w-7/12 md:mx-auto xl:w-full px-8 py-10 mt-60  mr-16 shadow-lg border-2 border-slate-100 bg-slate-100 rounded-lg">
                     <h1 class="font-semibold text-2xl border-b pb-8">Rincian</h1>
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Botol Plastik</span>
-                        <span class="font-medium text-sm">Rp. 25.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
-
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Kaleng</span>
-                        <span class="font-medium text-sm">Rp. 48.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
+                    <div id="botol_plastik"></div>
+                    <div id="sampahkaleng"></div>
+                    <div id="kertasKardus"></div>
+                    <div id="sampahOrganik"></div>
 
                     <div class="mt-8 border-t pt-6">
                         {{-- <label class="font-medium inline-block mb-3 text-sm uppercase">Ongkir</label>
@@ -470,24 +397,17 @@
                             <select type="text" id="ongkir"
                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
                                 required>
-                                <option>Standard shipping - $10.00</option>
+                                <option>Standard shipping - Rp.10.000</option>
                             </select>
                         </div>
                     </div>
-                    <div class="py-10">
-                        <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                        <input type="text" id="promo" placeholder="Enter your code"
-                            class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400">
-                    </div>
 
-                    <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
-                        {{ __('Apply') }}
-                    </x-primary-button>
+
 
                     <div class="border-t mt-8">
                         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                             <span>Total cost</span>
-                            <span>$600</span>
+                            <span id="harga_total">$600</span>
                         </div>
                         <x-primary-button
                             class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
@@ -498,6 +418,171 @@
             </div>
         </section>
     </form>
+    <script>
+        total_keseluruhan =0;
+        function h_botol() {
+            if (document.getElementById("botol").checked) {
+                document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+                var cart_botol =
+                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
+
+                document.getElementById("botol_plastik").innerHTML = cart_botol;
+
+
+                var Botol = document.getElementById("jumlah_botol").value;
+                TotalBotol = Botol * 5000;
+                total_keseluruhan+=TotalBotol;
+                document.getElementById("br_botol").innerHTML = Botol + " Kg"
+
+            } else {
+                document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
+                TotalBotol = 0;
+                document.getElementById("br_botol").innerHTML = 0 + " Kg"
+                document.getElementById("botol_plastik").innerHTML = "";
+                // harga_total -= TotalBotol;
+            }
+
+            document.getElementById("isi_botol").innerHTML = "Rp. " + TotalBotol;
+        }
+
+        function jm_botol() {
+            addEventListener("change", h_botol());
+        }
+
+        // Kaleng
+        function h_kaleng() {
+            if (document.getElementById("kaleng").checked) {
+                document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
+
+                var cart_kaleng =
+                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm' id='isi_kaleng'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kaleng'>5 kg</span>";
+                document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
+
+                var kaleng = document.getElementById("jumlah_kaleng").value;
+                Totalkaleng = kaleng * 8000;
+                total_keseluruhan +=Totalkaleng;
+                document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
+
+
+            } else {
+                document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
+                document.getElementById("sampahkaleng").innerHTML = "";
+                Totalkaleng = 0;
+                document.getElementById("br_kaleng").innerHTML = 0 + " Kg"
+            }
+
+            document.getElementById("isi_kaleng").innerHTML = "Rp. " + Totalkaleng;
+        }
+
+        function jm_kaleng() {
+            addEventListener("change", h_kaleng());
+        }
+
+        // Kardus
+        function h_kardus() {
+            if (document.getElementById("kardus").checked) {
+                document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
+
+                var cart_kardus =
+                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm' id='isi_kardus'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kardus'>5 kg</span>";
+                document.getElementById("kertasKardus").innerHTML = cart_kardus;
+
+                var kardus = document.getElementById("jumlah_kardus").value;
+                Totalkardus = kardus * 6000;
+                total_keseluruhan +=Totalkardus;
+                document.getElementById("br_kardus").innerHTML = kardus + " Kg";
+
+
+            } else {
+                document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
+                document.getElementById("kertasKardus").innerHTML = "";
+                Totalkardus = 0;
+                document.getElementById("br_kardus").innerHTML = 0 + " Kg"
+            }
+
+            document.getElementById("isi_kardus").innerHTML = "Rp. " + Totalkardus;
+        }
+
+        function jm_kardus() {
+            addEventListener("change", h_kardus());
+        }
+
+        // Organik
+        function h_organik() {
+            if (document.getElementById("organik").checked) {
+                document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
+                var cart_organik =
+                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>organik</span><span class='font-medium text-sm' id='isi_so'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_so'>5 kg</span>";
+                document.getElementById("sampahOrganik").innerHTML = cart_organik;
+
+                var organik = document.getElementById("jumlah_so").value;
+                Totalorganik = organik * 5000;
+                total_keseluruhan +=Totalorganik;
+                document.getElementById("br_so").innerHTML = organik + " Kg";
+
+
+
+            } else {
+                document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
+                document.getElementById("sampahOrganik").innerHTML = "";
+                Totalorganik = 0;
+                document.getElementById("br_so").innerHTML = 0 + " Kg"
+            }
+
+            document.getElementById("isi_so").innerHTML = "Rp. " + Totalorganik;
+        }
+
+        function jm_organik() {
+            addEventListener("change", h_organik());
+        }
+
+        (function() {
+            const form = document.querySelector('form');
+            const checkboxes = form.querySelectorAll('input[type=checkbox]');
+            const checkboxLength = checkboxes.length;
+            const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+
+            function init() {
+                if (firstCheckbox) {
+                    for (let i = 0; i < checkboxLength; i++) {
+                        checkboxes[i].addEventListener('change', checkValidity);
+                    }
+
+                    checkValidity();
+                }
+            }
+
+            function isChecked() {
+                for (let i = 0; i < checkboxLength; i++) {
+                    if (checkboxes[i].checked) return true;
+                }
+
+                return false;
+            }
+
+            function checkValidity() {
+                const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+                firstCheckbox.setCustomValidity(errorMessage);
+            }
+
+            init();
+        })();
+
+        document.getElementById("harga_total").innerHTML = "Rp. " + total_keseluruhan;
+    </script>
+    <script>
+        function itung_total() {
+            // if (document.getElementById("organik").checked) {
+
+            // }
+            // var organik = document.getElementById("jumlah_so").value * 5000;
+            // var kardus = document.getElementById("jumlah_kardus").value * 6000;
+            // var kaleng = document.getElementById("jumlah_kaleng").value * 8000;
+            // var botol = document.getElementById("jumlah_botol").value * 5000;
+            // var harga_total = organik + kardus + kaleng + botol;
+            // document.getElementById("harga_total").innerHTML = "Rp. " + harga_total;
+        }
+    </script>
 
     @include('layouts.partials.footer')
 @endsection
