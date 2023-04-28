@@ -220,6 +220,149 @@
                             Total Berat Sampah</label>
                     </div> --}}
 
+                            <script>
+                                function h_botol() {
+                                    if (document.getElementById("botol").checked) {
+                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_botol =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
+
+                                        document.getElementById("botol_plastik").innerHTML = cart_botol;
+
+
+                                        var Botol = document.getElementById("jumlah_botol").value;
+                                        TotalBotol = Botol * 5000;
+                                        document.getElementById("br_botol").innerHTML = Botol + " Kg"
+
+                                    } else {
+                                        document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
+                                        TotalBotol = 0;
+                                        document.getElementById("br_botol").innerHTML = 0 + " Kg"
+                                        document.getElementById("botol_plastik").innerHTML = "";
+                                    }
+
+                                    document.getElementById("isi_botol").innerHTML = "Rp. " + TotalBotol;
+                                }
+
+                                function jm_botol() {
+                                    addEventListener("change", h_botol());
+                                }
+
+                                // Kaleng
+                                function h_kaleng() {
+                                    if (document.getElementById("kaleng").checked) {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kaleng =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm' id='isi_kaleng'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kaleng'>5 kg</span>";
+                                        document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
+
+                                        var kaleng = document.getElementById("jumlah_kaleng").value;
+                                        Totalkaleng = kaleng * 8000;
+                                        document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
+
+                                    } else {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahkaleng").innerHTML = "";
+                                        Totalkaleng = 0;
+                                        document.getElementById("br_kaleng").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kaleng").innerHTML = "Rp. " + Totalkaleng;
+                                }
+
+                                function jm_kaleng() {
+                                    addEventListener("change", h_kaleng());
+                                }
+
+                                // Kardus
+                                function h_kardus() {
+                                    if (document.getElementById("kardus").checked) {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kardus =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm' id='isi_kardus'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kardus'>5 kg</span>";
+                                        document.getElementById("kertasKardus").innerHTML = cart_kardus;
+
+                                        var kardus = document.getElementById("jumlah_kardus").value;
+                                        Totalkardus = kardus * 6000;
+                                        document.getElementById("br_kardus").innerHTML = kardus + " Kg";
+
+                                    } else {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
+                                        document.getElementById("kertasKardus").innerHTML = "";
+                                        Totalkardus = 0;
+                                        document.getElementById("br_kardus").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kardus").innerHTML = "Rp. " + Totalkardus;
+                                }
+
+                                function jm_kardus() {
+                                    addEventListener("change", h_kardus());
+                                }
+
+                                // Organik
+                                function h_organik() {
+                                    if (document.getElementById("organik").checked) {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_organik =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>organik</span><span class='font-medium text-sm' id='isi_so'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_so'>5 kg</span>";
+                                        document.getElementById("sampahOrganik").innerHTML = cart_organik;
+
+                                        var organik = document.getElementById("jumlah_so").value;
+                                        Totalorganik = organik * 5000;
+                                        document.getElementById("br_so").innerHTML = organik + " Kg";
+
+
+
+                                    } else {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahOrganik").innerHTML = "";
+                                        Totalorganik = 0;
+                                        document.getElementById("br_so").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_so").innerHTML = "Rp. " + Totalorganik;
+                                }
+
+                                function jm_organik() {
+                                    addEventListener("change", h_organik());
+                                }
+
+                                (function() {
+                                    const form = document.querySelector('form');
+                                    const checkboxes = form.querySelectorAll('input[type=checkbox]');
+                                    const checkboxLength = checkboxes.length;
+                                    const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+
+                                    function init() {
+                                        if (firstCheckbox) {
+                                            for (let i = 0; i < checkboxLength; i++) {
+                                                checkboxes[i].addEventListener('change', checkValidity);
+                                            }
+
+                                            checkValidity();
+                                        }
+                                    }
+
+                                    function isChecked() {
+                                        for (let i = 0; i < checkboxLength; i++) {
+                                            if (checkboxes[i].checked) return true;
+                                        }
+
+                                        return false;
+                                    }
+
+                                    function checkValidity() {
+                                        const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+                                        firstCheckbox.setCustomValidity(errorMessage);
+                                    }
+
+                                    init();
+                                })();
+                            </script>
+
                         </fieldset>
                     </div>
 
@@ -234,7 +377,8 @@
                                 <label for="provinsi" class="sr-only"></label>
 
                                 <select id="provinsi"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Provinsi</option>
                                     @foreach ($provinces as $provinsi)
                                         <option value="{{ $provinsi->id }}">{{ $provinsi->name }}
@@ -247,7 +391,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kota" class="sr-only"></label>
                                 <select id="kota"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Kabupaten/Kota</option>
                                     {{-- @foreach ($regencies as $kota)
                                         <option value="{{ $kota->province_id }}">{{ $kota->name }}</option>
@@ -260,7 +405,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kecamatan" class="sr-only"></label>
                                 <select id="kecamatan"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Kecamatan</option>
                                 </select>
                             </div>
@@ -269,7 +415,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="desa" class="sr-only"></label>
                                 <select id="desa"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Desa</option>
                                 </select>
                             </div>
@@ -278,7 +425,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="pos" class="sr-only"></label>
                                 <select id="pos"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih No Pos</option>
                                 </select>
                             </div>
@@ -290,7 +438,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
                                 <textarea id="message" rows="5"
                                     class="block p-2.5 w-9/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 bg"
-                                    placeholder="Detail Alamat..."></textarea>
+                                    placeholder="Detail Alamat..." required></textarea>
 
                             </div>
                         </fieldset>
@@ -407,7 +555,7 @@
                     <div class="border-t mt-8">
                         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                             <span>Total cost</span>
-                            <span id="harga_total">$600</span>
+                            <span id="harga_total"></span>
                         </div>
                         <x-primary-button
                             class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
@@ -426,163 +574,51 @@
                 var cart_botol =
                     "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
 
-                document.getElementById("botol_plastik").innerHTML = cart_botol;
+    {{-- <script>
+        function countTotal() {
 
+            var total = "<span id='harga_total'>Rp. 0</span>";
+            document.getElementById("harga_total").innerHTML = total;
 
+            if (document.getElementById("botol").checked) {
                 var Botol = document.getElementById("jumlah_botol").value;
-                TotalBotol = Botol * 5000;
-                total_keseluruhan+=TotalBotol;
-                document.getElementById("br_botol").innerHTML = Botol + " Kg"
-
-            } else {
-                document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
-                TotalBotol = 0;
-                document.getElementById("br_botol").innerHTML = 0 + " Kg"
-                document.getElementById("botol_plastik").innerHTML = "";
-                // harga_total -= TotalBotol;
+                total += Botol * 5000;
             }
-
-            document.getElementById("isi_botol").innerHTML = "Rp. " + TotalBotol;
-        }
-
-        function jm_botol() {
-            addEventListener("change", h_botol());
-        }
-
-        // Kaleng
-        function h_kaleng() {
             if (document.getElementById("kaleng").checked) {
-                document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
-
-                var cart_kaleng =
-                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm' id='isi_kaleng'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kaleng'>5 kg</span>";
-                document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
-
                 var kaleng = document.getElementById("jumlah_kaleng").value;
-                Totalkaleng = kaleng * 8000;
-                total_keseluruhan +=Totalkaleng;
-                document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
-
-
-            } else {
-                document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
-                document.getElementById("sampahkaleng").innerHTML = "";
-                Totalkaleng = 0;
-                document.getElementById("br_kaleng").innerHTML = 0 + " Kg"
+                total += kaleng * 8000;
             }
-
-            document.getElementById("isi_kaleng").innerHTML = "Rp. " + Totalkaleng;
-        }
-
-        function jm_kaleng() {
-            addEventListener("change", h_kaleng());
-        }
-
-        // Kardus
-        function h_kardus() {
             if (document.getElementById("kardus").checked) {
-                document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
-
-                var cart_kardus =
-                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm' id='isi_kardus'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kardus'>5 kg</span>";
-                document.getElementById("kertasKardus").innerHTML = cart_kardus;
-
                 var kardus = document.getElementById("jumlah_kardus").value;
-                Totalkardus = kardus * 6000;
-                total_keseluruhan +=Totalkardus;
-                document.getElementById("br_kardus").innerHTML = kardus + " Kg";
-
-
-            } else {
-                document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
-                document.getElementById("kertasKardus").innerHTML = "";
-                Totalkardus = 0;
-                document.getElementById("br_kardus").innerHTML = 0 + " Kg"
+                total += kardus * 6000;
             }
-
-            document.getElementById("isi_kardus").innerHTML = "Rp. " + Totalkardus;
+            if (document.getElementById("organik").checked) {
+                var organik = document.getElementById("jumlah_so").value;
+                total += organik * 5000;
+            }
+            document.getElementById("harga_total").innerHTML = "Rp. " + total;
+            // return total;
         }
 
         function jm_kardus() {
-            addEventListener("change", h_kardus());
+            addEventListener("change", countTotal());
         }
 
-        // Organik
-        function h_organik() {
-            if (document.getElementById("organik").checked) {
-                document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
-                var cart_organik =
-                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>organik</span><span class='font-medium text-sm' id='isi_so'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_so'>5 kg</span>";
-                document.getElementById("sampahOrganik").innerHTML = cart_organik;
+        function jm_kaleng() {
+            addEventListener("change", countTotal());
+        }
 
-                var organik = document.getElementById("jumlah_so").value;
-                Totalorganik = organik * 5000;
-                total_keseluruhan +=Totalorganik;
-                document.getElementById("br_so").innerHTML = organik + " Kg";
-
-
-
-            } else {
-                document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
-                document.getElementById("sampahOrganik").innerHTML = "";
-                Totalorganik = 0;
-                document.getElementById("br_so").innerHTML = 0 + " Kg"
-            }
-
-            document.getElementById("isi_so").innerHTML = "Rp. " + Totalorganik;
+        function jm_botol() {
+            addEventListener("change", countTotal());
         }
 
         function jm_organik() {
-            addEventListener("change", h_organik());
+            addEventListener("change", countTotal());
         }
 
-        (function() {
-            const form = document.querySelector('form');
-            const checkboxes = form.querySelectorAll('input[type=checkbox]');
-            const checkboxLength = checkboxes.length;
-            const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
-
-            function init() {
-                if (firstCheckbox) {
-                    for (let i = 0; i < checkboxLength; i++) {
-                        checkboxes[i].addEventListener('change', checkValidity);
-                    }
-
-                    checkValidity();
-                }
-            }
-
-            function isChecked() {
-                for (let i = 0; i < checkboxLength; i++) {
-                    if (checkboxes[i].checked) return true;
-                }
-
-                return false;
-            }
-
-            function checkValidity() {
-                const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
-                firstCheckbox.setCustomValidity(errorMessage);
-            }
-
-            init();
-        })();
-
-        document.getElementById("harga_total").innerHTML = "Rp. " + total_keseluruhan;
-    </script>
-    <script>
-        function itung_total() {
-            // if (document.getElementById("organik").checked) {
-
-            // }
-            // var organik = document.getElementById("jumlah_so").value * 5000;
-            // var kardus = document.getElementById("jumlah_kardus").value * 6000;
-            // var kaleng = document.getElementById("jumlah_kaleng").value * 8000;
-            // var botol = document.getElementById("jumlah_botol").value * 5000;
-            // var harga_total = organik + kardus + kaleng + botol;
-            // document.getElementById("harga_total").innerHTML = "Rp. " + harga_total;
-        }
-    </script>
+        // var a = countTotal();
+        // document.getElementById("harga_total").innerHTML = a;
+    </script> --}}
 
     @include('layouts.partials.footer')
 @endsection
