@@ -31,6 +31,12 @@ Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
 //     ]);
 // });
 
+Route::get('/profil', function () {
+    return view('layouts.profil' , [
+        "title" => "Profil"
+    ]);
+});
+
 Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",

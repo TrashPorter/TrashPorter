@@ -41,7 +41,7 @@
                                         <a href="
                                         @if (Auth::user()->role == 'admin') {{ route('admin.dashboard') }}
                                             @elseif(Auth::user()->role == 'driver')
-                                                {{ route('admin.dashboard') }} 
+                                                {{ route('driver.dashboard') }} 
                                             @else
                                                 {{ route('dashboard') }} @endif
                                         "
