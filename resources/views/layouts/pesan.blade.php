@@ -28,7 +28,7 @@
                 <p>Isi form dibawah untuk melakukan pemesanan</p>
             </div> --}}
 
-                    <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg">
+                    <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg bg-white shadow-md drop-shadow-sm">
 
                         <h4 class="ml-6 mt-6 leading-6 text-gray-900 font-medium text-lg mb-8 ">Keterangan
                         </h4>
@@ -69,7 +69,8 @@
                     </fieldset>
 
                     <div>
-                        <fieldset class="pt-8 border-b-2 pb-20 mx-8 border-2 rounded-lg mt-10">
+                        <fieldset
+                            class="pt-8 border-b-2 pb-20 mx-8 border-2 rounded-lg mt-10 bg-white shadow-md drop-shadow-sm">
 
                             <div class="space-y-6 ml-6 mr-12 ">
                                 <h4 class="leading-6 text-gray-900 font-medium text-lg mb-8 ml-2">Pilih Jenis Sampah <span
@@ -367,7 +368,7 @@
                     </div>
 
                     <div>
-                        <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg mt-10">
+                        <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg mt-10 bg-white shadow-md drop-shadow-sm">
 
                             <h4 class="ml-12 mt-6 leading-6 text-gray-900 font-medium text-lg mb-8 ">Alamat
                             </h4>
@@ -566,59 +567,7 @@
             </div>
         </section>
     </form>
-    <script>
-        total_keseluruhan =0;
-        function h_botol() {
-            if (document.getElementById("botol").checked) {
-                document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
-                var cart_botol =
-                    "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
 
-    {{-- <script>
-        function countTotal() {
-
-            var total = "<span id='harga_total'>Rp. 0</span>";
-            document.getElementById("harga_total").innerHTML = total;
-
-            if (document.getElementById("botol").checked) {
-                var Botol = document.getElementById("jumlah_botol").value;
-                total += Botol * 5000;
-            }
-            if (document.getElementById("kaleng").checked) {
-                var kaleng = document.getElementById("jumlah_kaleng").value;
-                total += kaleng * 8000;
-            }
-            if (document.getElementById("kardus").checked) {
-                var kardus = document.getElementById("jumlah_kardus").value;
-                total += kardus * 6000;
-            }
-            if (document.getElementById("organik").checked) {
-                var organik = document.getElementById("jumlah_so").value;
-                total += organik * 5000;
-            }
-            document.getElementById("harga_total").innerHTML = "Rp. " + total;
-            // return total;
-        }
-
-        function jm_kardus() {
-            addEventListener("change", countTotal());
-        }
-
-        function jm_kaleng() {
-            addEventListener("change", countTotal());
-        }
-
-        function jm_botol() {
-            addEventListener("change", countTotal());
-        }
-
-        function jm_organik() {
-            addEventListener("change", countTotal());
-        }
-
-        // var a = countTotal();
-        // document.getElementById("harga_total").innerHTML = a;
-    </script> --}}
 
     @include('layouts.partials.footer')
 @endsection
