@@ -21,7 +21,7 @@
     <script src="{{ asset('backend/flowbite/dist/flowbite.js') }}"></script>
 </head>
 
-<body>
+<body class="bg-gray-50">
     {{-- @include('layouts.partials.header') --}}
     <!-- Start block -->
     @yield('container')
