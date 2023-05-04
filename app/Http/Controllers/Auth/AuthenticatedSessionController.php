@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
     $request->session()->regenerate();
 
-    return redirect()->intended(RouteServiceProvider::redirectTo());
+    return redirect()->intended(RouteServiceProvider::HOME);
   }
 
   /**
@@ -47,22 +47,22 @@ class AuthenticatedSessionController extends Controller
     return redirect('/');
   }
 
-  public function redirectTo()
-  {
-    $role = Auth::user()->role;
-    switch ($role) {
-      case 'admin':
-        return '/admin_dashboard';
-        break;
-      case 'driver':
-        return '/driver_dashboard';
-        break;
-      case 'user':
-        return '/';
-        break;
-      default:
-        return '/home';
-        break;
-    }
-  }
+  // public function redirectTo()
+  // {
+  //   $role = Auth::user()->role;
+  //   switch ($role) {
+  //     case 'admin':
+  //       return '/admin_dashboard';
+  //       break;
+  //     case 'driver':
+  //       return '/driver_dashboard';
+  //       break;
+  //     case 'user':
+  //       return '/';
+  //       break;
+  //     default:
+  //       return '/home';
+  //       break;
+  //   }
+  // }
 }
