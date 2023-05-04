@@ -568,6 +568,36 @@
         </section>
     </form>
 
+    <script>
+        total_harga = 0;
+        var organik = document.getElementById("jumlah_so").value;
+        
+        var kaleng = document.getElementById("jumlah_kaleng").value;
+        var kardus = document.getElementById("jumlah_kardus").value;
+        botol = function hitung total(p) {
+            var botol = document.getElementById("jumlah_botol").value;
+            if (document.getElementById("botol").checked) {                            
+                return botol *= 5000;
+            }
+        }
+        
+        if (document.getElementById("kaleng").checked) {                            
+            kaleng = document.getElementById("jumlah_kaleng").value * 5000;                            
+            
+        }
+        if (document.getElementById("kardus").checked) {                            
+            kardus = document.getElementById("jumlah_kardus").value * 5000;                            
+            
+        }
+        if (document.getElementById("organik").checked) {                            
+            organik = document.getElementById("jumlah_so").value * 5000;                            
+            
+        }
 
+        total_harga = botol + kaleng + kardus + organik;
+
+        document.getElementById("harga_total").innerHTML=botol;
+        
+    </script>
     @include('layouts.partials.footer')
 @endsection
