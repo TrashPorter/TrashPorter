@@ -1,1 +1,1 @@
-<img src="assets/img/logo_aja.png" alt="logo">
+<img src="{{ Vite::asset('public/assets/img/logo_aja.png') }}" alt="logo">

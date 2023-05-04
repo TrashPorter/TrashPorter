@@ -28,7 +28,7 @@
                 <p>Isi form dibawah untuk melakukan pemesanan</p>
             </div> --}}
 
-                    <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg">
+                    <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg bg-white shadow-md drop-shadow-sm">
 
                         <h4 class="ml-6 mt-6 leading-6 text-gray-900 font-medium text-lg mb-8 ">Keterangan
                         </h4>
@@ -69,7 +69,8 @@
                     </fieldset>
 
                     <div>
-                        <fieldset class="pt-8 border-b-2 pb-20 mx-8 border-2 rounded-lg mt-10">
+                        <fieldset
+                            class="pt-8 border-b-2 pb-20 mx-8 border-2 rounded-lg mt-10 bg-white shadow-md drop-shadow-sm">
 
                             <div class="space-y-6 ml-6 mr-12 ">
                                 <h4 class="leading-6 text-gray-900 font-medium text-lg mb-8 ml-2">Pilih Jenis Sampah <span
@@ -83,7 +84,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="botol" name="jenis_sampah" value="botol" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_botol();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="botol" class="font-medium text-black">Botol Plastik</label>
@@ -104,7 +105,7 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_botol"
                                                 class="bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-400"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required onchange="jm_botol()">
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +115,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kaleng" name="jenis_sampah" value="kaleng" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kaleng();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kaleng" class="font-medium">Kaleng</label>
@@ -137,7 +138,8 @@
                                                 (kg)</label>
                                             <input type="number" id="jumlah_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_kaleng()">
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +149,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="kardus" name="jenis_sampah" value="kardus" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_kardus();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="kardus" class="font-medium">Kardus</label>
@@ -169,7 +171,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_kardus()">
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +182,7 @@
                                         <div class="flex h-6 items-center">
                                             <input id="organik" name="jenis_sampah" value="organik" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                                onclick="toggle();">
+                                                onclick="h_organik();">
                                         </div>
                                         <div class="text-sm leading-6">
                                             <label for="organik" class="font-medium">Sampah Organik</label>
@@ -201,7 +204,8 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
                                             <input type="number" id="jumlah_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                min="5" max="25" value="5" required>
+                                                min="5" max="25" value="5" required
+                                                onchange="jm_organik()">
                                         </div>
                                     </div>
                                 </div>
@@ -218,41 +222,114 @@
                     </div> --}}
 
                             <script>
-                                // const bt1 = document.getElementsByName("botol");
-                                // for (const btn of bt1) {
-                                //     btn.onclick = changeBg;
-                                // }
-
-                                // function changeBg() {
-                                //     document.body.style.background = "blue";
-                                // }
-
-                                function toggle() {
+                                function h_botol() {
                                     if (document.getElementById("botol").checked) {
                                         document.getElementsByClassName("botol")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_botol =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase botol-plastik'>Botol Plastik</span><span class='font-medium text-sm' id='isi_botol'>Rp. 5.000</span></div><span class='font-light text-sm berat' id='br_botol'>5 kg</span>";
+
+                                        document.getElementById("botol_plastik").innerHTML = cart_botol;
+
+
+                                        var Botol = document.getElementById("jumlah_botol").value;
+                                        TotalBotol = Botol * 5000;
+                                        document.getElementById("br_botol").innerHTML = Botol + " Kg"
+
                                     } else {
                                         document.getElementsByClassName("botol")[0].style.backgroundColor = "white";
+                                        TotalBotol = 0;
+                                        document.getElementById("br_botol").innerHTML = 0 + " Kg"
+                                        document.getElementById("botol_plastik").innerHTML = "";
                                     }
 
-                                    if (document.getElementById("kaleng").checked) {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("kardus").checked) {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
-                                    }
-
-                                    if (document.getElementById("organik").checked) {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
-                                    } else {
-                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
-                                    }
+                                    document.getElementById("isi_botol").innerHTML = "Rp. " + TotalBotol;
                                 }
 
+                                function jm_botol() {
+                                    addEventListener("change", h_botol());
+                                }
+
+                                // Kaleng
+                                function h_kaleng() {
+                                    if (document.getElementById("kaleng").checked) {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kaleng =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kaleng'>Kaleng</span><span class='font-medium text-sm' id='isi_kaleng'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kaleng'>5 kg</span>";
+                                        document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
+
+                                        var kaleng = document.getElementById("jumlah_kaleng").value;
+                                        Totalkaleng = kaleng * 8000;
+                                        document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
+
+                                    } else {
+                                        document.getElementsByClassName("kaleng")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahkaleng").innerHTML = "";
+                                        Totalkaleng = 0;
+                                        document.getElementById("br_kaleng").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kaleng").innerHTML = "Rp. " + Totalkaleng;
+                                }
+
+                                function jm_kaleng() {
+                                    addEventListener("change", h_kaleng());
+                                }
+
+                                // Kardus
+                                function h_kardus() {
+                                    if (document.getElementById("kardus").checked) {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "#EEF7FF";
+
+                                        var cart_kardus =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase kardus'>Kardus</span><span class='font-medium text-sm' id='isi_kardus'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_kardus'>5 kg</span>";
+                                        document.getElementById("kertasKardus").innerHTML = cart_kardus;
+
+                                        var kardus = document.getElementById("jumlah_kardus").value;
+                                        Totalkardus = kardus * 6000;
+                                        document.getElementById("br_kardus").innerHTML = kardus + " Kg";
+
+                                    } else {
+                                        document.getElementsByClassName("kardus")[0].style.backgroundColor = "white";
+                                        document.getElementById("kertasKardus").innerHTML = "";
+                                        Totalkardus = 0;
+                                        document.getElementById("br_kardus").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_kardus").innerHTML = "Rp. " + Totalkardus;
+                                }
+
+                                function jm_kardus() {
+                                    addEventListener("change", h_kardus());
+                                }
+
+                                // Organik
+                                function h_organik() {
+                                    if (document.getElementById("organik").checked) {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "#EEF7FF";
+                                        var cart_organik =
+                                            "<div class='flex justify-between mt-10'><span class='font-medium text-sm uppercase organik'>organik</span><span class='font-medium text-sm' id='isi_so'>Rp. 25.000</span></div><span class='font-light text-sm' id='br_so'>5 kg</span>";
+                                        document.getElementById("sampahOrganik").innerHTML = cart_organik;
+
+                                        var organik = document.getElementById("jumlah_so").value;
+                                        Totalorganik = organik * 5000;
+                                        document.getElementById("br_so").innerHTML = organik + " Kg";
+
+
+
+                                    } else {
+                                        document.getElementsByClassName("organik")[0].style.backgroundColor = "white";
+                                        document.getElementById("sampahOrganik").innerHTML = "";
+                                        Totalorganik = 0;
+                                        document.getElementById("br_so").innerHTML = 0 + " Kg"
+                                    }
+
+                                    document.getElementById("isi_so").innerHTML = "Rp. " + Totalorganik;
+                                }
+
+                                function jm_organik() {
+                                    addEventListener("change", h_organik());
+                                }
 
                                 (function() {
                                     const form = document.querySelector('form');
@@ -286,11 +363,12 @@
                                     init();
                                 })();
                             </script>
+
                         </fieldset>
                     </div>
 
                     <div>
-                        <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg mt-10">
+                        <fieldset class="pb-8 border-b-2 mx-8 border-2 rounded-lg mt-10 bg-white shadow-md drop-shadow-sm">
 
                             <h4 class="ml-12 mt-6 leading-6 text-gray-900 font-medium text-lg mb-8 ">Alamat
                             </h4>
@@ -300,7 +378,8 @@
                                 <label for="provinsi" class="sr-only"></label>
 
                                 <select id="provinsi"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Provinsi</option>
                                     @foreach ($provinces as $provinsi)
                                         <option value="{{ $provinsi->id }}">{{ $provinsi->name }}
@@ -313,7 +392,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kota" class="sr-only"></label>
                                 <select id="kota"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Kabupaten/Kota</option>
                                     {{-- @foreach ($regencies as $kota)
                                         <option value="{{ $kota->province_id }}">{{ $kota->name }}</option>
@@ -326,7 +406,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kecamatan" class="sr-only"></label>
                                 <select id="kecamatan"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Kecamatan</option>
                                 </select>
                             </div>
@@ -335,7 +416,8 @@
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="desa" class="sr-only"></label>
                                 <select id="desa"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required>
                                     <option selected disabled>Pilih Desa</option>
                                 </select>
                             </div>
@@ -343,10 +425,11 @@
                             <div class="space-y-14 ml-12 ">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="pos" class="sr-only"></label>
-                                <select id="pos"
-                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                                    <option selected disabled>Pilih No Pos</option>
-                                </select>
+                                <input type="tel" pattern="[0-9]{5}" id="pos"
+                                    class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required placeholder="Masukkan Kode Pos">
+                                    
+                                </input>
                             </div>
 
                             <div class="mt-14 ml-10 ">
@@ -356,7 +439,7 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
                                 <textarea id="message" rows="5"
                                     class="block p-2.5 w-9/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 bg"
-                                    placeholder="Detail Alamat..."></textarea>
+                                    placeholder="Detail Alamat..." required></textarea>
 
                             </div>
                         </fieldset>
@@ -445,17 +528,10 @@
                 <div id="summary"
                     class="md:w-7/12 md:mx-auto xl:w-full px-8 py-10 mt-60  mr-16 shadow-lg border-2 border-slate-100 bg-slate-100 rounded-lg">
                     <h1 class="font-semibold text-2xl border-b pb-8">Rincian</h1>
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Botol Plastik</span>
-                        <span class="font-medium text-sm">Rp. 25.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
-
-                    <div class="flex justify-between mt-10">
-                        <span class="font-medium text-sm uppercase">Kaleng</span>
-                        <span class="font-medium text-sm">Rp. 48.000</span>
-                    </div>
-                    <span class="font-light text-sm ">5 kg</span>
+                    <div id="botol_plastik"></div>
+                    <div id="sampahkaleng"></div>
+                    <div id="kertasKardus"></div>
+                    <div id="sampahOrganik"></div>
 
                     <div class="mt-8 border-t pt-6">
                         {{-- <label class="font-medium inline-block mb-3 text-sm uppercase">Ongkir</label>
@@ -470,24 +546,17 @@
                             <select type="text" id="ongkir"
                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
                                 required>
-                                <option>Standard shipping - $10.00</option>
+                                <option>Standard shipping - Rp.10.000</option>
                             </select>
                         </div>
                     </div>
-                    <div class="py-10">
-                        <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                        <input type="text" id="promo" placeholder="Enter your code"
-                            class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400">
-                    </div>
 
-                    <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
-                        {{ __('Apply') }}
-                    </x-primary-button>
+
 
                     <div class="border-t mt-8">
                         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                             <span>Total cost</span>
-                            <span>$600</span>
+                            <span id="harga_total"></span>
                         </div>
                         <x-primary-button
                             class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
@@ -499,5 +568,36 @@
         </section>
     </form>
 
+    <script>
+        total_harga = 0;
+        var organik = document.getElementById("jumlah_so").value;
+        
+        var kaleng = document.getElementById("jumlah_kaleng").value;
+        var kardus = document.getElementById("jumlah_kardus").value;
+        botol = function hitung total(p) {
+            var botol = document.getElementById("jumlah_botol").value;
+            if (document.getElementById("botol").checked) {                            
+                return botol *= 5000;
+            }
+        }
+        
+        if (document.getElementById("kaleng").checked) {                            
+            kaleng = document.getElementById("jumlah_kaleng").value * 5000;                            
+            
+        }
+        if (document.getElementById("kardus").checked) {                            
+            kardus = document.getElementById("jumlah_kardus").value * 5000;                            
+            
+        }
+        if (document.getElementById("organik").checked) {                            
+            organik = document.getElementById("jumlah_so").value * 5000;                            
+            
+        }
+
+        total_harga = botol + kaleng + kardus + organik;
+
+        document.getElementById("harga_total").innerHTML=botol;
+        
+    </script>
     @include('layouts.partials.footer')
 @endsection
