@@ -5,7 +5,7 @@
         @include('layouts.partials.header')
     </div>
 
-    <form action="POST" method="post">
+    <form action="/pembayaran" method="POST">
         @csrf
 
         <section class="xl:flex xl:justify-center xl:w-full md:grid-1">
@@ -428,7 +428,7 @@
                                 <input type="tel" pattern="[0-9]{5}" id="pos"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required placeholder="Masukkan Kode Pos">
-                                    
+
                                 </input>
                             </div>
 
@@ -558,6 +558,7 @@
                             <span>Total cost</span>
                             <span id="harga_total"></span>
                         </div>
+
                         <x-primary-button
                             class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
                             {{ __('Pesan') }}
@@ -571,33 +572,32 @@
     <script>
         total_harga = 0;
         var organik = document.getElementById("jumlah_so").value;
-        
+
         var kaleng = document.getElementById("jumlah_kaleng").value;
         var kardus = document.getElementById("jumlah_kardus").value;
         botol = function hitung total(p) {
             var botol = document.getElementById("jumlah_botol").value;
-            if (document.getElementById("botol").checked) {                            
+            if (document.getElementById("botol").checked) {
                 return botol *= 5000;
             }
         }
-        
-        if (document.getElementById("kaleng").checked) {                            
-            kaleng = document.getElementById("jumlah_kaleng").value * 5000;                            
-            
+
+        if (document.getElementById("kaleng").checked) {
+            kaleng = document.getElementById("jumlah_kaleng").value * 5000;
+
         }
-        if (document.getElementById("kardus").checked) {                            
-            kardus = document.getElementById("jumlah_kardus").value * 5000;                            
-            
+        if (document.getElementById("kardus").checked) {
+            kardus = document.getElementById("jumlah_kardus").value * 5000;
+
         }
-        if (document.getElementById("organik").checked) {                            
-            organik = document.getElementById("jumlah_so").value * 5000;                            
-            
+        if (document.getElementById("organik").checked) {
+            organik = document.getElementById("jumlah_so").value * 5000;
+
         }
 
         total_harga = botol + kaleng + kardus + organik;
 
-        document.getElementById("harga_total").innerHTML=botol;
-        
+        document.getElementById("harga_total").innerHTML = botol;
     </script>
     @include('layouts.partials.footer')
 @endsection
