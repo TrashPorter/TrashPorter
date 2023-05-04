@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('Harrypotter123!'),
             'role' => 'admin',
-        ]);
+        ])->assignRole('admin');
 
         User::create([
             'name' => 'user',
@@ -29,7 +29,7 @@ class AdminSeeder extends Seeder
             'email' => 'user@gmail.com',
             'password' => bcrypt('Harrypotter123!'),
             'role' => 'user',
-        ]);
+        ])->assignRole('user');
 
         User::create([
             'name' => 'driver',
@@ -38,6 +38,6 @@ class AdminSeeder extends Seeder
             'email' => 'driver@gmail.com',
             'password' => bcrypt('Harrypotter123!'),
             'role' => 'driver',
-        ]);
+        ])->assignRole('driver');
     }
 }

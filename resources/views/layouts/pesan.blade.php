@@ -425,11 +425,11 @@
                             <div class="space-y-14 ml-12 ">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="pos" class="sr-only"></label>
-                                <select id="pos"
+                                <input type="tel" pattern="[0-9]{5}" id="pos"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    required>
-                                    <option selected disabled>Pilih No Pos</option>
-                                </select>
+                                    required placeholder="Masukkan Kode Pos">
+                                    
+                                </input>
                             </div>
 
                             <div class="mt-14 ml-10 ">
@@ -568,6 +568,36 @@
         </section>
     </form>
 
+    <script>
+        total_harga = 0;
+        var organik = document.getElementById("jumlah_so").value;
+        
+        var kaleng = document.getElementById("jumlah_kaleng").value;
+        var kardus = document.getElementById("jumlah_kardus").value;
+        botol = function hitung total(p) {
+            var botol = document.getElementById("jumlah_botol").value;
+            if (document.getElementById("botol").checked) {                            
+                return botol *= 5000;
+            }
+        }
+        
+        if (document.getElementById("kaleng").checked) {                            
+            kaleng = document.getElementById("jumlah_kaleng").value * 5000;                            
+            
+        }
+        if (document.getElementById("kardus").checked) {                            
+            kardus = document.getElementById("jumlah_kardus").value * 5000;                            
+            
+        }
+        if (document.getElementById("organik").checked) {                            
+            organik = document.getElementById("jumlah_so").value * 5000;                            
+            
+        }
 
+        total_harga = botol + kaleng + kardus + organik;
+
+        document.getElementById("harga_total").innerHTML=botol;
+        
+    </script>
     @include('layouts.partials.footer')
 @endsection
