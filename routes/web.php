@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::get('/pesan', [PesanController::class, 'index']);
 Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
 Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
 Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
+
+Route::post('/pembayaran', [WebController::class, 'payment']);
+
+Route::post('/payment', [WebController::class, 'payment_post']);
+
 
 
 // Route::get('/pesan', function () {
@@ -64,6 +70,19 @@ Route::get('/about', function () {
         "title" => "About Us",
     ]);
 });
+
+Route::get('/invoice', function () {
+    return view('layouts.invoice', [
+        "title" => "Invoice"
+    ]);
+})->name('Invoice');
+
+
+// Route::get('/pembayaran', function () {
+//     return view('layouts.pembayaran', [
+//         "title" => "pembayaran"
+//     ]);
+// })->name('pembayaran');
 
 // Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
