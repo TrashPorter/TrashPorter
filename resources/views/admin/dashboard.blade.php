@@ -19,6 +19,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')
+    @include('admin.layouts.partials.topnav')
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
         <!-- row 1 -->
@@ -146,7 +147,7 @@
                             </div>
                             <div class="max-w-full px-3 mt-12 ml-auto text-center lg:mt-0 lg:w-5/12 lg:flex-none">
                                 <div class="h-full bg-gradient-to-tl from-cyan-500 to-blue-500 rounded-xl">
-                                    <img src="./assets/img/shapes/waves-white.svg"
+                                    <img src="{{ URL::asset('assets/img/shapes/waves-white.svg') }}"
                                         class="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
                                     <div class="relative flex items-center justify-center h-full">
                                         <img class="relative z-20 w-full pt-6"

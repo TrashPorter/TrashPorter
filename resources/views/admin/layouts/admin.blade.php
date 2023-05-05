@@ -18,8 +18,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="logo_aja" sizes="76x76" href="./assets/img/logo_aja.png" />
-    <link rel="icon" type="image/png" href="./assets/img/white_logo.png" />
+    <link rel="logo_aja" sizes="76x76" href="{{ Vite::asset('public/assets/img/logo_aja.png') }}" />
+    <link rel="icon" type="image/png" href="{{ Vite::asset('public/assets/img/white_logo.png') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link id="pagestyle" href="{{ URL::asset('assets/css/soft-ui-dashboard-tailwind.css') }}" rel="stylesheet" />
     <title>TrashPorter | Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -27,10 +29,13 @@
 </head>
 
 <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include('admin.layouts.partials.header')
-    @yield('content')
-    @include('admin.layouts.partials.footer')
+    @include('admin.layouts.partials.sidenav')
+    <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+        @yield('content')
+    </main>
+    {{-- @include('admin.layouts.partials.footer') --}}
+    @include('admin.layouts.partials.script')
+
 </body>
-@include('admin.layouts.partials.script')
 
 </html>
