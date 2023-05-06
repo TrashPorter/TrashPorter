@@ -54,7 +54,7 @@
             <div class="flex justify-between mt-4">
               <div>
                 <h3 class="text-sm text-gray-700">
-                  <a href="#">
+                  <a href="/tambah">
                     <span aria-hidden="true" class="absolute inset-0"></span>
                     Pupuk
                   </a>
