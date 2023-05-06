@@ -19,7 +19,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    @include('admin.layouts.partials.topnav')
+    @include('admin.layouts.partials.topnav', ['title' => 'Dashboard'])
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
         <!-- row 1 -->
