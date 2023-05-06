@@ -53,6 +53,12 @@ Route::get('/product', function () {
     ]);
 });
 
+Route::get('/tambah', function () {
+    return view('products.tambah', [
+        "title" => "keranjang",
+    ]);
+});
+
 Route::get('/catalog', function () {
     return view('catalogs.catalog', [
         "title" => "Catalog",
