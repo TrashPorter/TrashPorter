@@ -57,6 +57,12 @@ Route::get('/', function () {
 
 Route::get('/product', [ProdukViewController::class, 'index']);
 
+Route::get('/tambah', function () {
+    return view('products.tambah', [
+        "title" => "keranjang",
+    ]);
+});
+
 Route::get('/catalog', function () {
     return view('catalogs.catalog', [
         "title" => "Catalog",
