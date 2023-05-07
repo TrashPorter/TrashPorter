@@ -29,9 +29,9 @@ Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
 Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
 Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
 
-Route::post('/pembayaran', [WebController::class, 'payment']);
+Route::get('/pembayaran', [WebController::class, 'payment']);
 
-Route::post('/payment', [WebController::class, 'payment_post']);
+Route::post('/pembayaran', [WebController::class, 'payment_post']);
 
 
 
@@ -42,7 +42,7 @@ Route::post('/payment', [WebController::class, 'payment_post']);
 // });
 
 Route::get('/profil', function () {
-    return view('layouts.profil' , [
+    return view('layouts.profil', [
         "title" => "Profil"
     ]);
 })->name('profil');
@@ -96,24 +96,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function(){
-    Route::get('/',[IndexController::class,'index'])->name('index');
+Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', [IndexController::class, 'index'])->name('index');
     // Route::get('/role',[RoleController::class,'index'])->name('role');
-    Route::resource('/roles',RoleController::class);
-    Route::post('/roles/{role}/permissions',[RoleController::class,'givePermission'])->name('roles.permissions');
-    Route::delete('/roles/{role}/permissions/{permission}',[RoleController::class,'revokePermission'])->name('roles.permissions.revoke');
+    Route::resource('/roles', RoleController::class);
+    Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
 
-    Route::resource('/permissions',PermissionController::class);
-    Route::post('/permissions/{permission}/roles',[PermissionController::class,'assignRole'])->name('permissions.roles');
-    Route::delete('/permissions/{permission}/roles/{role}',[PermissionController::class,'removeRole'])->name('permissions.roles.remove');
+    Route::resource('/permissions', PermissionController::class);
+    Route::post('/permissions/{permission}/roles', [PermissionController::class, 'assignRole'])->name('permissions.roles');
+    Route::delete('/permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
 
-    Route::get('/users',[UserController::class,'index'])->name('users.index');
-    Route::get('/users/{user}',[UserController::class,'show'])->name('users.show');
-    Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.destroy');
-    Route::post('/users/{user}/roles',[UserController::class,'assignRole'])->name('users.roles');
-    Route::delete('/users/{user}/roles/{role}',[UserController::class,'removeRole'])->name('users.roles.remove');
-    Route::post('/users/{user}/permissions',[UserController::class,'givePermission'])->name('users.permissions');
-    Route::delete('/users/{user}/permissions/{permission}',[UserController::class,'revokePermission'])->name('users.permissions.revoke');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
+    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
+    Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
+    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 });
 
 require __DIR__ . '/auth.php';

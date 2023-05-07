@@ -10,7 +10,7 @@
         <div class="xl:w-3/6 mr-20 pt-20 flex flex-col">
             <button id="pay-button">Pay!</button>
 
-            <form action="/payment" id="submit_form" method="POST">
+            <form action="" id="submit_form" method="POST">
                 @csrf
                 <input type="hidden" name="json" id="json_callback">
             </form>
