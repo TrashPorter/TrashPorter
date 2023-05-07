@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\ProdukViewController;
 use App\Http\Controllers\WebController;
 
 /*
@@ -53,11 +55,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/product', function () {
-    return view('products.product', [
-        "title" => "Product",
-    ]);
-});
+Route::get('/product', [ProdukViewController::class, 'index']);
 
 Route::get('/catalog', function () {
     return view('catalogs.catalog', [
@@ -120,6 +118,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+
+    Route::resource('/produk', ProdukController::class);
 });
 
 require __DIR__ . '/auth.php';
