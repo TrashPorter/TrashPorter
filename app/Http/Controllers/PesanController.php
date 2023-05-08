@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pesan;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
+
 use App\Models\Village;
 
 use Illuminate\Http\Request;
@@ -55,5 +57,48 @@ class PesanController extends Controller
             $opt .= "<option value='$desa->id'>$desa->name</option>";
         }
         echo $opt;
+    }
+
+    public function store(Request $request)
+    {
+        $botol =  ($request->botol == true) ? 1 : 0;
+        $kaleng =  ($request->kaleng == true) ? 1 : 0;
+        $kardus =  ($request->kardus == true) ? 1 : 0;
+        $organik =  ($request->organik == true) ? 1 : 0;
+
+        $harga_botol = $request->harga_botol * $request->jumlah_botol;
+        $harga_kaleng = $request->harga_kaleng * $request->jumlah_kaleng;
+        $harga_kardus = $request->harga_kardus * $request->jumlah_kardus;
+        $harga_so = $request->harga_so * $request->jumlah_so;
+        $total_harga = $harga_botol + $harga_kaleng + $harga_kardus + $harga_so;
+
+        Pesan::create([
+            'nama' => $request->nama,
+            'nomor' => $request->nomor,
+            'datetime' => $request->datetime,
+            'harga_botol' => $request->harga_botol,
+            'jumlah_botol' => $request->jumlah_botol,
+            'harga_kaleng' => $request->harga_kaleng,
+            'jumlah_kaleng' => $request->jumlah_kaleng,
+            'harga_kardus' => $request->harga_kardus,
+            'jumlah_kardus' => $request->jumlah_kardus,
+            'harga_so' => $request->harga_so,
+            'jumlah_so' => $request->jumlah_so,
+            'botol' => $botol,
+            'kaleng' => $kaleng,
+            'kardus' => $kardus,
+            'organik' => $organik,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'desa' => $request->desa,
+            'pos' => $request->pos,
+            'message' => $request->message,
+            'ongkir' => $request->ongkir,
+            'harga_total' => $total_harga,
+        ]);
+
+        // $request->save();
+        $title = 'detail';
+        return view('layouts.detail', compact('title'));
     }
 }
