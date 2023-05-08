@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AdminSeeder::class,
             IndoRegionSeeder::class,
+            ProdukSeeder::class,
         ]);
     }
 }

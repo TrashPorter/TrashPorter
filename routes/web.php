@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\ProdukViewController;
 use App\Http\Controllers\WebController;
 
 /*
@@ -29,11 +31,11 @@ Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
 Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
 Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
 
-Route::post('/pembayaran', [WebController::class, 'payment']);
+// Route::get('/pembayaran', [WebController::class, 'payment']);
 
-Route::post('/payment', [WebController::class, 'payment_post']);
+// Route::post('/pembayaran', [WebController::class, 'payment_post']);
 
-
+Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
 
 // Route::get('/pesan', function () {
 //     return view('layouts.pesan', [
@@ -51,13 +53,9 @@ Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",
     ]);
-});
+})->name('landingPage');
 
-Route::get('/product', function () {
-    return view('products.product', [
-        "title" => "Product",
-    ]);
-});
+Route::get('/product', [ProdukViewController::class, 'index']);
 
 Route::get('/tambah', function () {
     return view('products.tambah', [
@@ -102,11 +100,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'verified', 'role:driver'])->group(function () {
+    Route::get('/driver', function () {
+        return view('driver.dashboard');
+    })->name('driver.dashboard');
 
-Route::get('/driver', function () {
-    return view('driver.dashboard');
-})->name('driver.dashboard');
-
+    Route::get('/salary', function () {
+        return view('driver.salary.index');
+    })->name('driver.salary.index');
+});
 
 Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
@@ -126,6 +128,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+
+    Route::resource('/produk', ProdukController::class);
 });
 
 require __DIR__ . '/auth.php';
