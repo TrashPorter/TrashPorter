@@ -28,7 +28,9 @@ use App\Http\Controllers\WebController;
 
 
 
+Route::post('/pembayaran', [WebController::class, 'payment']);
 
+Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
 // Route::get('/pesan', function () {
 //     return view('layouts.pesan', [
 //         "title" => "Pesan",
@@ -41,7 +43,7 @@ Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",
     ]);
-});
+})->name('landingPage');
 
 Route::get('/product', [ProdukViewController::class, 'index'])->name('produk.view');
 
@@ -110,10 +112,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/driver', function () {
-    return view('driver.dashboard');
-})->name('driver.dashboard');
+Route::middleware(['auth', 'verified', 'role:driver'])->group(function () {
+    Route::get('/driver', function () {
+        return view('driver.dashboard');
+    })->name('driver.dashboard');
 
+    Route::get('/salary', function () {
+        return view('driver.salary.index');
+    })->name('driver.salary.index');
+});
 
 Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
