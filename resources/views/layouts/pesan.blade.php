@@ -5,7 +5,7 @@
         @include('layouts.partials.header')
     </div>
 
-    <form action="/pembayaran" method="POST">
+    <form action="{{ route('layouts.detail') }}" method="POST">
         @csrf
 
         <section class="xl:flex xl:justify-center xl:w-full md:grid-1">
@@ -49,9 +49,9 @@
                                 HP</label>
                         </div>
 
-                        <div x-data x-init="flatpickr($refs.datetimewidget, { wrap: true, enableTime: true, dateFormat: 'M j, Y h:i K' });" x-ref="datetimewidget"
+                        <div x-data x-init="flatpickr($refs.datetimewidget, { wrap: true, enableTime: true, dateFormat: 'Y-m-d H:i:S' });" x-ref="datetimewidget"
                             class="relative z-0 w-full mb-6 group ml-6 mt-12">
-                            <input x-ref="datetime" type="text" id="datetime" data-input
+                            <input x-ref="datetime" type="text" id="datetime" data-input name="datetime"
                                 class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" ">
                             <label for="datetime"
@@ -82,7 +82,7 @@
                                 <div class="grid gap-x-3 border-2 p-4  rounded-lg botol">
                                     <div class=" relative flex gap-x-3">
                                         <div class="flex h-6 items-center">
-                                            <input id="botol" name="jenis_sampah" value="botol" type="checkbox"
+                                            <input id="botol" name="botol" value="botol" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                 onclick="h_botol();">
                                         </div>
@@ -96,14 +96,14 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Harga /
                                                 kg</label>
 
-                                            <input type="text" id="harga_botol"
+                                            <input type="text" id="harga_botol" name="harga_botol"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 5.000" value="Rp 5.000" readonly required>
+                                                placeholder="Rp 5.000" value="5000" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_botol"
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
-                                            <input type="number" id="jumlah_botol"
+                                            <input type="number" id="jumlah_botol" name="jumlah_botol"
                                                 class="bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-400"
                                                 min="5" max="25" value="5" required onchange="jm_botol()">
                                         </div>
@@ -113,7 +113,7 @@
                                 <div class="grid gap-x-3 border-2 p-4 border-gray-200 rounded-lg kaleng">
                                     <div class=" relative flex gap-x-3">
                                         <div class="flex h-6 items-center">
-                                            <input id="kaleng" name="jenis_sampah" value="kaleng" type="checkbox"
+                                            <input id="kaleng" name="kaleng" value="kaleng" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                 onclick="h_kaleng();">
                                         </div>
@@ -128,15 +128,15 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Harga /
                                                 kg</label>
 
-                                            <input type="text" id="harga_kaleng"
+                                            <input type="text" id="harga_kaleng" name="harga_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 8.000" value="Rp 8.000" readonly required>
+                                                placeholder="Rp 8.000" value="8000" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_kaleng"
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah
                                                 (kg)</label>
-                                            <input type="number" id="jumlah_kaleng"
+                                            <input type="number" id="jumlah_kaleng" name="jumlah_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                                 min="5" max="25" value="5" required
                                                 onchange="jm_kaleng()">
@@ -147,7 +147,7 @@
                                 <div class="grid gap-x-3 border-2 p-4 rounded-lg kardus">
                                     <div class=" relative flex gap-x-3">
                                         <div class="flex h-6 items-center">
-                                            <input id="kardus" name="jenis_sampah" value="kardus" type="checkbox"
+                                            <input id="kardus" name="kardus" value="kardus" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                 onclick="h_kardus();">
                                         </div>
@@ -162,14 +162,14 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Harga /
                                                 kg</label>
 
-                                            <input type="text" id="harga_kardus"
+                                            <input type="text" id="harga_kardus" name="harga_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 6.000" value="Rp 6.000" readonly required>
+                                                placeholder="Rp 6.000" value="6000" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_kardus"
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
-                                            <input type="number" id="jumlah_kardus"
+                                            <input type="number" name="jumlah_kardus" id="jumlah_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 min="5" max="25" value="5" required
                                                 onchange="jm_kardus()">
@@ -180,7 +180,7 @@
                                 <div class="grid gap-x-3 border-2 p-4  rounded-lg organik">
                                     <div class=" relative flex gap-x-3">
                                         <div class="flex h-6 items-center">
-                                            <input id="organik" name="jenis_sampah" value="organik" type="checkbox"
+                                            <input id="organik" name="organik" value="organik" type="checkbox"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                 onclick="h_organik();">
                                         </div>
@@ -195,14 +195,14 @@
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Harga /
                                                 kg</label>
 
-                                            <input type="text" id="harga_so"
+                                            <input type="text" id="harga_so" name="harga_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 5.000" value="Rp 5.000" readonly required>
+                                                placeholder="Rp 5.000" value="5000" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_so"
                                                 class="block mb-2 text-sm font-sm text-gray-900 dark:text-white">Jumlah</label>
-                                            <input type="number" id="jumlah_so"
+                                            <input type="number" id="jumlah_so" name="jumlah_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 min="5" max="25" value="5" required
                                                 onchange="jm_organik()">
@@ -377,7 +377,7 @@
 
                                 <label for="provinsi" class="sr-only"></label>
 
-                                <select id="provinsi"
+                                <select id="provinsi" name="provinsi"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required>
                                     <option selected disabled>Pilih Provinsi</option>
@@ -391,7 +391,7 @@
                             <div class="space-y-6 ml-12 mt-10">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kota" class="sr-only"></label>
-                                <select id="kota"
+                                <select id="kota" name="kota"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required>
                                     <option selected disabled>Pilih Kabupaten/Kota</option>
@@ -405,7 +405,7 @@
                             <div class="space-y-14 ml-12 ">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="kecamatan" class="sr-only"></label>
-                                <select id="kecamatan"
+                                <select id="kecamatan" name="kecamatan"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required>
                                     <option selected disabled>Pilih Kecamatan</option>
@@ -415,7 +415,7 @@
                             <div class="space-y-14 ml-12 ">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="desa" class="sr-only"></label>
-                                <select id="desa"
+                                <select id="desa" name="desa"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required>
                                     <option selected disabled>Pilih Desa</option>
@@ -425,7 +425,7 @@
                             <div class="space-y-14 ml-12 ">
                                 {{-- <h4 class="leading-6 text-gray-900 font-medium text-sm  ">Masukkan Alamat Penjemputan</h4> --}}
                                 <label for="pos" class="sr-only"></label>
-                                <input type="tel" pattern="[0-9]{5}" id="pos"
+                                <input type="tel" pattern="[0-9]{5}" id="pos" name="pos"
                                     class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     required placeholder="Masukkan Kode Pos">
 
@@ -437,7 +437,7 @@
 
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-                                <textarea id="message" rows="5"
+                                <textarea id="message" rows="5" name="message"
                                     class="block p-2.5 w-9/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 bg"
                                     placeholder="Detail Alamat..." required></textarea>
 
@@ -543,10 +543,10 @@
                             <label for="ongkir"
                                 class="block mb-2 text-sm font-semibold uppercase text-gray-900 dark:text-white">Ongkir</label>
 
-                            <select type="text" id="ongkir"
+                            <select type="text" id="ongkir" name="ongkir"
                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
                                 required>
-                                <option>Standard shipping - Rp.10.000</option>
+                                <option value="10000">Standard shipping - Rp.10.000</option>
                             </select>
                         </div>
                     </div>
@@ -554,11 +554,6 @@
 
 
                     <div class="border-t mt-8">
-                        <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-                            <span>Total cost</span>
-                            <span id="harga_total"></span>
-                        </div>
-
                         <x-primary-button
                             class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
                             {{ __('Pesan') }}
