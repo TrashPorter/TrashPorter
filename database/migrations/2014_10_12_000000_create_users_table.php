@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('alamat')->nullable();
             $table->enum('role', ['user', 'driver', 'admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();
