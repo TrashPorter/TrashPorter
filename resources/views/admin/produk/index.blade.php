@@ -12,7 +12,7 @@
                     <caption
                         class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                         Roles
-                        <a href="{{ route('admin.roles.create') }}"
+                        <a href=""
                             class="mt-1 px-4 py-2 mb-2 bg-blue-100 text-blue-800 text-xs font-medium mr-2 rounded dark:bg-blue-900 dark:text-blue-300">Create
                             Roles</a>
                     </caption>
@@ -29,18 +29,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($roles as $role)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $role->name }}
-                                </th>
-                                <td class="px-6 py-4 text-right">
-                                    <div class="mx-2">
-                                        <a href="{{ route('admin.roles.edit', $role->id) }}"
-                                            class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
-                                        |
-                                        <form method="POST" class="inline-block"
+
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Pupuk kompos
+                            </th>
+                            <td class="px-6 py-4 text-right">
+                                <div class="mx-2">
+                                    <a href=""
+                                        class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
+                                    |
+                                    {{-- <form method="POST" class="inline-block"
                                             action="{{ route('admin.roles.destroy', $role->id) }}"
                                             onsubmit="return confirm('Apakah Anda Yakin?')">
                                             @csrf
@@ -48,10 +48,10 @@
                                             <button type="submit"
                                                 class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 ml-2">
                                                 Delete</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
+                                        </form> --}}
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
