@@ -9,6 +9,13 @@ class ProdukOrder extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'tanggal',
+        'jumlah_harga',
+        'status',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
