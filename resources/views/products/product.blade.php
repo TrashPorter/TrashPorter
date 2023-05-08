@@ -19,7 +19,7 @@
                         <div class="flex justify-between mt-4">
                             <div>
                                 <h3 class="text-sm text-gray-700">
-                                    <a href="#">
+                                    <a href="{{ route('produk.order', $produk->id) }}">
                                         <span aria-hidden="true" class="absolute inset-0"></span>
                                         {{ $produk->nama }}
                                     </a>
@@ -32,13 +32,11 @@
                             </div>
 
                         </div>
-                        <button class="px-4 py-2 mt-2 font-bold text-white rounded bg-sky-500 hover:bg-sky-600"
+                        <a href="{{ route('produk.order', $produk->id) }}"
+                            class="px-4 py-2 mt-2 font-bold text-white rounded bg-sky-500 hover:bg-sky-600"
                             style="display: flex; align-items: center;">
-                            <div class="">
-                                <i class="fa fa-shopping-cart mr-2"></i>
-                            </div>
-                            <div class="mx-auto">Masukkan ke Keranjang</div>
-                        </button>
+                            <div class="mx-auto">Pesan</div>
+                        </a>
 
                     </div>
                 @endforeach

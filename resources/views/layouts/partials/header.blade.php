@@ -2,18 +2,42 @@
     <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
             <a href="#" class="flex items-center">
-                <img src="assets/img/logo_aja.png" class="h-6 mr-3 sm:h-9" alt="TrashPorter Logo" />
+                <img src="{{ url('assets/img/logo_aja.png') }}" class="h-6 mr-3 sm:h-9" alt="TrashPorter Logo" />
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">TrashPorter</span>
             </a>
             @if (Route::has('login'))
                 <div class="flex items-center lg:order-2">
                     @auth
+                        <div>
+                            <?php
+                            $pesanan = \App\Models\ProdukOrder::where('user_id', Auth::user()->id)
+                                ->where('status', 0)
+                                ->first();
+                            $notif = \App\Models\ProdukOrderDetail::where('produkorder_id', $pesanan->id)->count();
+                            ?>
+                            <a href="{{ route('produk.checkout') }}"
+                                class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="sr-only">Notifications</span>
+                                @if ($notif <= 0)
+                                    <div
+                                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                                    </div>
+                                @else
+                                    <div
+                                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                                        {{ $notif }}</div>
+                                @endif
+
+                            </a>
+                        </div>
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName"
                                 class="flex items-center text-sm font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
                                 type="button">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 mr-2 rounded-full" src="assets/img/team-4.jpg" alt="user photo">
+                                <img class="w-8 h-8 mr-2 rounded-full" src="{{ url('assets/img/team-4.jpg') }}"
+                                    alt="user photo">
                                 {{ Auth::user()->name }}
                                 <svg class="w-4 h-4 mx-1.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -27,24 +51,24 @@
                             <div id="dropdownAvatarName"
                                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                                    <div class="font-medium ">Pro User</div>
+                                    <div class="font-medium ">{{ Auth::user()->username }}</div>
                                     <div class="truncate"> {{ Auth::user()->email }}
                                     </div>
                                 </div>
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                     aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
                                     <li>
-                                        <a href="{{ route('profil') }}"
+                                        <a href="{{ route('profile.edit') }}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                                     </li>
                                     <li>
                                         @role('user')
-                                        <a href="{{ route('dashboard') }}"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                            <a href="{{ route('dashboard') }}"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         @endrole
                                         @role('admin')
-                                        <a href="{{ route('admin.index') }}"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                            <a href="{{ route('admin.index') }}"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         @endrole
                                         {{-- @role('driver')
                                         <a href="{{ route('dashboard') }}"
