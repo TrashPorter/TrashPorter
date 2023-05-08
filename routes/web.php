@@ -51,7 +51,7 @@ Route::get('/', function () {
     return view('landingPage', [
         "title" => "Home",
     ]);
-});
+})->name('landingPage');
 
 Route::get('/product', function () {
     return view('products.product', [
@@ -96,11 +96,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth', 'verified', 'role:driver'])->group(function () {
+    Route::get('/driver', function () {
+        return view('driver.dashboard');
+    })->name('driver.dashboard');
 
-Route::get('/driver', function () {
-    return view('driver.dashboard');
-})->name('driver.dashboard');
-
+    Route::get('/salary', function () {
+        return view('driver.salary.index');
+    })->name('driver.salary.index');
+});
 
 Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');

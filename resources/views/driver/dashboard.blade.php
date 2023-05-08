@@ -72,7 +72,7 @@
                                 Ayam goreng (5 Kg)
                             </td>
                             <td class="px-6 py-4">
-                                Selasa, 6 Mei 2023 20:23                            </td>
+                                5 Mei 2023 20:23                            </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
                                     <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Pending
