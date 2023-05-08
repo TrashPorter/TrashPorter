@@ -29,11 +29,11 @@ Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
 Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
 Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
 
-Route::get('/pembayaran', [WebController::class, 'payment']);
+// Route::get('/pembayaran', [WebController::class, 'payment']);
 
-Route::post('/pembayaran', [WebController::class, 'payment_post']);
+// Route::post('/pembayaran', [WebController::class, 'payment_post']);
 
-
+Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
 
 // Route::get('/pesan', function () {
 //     return view('layouts.pesan', [
