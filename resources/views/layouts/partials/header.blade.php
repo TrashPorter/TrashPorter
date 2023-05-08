@@ -9,20 +9,24 @@
                 <div class="flex items-center lg:order-2">
                     @auth
                         <div>
+
                             <?php
                             $pesanan = \App\Models\ProdukOrder::where('user_id', Auth::user()->id)
                                 ->where('status', 0)
                                 ->first();
-                            $notif = \App\Models\ProdukOrderDetail::where('produkorder_id', $pesanan->id)->count();
+                            $notif = 0;
+                            if (empty($pesanan)) {
+                                $notif = 0;
+                            } else {
+                                $notif = \App\Models\ProdukOrderDetail::where('produkorder_id', $pesanan->id)->count();
+                            }
+                            
                             ?>
                             <a href="{{ route('produk.checkout') }}"
                                 class="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="sr-only">Notifications</span>
                                 @if ($notif <= 0)
-                                    <div
-                                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-                                    </div>
                                 @else
                                     <div
                                         class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
@@ -67,8 +71,8 @@
                                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         @endrole
                                         @role('driver')
-                                        <a href="{{ route('driver.dashboard') }}"
-                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                            <a href="{{ route('driver.dashboard') }}"
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         @endrole
                                         @role('admin')
                                             <a href="{{ route('admin.index') }}"

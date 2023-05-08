@@ -71,6 +71,11 @@ class ProdukOrder extends Controller
     {
         $pesanan = ModelsProdukOrder::where('user_id', Auth::user()->id)->where('status', 0)->first();
 
+        if (empty($pesanan)) {
+            Alert::info('Keranjang Masih Kosong', 'Mohon isi terlebih dahulu');
+            return back();
+        }
+
         $pesanan_detail = ProdukOrderDetail::where('produkorder_id', $pesanan->id)->get();
 
         // dd($pesanan_detail);
