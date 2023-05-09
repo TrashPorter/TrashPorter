@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pesans', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('status');
             $table->string('nama');
             $table->string('nomor');
             $table->dateTime('datetime');
@@ -28,6 +30,7 @@ return new class extends Migration
             $table->boolean('kaleng')->nullable();
             $table->boolean('kardus')->nullable();
             $table->boolean('organik')->nullable();
+            $table->string('provinsi');
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('desa');
