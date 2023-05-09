@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\ProdukOrder;
 use App\Http\Controllers\ProdukViewController;
+use App\Http\Controllers\TPordersController;
 use App\Http\Controllers\WebController;
 
 /*
@@ -118,9 +119,13 @@ Route::middleware(['auth', 'verified', 'role:driver'])->group(function () {
         return view('driver.dashboard');
     })->name('driver.dashboard');
 
+    Route::get('/driver', [TPordersController::class, 'index'])->name('driver.dashboard');
+
     Route::get('/salary', function () {
         return view('driver.salary.index');
     })->name('driver.salary.index');
+
+    Route::put('/orders/{id}', [TPordersController::class, 'updateStatus']);
 });
 
 Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
