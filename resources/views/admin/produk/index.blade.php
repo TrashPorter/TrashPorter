@@ -1,28 +1,42 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    @include('admin.layouts.partials.topnav', ['title' => 'Produk'])
+    @include('admin.layouts.partials.topnav', ['title' => 'Product'])
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
         <!-- row 1 -->
         <div class="flex flex-wrap -mx-3 w-full">
-
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <caption
                         class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                        Roles
-                        <a href=""
-                            class="mt-1 px-4 py-2 mb-2 bg-blue-100 text-blue-800 text-xs font-medium mr-2 rounded dark:bg-blue-900 dark:text-blue-300">Create
-                            Roles</a>
+                        Product
+                        <a href="{{ route('admin.permissions.create') }}"
+                            class="mt-1 px-4 py-2 mb-2 bg-blue-100 text-blue-800 text-xs font-medium mr-2 rounded dark:bg-blue-900 dark:text-blue-300">Add
+                            Product</a>
                     </caption>
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Role Name
+                                Product Name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Category
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Picture
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Price
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Stock
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Description
                             </th>
                             <th scope="col" class="pr-5">
-                                <div class="flex justify-end mr-6">
+                                <div class="flex lg:justify-end md:justify-center lg:mr-12 md:mr-0">
                                     Actions
                                 </div>
                             </th>
@@ -31,28 +45,90 @@
                     <tbody>
 
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
+                            <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Pupuk kompos
-                            </th>
+                                Pupuk NPK Mutiara
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                Hasil olahan sampah
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white ">
+                                <img src="{{ Vite::asset('public/assets/img/gandasil_pupuk.jpg') }}" alt="">
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                Rp. 75000
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                50
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                pupuk hasil olahan sampah
+                            </td>
                             <td class="px-6 py-4 text-right">
                                 <div class="mx-2">
                                     <a href=""
                                         class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
                                     |
-                                    {{-- <form method="POST" class="inline-block"
-                                            action="{{ route('admin.roles.destroy', $role->id) }}"
+                                    <form method="POST" class="inline-block" action=""
+                                        onsubmit="return confirm('Apakah Anda Yakin?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 ml-2">
+                                            Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                        {{-- @foreach ($a as $data)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $data->nama }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                    {{ $data->kategori }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                    <img src="{{ Vite::asset('public/assets/img/' . $data->gambar) }}" alt="">
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                    Rp. {{ $data->harga }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                    {{ $data->stok }}
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+                                    {{ $data->deskripsi }}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="mx-2">
+                                        <a href=""
+                                            class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
+                                        |
+                                        <form method="POST" class="inline-block" action=""
                                             onsubmit="return confirm('Apakah Anda Yakin?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 ml-2">
                                                 Delete</button>
-                                        </form> --}}
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>
