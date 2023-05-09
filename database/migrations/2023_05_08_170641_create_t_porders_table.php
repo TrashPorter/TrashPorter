@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('t_porders', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('email');
             $table->string('alamat');
             $table->string('pesanan');
             $table->datetime('tanggal');
