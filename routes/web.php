@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\ProdukOrder;
 use App\Http\Controllers\ProdukViewController;
 use App\Http\Controllers\WebController;
 
@@ -26,28 +27,17 @@ use App\Http\Controllers\WebController;
 
 
 
-Route::get('/pesan', [PesanController::class, 'index']);
-Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
-Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
-Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
 
-// Route::get('/pembayaran', [WebController::class, 'payment']);
-
-// Route::post('/pembayaran', [WebController::class, 'payment_post']);
+Route::post('/pembayaran', [WebController::class, 'payment']);
 
 Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
-
 // Route::get('/pesan', function () {
 //     return view('layouts.pesan', [
 //         "title" => "Pesan",
 //     ]);
 // });
 
-Route::get('/profil', function () {
-    return view('layouts.profil', [
-        "title" => "Profil"
-    ]);
-})->name('profil');
+
 
 Route::get('/', function () {
     return view('landingPage', [
@@ -55,13 +45,9 @@ Route::get('/', function () {
     ]);
 })->name('landingPage');
 
-Route::get('/product', [ProdukViewController::class, 'index']);
+Route::get('/product', [ProdukViewController::class, 'index'])->name('produk.view');
 
-Route::get('/tambah', function () {
-    return view('products.tambah', [
-        "title" => "keranjang",
-    ]);
-});
+
 
 Route::get('/catalog', function () {
     return view('catalogs.catalog', [
@@ -90,11 +76,38 @@ Route::get('/invoice', function () {
 
 // Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Route::get('/profil', function () {
+    //     return view('layouts.profil', [
+    //         "title" => "Profil"
+    //     ]);
+    // })->name('profil');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/tambah', function () {
+        return view('products.tambah', [
+            "title" => "keranjang",
+        ]);
+    });
+
+    Route::get('/produk-order/{produk}', [ProdukOrder::class, 'index'])->name('produk.order');
+    Route::post('/produk-order/{produk}', [ProdukOrder::class, 'pesan'])->name('produk.pesan');
+    Route::get('/checkout', [ProdukOrder::class, 'checkout'])->name('produk.checkout');
+    Route::delete('/checkout/{id}', [ProdukOrder::class, 'delete'])->name('produk.checkout.delete');
+
+    Route::get('/pesan', [PesanController::class, 'index']);
+    Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
+    Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
+    Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
+
+    Route::post('/pembayaran', [WebController::class, 'payment']);
+
+    Route::post('/payment', [WebController::class, 'payment_post']);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
