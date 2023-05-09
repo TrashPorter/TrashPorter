@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pesan;
-use App\Models\Province;
 use App\Models\Regency;
+use App\Models\Village;
 use App\Models\District;
 
-use App\Models\Village;
+use App\Models\Province;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PesanController extends Controller
 {
@@ -66,39 +69,89 @@ class PesanController extends Controller
         $kardus =  ($request->kardus == true) ? 1 : 0;
         $organik =  ($request->organik == true) ? 1 : 0;
 
-        $harga_botol = $request->harga_botol * $request->jumlah_botol;
-        $harga_kaleng = $request->harga_kaleng * $request->jumlah_kaleng;
-        $harga_kardus = $request->harga_kardus * $request->jumlah_kardus;
-        $harga_so = $request->harga_so * $request->jumlah_so;
+        $harga_botol = 0;
+        if ($botol == 1) {
+            $harga_botol = $request->harga_botol * $request->jumlah_botol;
+        }
+        $harga_kaleng = 0;
+        if ($kaleng == 1) {
+            $harga_kaleng = $request->harga_kaleng * $request->jumlah_kaleng;
+        }
+        $harga_kardus = 0;
+        if ($kardus == 1) {
+            $harga_kardus = $request->harga_kardus * $request->jumlah_kardus;
+        }
+        $harga_so = 0;
+        if ($organik == 1) {
+            $harga_so = $request->harga_so * $request->jumlah_so;
+        }
         $total_harga = $harga_botol + $harga_kaleng + $harga_kardus + $harga_so;
 
-        Pesan::create([
-            'nama' => $request->nama,
-            'nomor' => $request->nomor,
-            'datetime' => $request->datetime,
-            'harga_botol' => $request->harga_botol,
-            'jumlah_botol' => $request->jumlah_botol,
-            'harga_kaleng' => $request->harga_kaleng,
-            'jumlah_kaleng' => $request->jumlah_kaleng,
-            'harga_kardus' => $request->harga_kardus,
-            'jumlah_kardus' => $request->jumlah_kardus,
-            'harga_so' => $request->harga_so,
-            'jumlah_so' => $request->jumlah_so,
-            'botol' => $botol,
-            'kaleng' => $kaleng,
-            'kardus' => $kardus,
-            'organik' => $organik,
-            'kota' => $request->kota,
-            'kecamatan' => $request->kecamatan,
-            'desa' => $request->desa,
-            'pos' => $request->pos,
-            'message' => $request->message,
-            'ongkir' => $request->ongkir,
-            'harga_total' => $total_harga,
-        ]);
+        $provinsi = Province::where('id', $request->provinsi)->first();
+        $kota = Regency::where('id', $request->kota)->first();
+        $kecamatan = District::where('id', $request->kecamatan)->first();
+        $desa = Village::where('id', $request->desa)->first();
+
+        $pesanan_baru = Pesan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        if (empty($pesanan_baru)) {
+            Pesan::create([
+                'nama' => $request->nama,
+                'user_id' => Auth::user()->id,
+                'status' => 0,
+                'nomor' => $request->nomor,
+                'datetime' => $request->datetime,
+                'harga_botol' => $request->harga_botol,
+                'jumlah_botol' => $request->jumlah_botol,
+                'harga_kaleng' => $request->harga_kaleng,
+                'jumlah_kaleng' => $request->jumlah_kaleng,
+                'harga_kardus' => $request->harga_kardus,
+                'jumlah_kardus' => $request->jumlah_kardus,
+                'harga_so' => $request->harga_so,
+                'jumlah_so' => $request->jumlah_so,
+                'botol' => $botol,
+                'kaleng' => $kaleng,
+                'kardus' => $kardus,
+                'organik' => $organik,
+                'provinsi' => $provinsi->name,
+                'kota' => $kota->name,
+                'kecamatan' => $kecamatan->name,
+                'desa' => $desa->name,
+                'pos' => $request->pos,
+                'message' => $request->message,
+                'ongkir' => $request->ongkir,
+                'harga_total' => $total_harga,
+            ]);
+        } else {
+            Alert::warning('Warning', 'Pesanan Anda sebelumnya belum selesai');
+            $title = 'detail';
+            return to_route('layouts.detail.pesan', compact('title'));
+        }
+
+
 
         // $request->save();
         $title = 'detail';
-        return view('layouts.detail', compact('title'));
+        return to_route('layouts.detail.pesan', compact('title'));
+    }
+
+    public function invoice()
+    {
+        $pesanan = Pesan::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $provinsi = Str::ucfirst($pesanan->provinsi);
+        $kota = Str::ucfirst($pesanan->kota);
+        $kecamatan = Str::ucfirst($pesanan->kecamatan);
+        $desa = Str::ucfirst($pesanan->desa);
+
+        $title = 'invoice';
+        return view('layouts.detail', compact('title', 'pesanan', 'provinsi', 'kota', 'kecamatan', 'desa'));
+    }
+
+    public function remove($id)
+    {
+        $pesanan = Pesan::where('id', $id)->first();
+        $pesanan->delete();
+        Alert::success('Deleted', 'Item berhasil dihapus');
+        // Get semua data
+        return redirect('/pesan');
     }
 }
