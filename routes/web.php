@@ -97,6 +97,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/produk-order/{produk}', [ProdukOrder::class, 'index'])->name('produk.order');
     Route::post('/produk-order/{produk}', [ProdukOrder::class, 'pesan'])->name('produk.pesan');
     Route::get('/checkout', [ProdukOrder::class, 'checkout'])->name('produk.checkout');
+    Route::delete('/checkout/{id}', [ProdukOrder::class, 'delete'])->name('produk.checkout.delete');
 
     Route::get('/pesan', [PesanController::class, 'index']);
     Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');

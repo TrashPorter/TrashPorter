@@ -71,8 +71,11 @@
 
                                 <div class="flex items-center justify-between pt-5">
                                     <div class="flex items-start">
-                                        <form action="" method="POST">
-                                            <button type="submit"><img
+                                        <form action="{{ route('produk.checkout.delete', $pesan_detail->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" data-confirm-delete="true"><img
                                                     src="{{ Vite::asset('public/assets/img/trash.png') }}"
                                                     alt=""></button>
                                         </form>
@@ -264,7 +267,8 @@
 
                                 <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
                                 <p id="total"
-                                    class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">tes
+                                    class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">Rp.
+                                    {{ number_format($pesanan->jumlah_harga) }}
                                 </p>
                                 <script>
                                     function total() {

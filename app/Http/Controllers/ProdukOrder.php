@@ -71,10 +71,30 @@ class ProdukOrder extends Controller
     {
         $pesanan = ModelsProdukOrder::where('user_id', Auth::user()->id)->where('status', 0)->first();
 
+        if (empty($pesanan)) {
+            Alert::info('Keranjang Kosong', 'Mohon isi terlebih dahulu');
+            return to_route('produk.view');
+        }
+
         $pesanan_detail = ProdukOrderDetail::where('produkorder_id', $pesanan->id)->get();
 
         // dd($pesanan_detail);
         $title = "Checkout";
         return view('products.order.checkout', compact('pesanan', 'pesanan_detail', 'title'));
+    }
+
+    public function delete($id)
+    {
+
+        $pesanan_detail = ProdukOrderDetail::where('id', $id)->first();
+        $pesanan = ModelsProdukOrder::where('id', $pesanan_detail->produkorder_id)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga - $pesanan_detail->jumlah_harga;
+
+        $pesanan->update();
+
+        $pesanan_detail->delete();
+        Alert::success('Deleted', 'Item berhasil dihapus');
+
+        return back();
     }
 }
