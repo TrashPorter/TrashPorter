@@ -28,9 +28,6 @@ use App\Http\Controllers\WebController;
 
 
 
-Route::post('/pembayaran', [WebController::class, 'payment']);
-
-Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
 // Route::get('/pesan', function () {
 //     return view('layouts.pesan', [
 //         "title" => "Pesan",
@@ -99,13 +96,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/checkout', [ProdukOrder::class, 'checkout'])->name('produk.checkout');
     Route::delete('/checkout/{id}', [ProdukOrder::class, 'delete'])->name('produk.checkout.delete');
 
-    Route::get('/pesan', [PesanController::class, 'index']);
+    Route::get('/pesan', [PesanController::class, 'index'])->name('pesan');
     Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
     Route::post('/kecamatan', [PesanController::class, 'getKecamatan'])->name('kecamatan');
     Route::post('/desa', [PesanController::class, 'getDesa'])->name('desa');
+    Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
+    Route::get('/detailPesan', [PesanController::class, 'invoice'])->name('layouts.detail.pesan');
+    Route::delete('/detailPesan/{id}', [PesanController::class, 'remove'])->name('remove.order');
 
     Route::post('/pembayaran', [WebController::class, 'payment']);
-
     Route::post('/payment', [WebController::class, 'payment_post']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

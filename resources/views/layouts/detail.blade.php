@@ -43,11 +43,12 @@
                 <div class="mt-8 grid sm:grid-cols-2 gap-3">
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Bill to:</h3>
-                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Sara Williams</h3>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ $pesanan->nama }}</h3>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ $pesanan->nomor }}</h3>
                         <address class="mt-2 not-italic text-gray-500">
-                            280 Suzanne Throughway,<br>
-                            Breannabury, OR 45801,<br>
-                            United States<br>
+                            {{ $provinsi }}, {{ $kota }}<br>
+                            {{ $kecamatan }}, {{ $desa }}, {{ $pesanan->pos }}<br>
+                            {{ $pesanan->message }}<br>
                         </address>
                     </div>
                     <!-- Col -->
@@ -56,13 +57,10 @@
                         <!-- Grid -->
                         <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                             <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Invoice date:</dt>
-                                <dd class="col-span-2 text-gray-500">03/10/2018</dd>
+                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Order date:</dt>
+                                <dd class="col-span-2 text-gray-500">{{ $pesanan->datetime }}</dd>
                             </dl>
-                            <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Due date:</dt>
-                                <dd class="col-span-2 text-gray-500">03/11/2018</dd>
-                            </dl>
+
                         </div>
                         <!-- End Grid -->
                     </div>
@@ -81,67 +79,115 @@
                         </div>
 
                         <div class="hidden sm:block border-b border-gray-200 dark:border-gray-700"></div>
+                        @if ($pesanan->botol == 1)
+                            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                <div class="col-span-full sm:col-span-2">
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200">Botol Plastik</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">{{ $pesanan->jumlah_botol }}</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($pesanan->harga_botol) }}</p>
+                                </div>
+                                @php
+                                    $botol = $pesanan->harga_botol * $pesanan->jumlah_botol;
+                                @endphp
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
+                                    <p class="sm:text-right text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($botol) }}</p>
+                                </div>
+                            </div>
+                        @endif
 
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                            <div class="col-span-full sm:col-span-2">
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-gray-200">Design UX and UI</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                                <p class="text-gray-800 dark:text-gray-200">1</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                                <p class="text-gray-800 dark:text-gray-200">5</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                                <p class="sm:text-right text-gray-800 dark:text-gray-200">$500</p>
-                            </div>
-                        </div>
-
-                        <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
-
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                            <div class="col-span-full sm:col-span-2">
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-gray-200">Web project</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                                <p class="text-gray-800 dark:text-gray-200">1</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                                <p class="text-gray-800 dark:text-gray-200">24</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                                <p class="sm:text-right text-gray-800 dark:text-gray-200">$1250</p>
-                            </div>
-                        </div>
 
                         <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
+                        @if ($pesanan->kaleng == 1)
+                            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                <div class="col-span-full sm:col-span-2">
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200">Kaleng</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">{{ $pesanan->jumlah_kaleng }}</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($pesanan->harga_kaleng) }}</p>
+                                </div>
+                                @php
+                                    $kaleng = $pesanan->harga_kaleng * $pesanan->jumlah_kaleng;
+                                @endphp
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
+                                    <p class="sm:text-right text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($kaleng) }}</p>
+                                </div>
+                            </div>
+                        @endif
 
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                            <div class="col-span-full sm:col-span-2">
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
-                                <p class="font-medium text-gray-800 dark:text-gray-200">SEO</p>
+
+                        <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
+                        @if ($pesanan->kardus == 1)
+                            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                <div class="col-span-full sm:col-span-2">
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200">Kardus</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">{{ $pesanan->jumlah_kardus }}</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($pesanan->harga_kardus) }}</p>
+                                </div>
+                                @php
+                                    $kardus = $pesanan->harga_kardus * $pesanan->jumlah_kardus;
+                                @endphp
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
+                                    <p class="sm:text-right text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($kardus) }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
-                                <p class="text-gray-800 dark:text-gray-200">1</p>
+                        @endif
+
+                        <div class="sm:hidden border-b border-gray-200 dark:border-gray-700"></div>
+                        @if ($pesanan->organik == 1)
+                            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                                <div class="col-span-full sm:col-span-2">
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Item</h5>
+                                    <p class="font-medium text-gray-800 dark:text-gray-200">Baja</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Qty</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">{{ $pesanan->jumlah_so }}</p>
+                                </div>
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
+                                    <p class="text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($pesanan->harga_so) }}</p>
+                                </div>
+                                @php
+                                    $organik = $pesanan->harga_so * $pesanan->jumlah_so;
+                                @endphp
+                                <div>
+                                    <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
+                                    <p class="sm:text-right text-gray-800 dark:text-gray-200">Rp.
+                                        {{ number_format($organik) }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Rate</h5>
-                                <p class="text-gray-800 dark:text-gray-200">6</p>
-                            </div>
-                            <div>
-                                <h5 class="sm:hidden text-xs font-medium text-gray-500 uppercase">Amount</h5>
-                                <p class="sm:text-right text-gray-800 dark:text-gray-200">$2000</p>
-                            </div>
-                        </div>
+                        @endif
+
                     </div>
                 </div>
                 <!-- End Table -->
@@ -153,12 +199,12 @@
                         <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                             <dl class="grid sm:grid-cols-5 gap-x-3">
                                 <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Subtotal:</dt>
-                                <dd class="col-span-2 text-gray-500">Rp. 25.000</dd>
+                                <dd class="col-span-2 text-gray-500">Rp. {{ number_format($pesanan->harga_total) }}</dd>
                             </dl>
 
                             <dl class="grid sm:grid-cols-5 gap-x-3">
                                 <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Total Income:</dt>
-                                <dd class="col-span-2 text-gray-500">Rp. 25.000</dd>
+                                <dd class="col-span-2 text-gray-500">Rp. {{ number_format($pesanan->harga_total) }}</dd>
                             </dl>
 
                             <div class="flex justify-end">
@@ -167,7 +213,7 @@
                             <dl class="grid sm:grid-cols-5 gap-x-3 ">
                                 <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200 ">Amount
                                     paid:</dt>
-                                <dd class="col-span-2 text-gray-500">Rp. 10.000</dd>
+                                <dd class="col-span-2 text-gray-500">Rp. 10,000</dd>
                             </dl>
 
 
@@ -182,8 +228,8 @@
                     <p class="text-gray-500">If you have any questions concerning this invoice, use the following
                         contact information:</p>
                     <div class="mt-2">
-                        <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">example@site.com</p>
-                        <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">+1 (062) 109-9222</p>
+                        <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">trashporterid@gmail.com</p>
+                        <p class="block text-sm font-medium text-gray-800 dark:text-gray-200">+623141867670</p>
                     </div>
                 </div>
 
@@ -193,6 +239,14 @@
 
             <!-- Buttons -->
             <div class="mt-6 flex justify-end gap-x-3">
+                <form action="{{ route('remove.order', $pesanan->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        onclick="return confirm('yakin?')">Cancel
+                        Order</button>
+                </form>
 
                 <button id="pay-button"
                     class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-sm text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800 w-20"
