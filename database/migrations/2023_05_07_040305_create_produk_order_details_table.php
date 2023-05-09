@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('produkorder_id');
             $table->integer('jumlah');
             $table->integer('jumlah_harga');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

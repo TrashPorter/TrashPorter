@@ -182,37 +182,7 @@
                 class="p-5 text-lg font-semibold text-left text-gray-900 border border-gray-100 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
                 Transaksi Terakhir
             </header>
-            <div class="mb-4 border border-gray-100 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
-                <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">May 5th,
-                        2023</time></div>
-                <ol class="divide-y divider-gray-200 bg-white dark:divide-gray-700">
-                    <li>
-                        <div class="flex hover:bg-gray-100 dark:hover:bg-gray-700 justify-between">
-                            <div class="">
-                                <a href="#" class="items-center block px-8 py-4 pt-3 sm:flex ">
-                                    <img class="w-12 h-12 mb-3 mr-3 rounded-full sm:mb-0" src="assets/img/aboutus/adid.jpeg"
-                                        alt="Adid image" />
-                                    <div class="text-gray-600 dark:text-gray-400">
-                                        <div class="text-base font-normal"><span
-                                                class="font-medium text-gray-900 dark:text-white">Adid</span> memesan <span
-                                                class="font-medium text-gray-900 dark:text-white">Antar Jemput Sampah</span>
-                                        </div>
-                                        <div class="text-sm font-normal">Indrapuri, Jl. Medan Banda Aceh</div>
-                                    </div>
-                                    <span
-                                        class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
-                                        20:23
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="flex">
-                                <p class="text-lg my-auto mx-7 md:mx-24 font-semibold px-2 text-gray-900 dark:text-white">Rp
-                                    50.000</p>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
-            </div>
+            
             <div class="border border-gray-100 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">May 6th,
                         2023</time></div>
@@ -265,6 +235,37 @@
                             <div class="flex">
                                 <p class="text-lg my-auto mx-7 md:mx-24 font-semibold px-2 text-gray-900 dark:text-white">Rp
                                     25.000</p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="border border-gray-100 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
+                <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">May 5th,
+                        2023</time></div>
+                <ol class="divide-y divider-gray-200 bg-white dark:divide-gray-700">
+                    <li>
+                        <div class="flex hover:bg-gray-100 dark:hover:bg-gray-700 justify-between">
+                            <div class="">
+                                <a href="#" class="items-center block px-8 py-4 pt-3 sm:flex ">
+                                    <img class="w-12 h-12 mb-3 mr-3 rounded-full sm:mb-0" src="assets/img/aboutus/adid.jpeg"
+                                        alt="Adid image" />
+                                    <div class="text-gray-600 dark:text-gray-400">
+                                        <div class="text-base font-normal"><span
+                                                class="font-medium text-gray-900 dark:text-white">Adid</span> memesan <span
+                                                class="font-medium text-gray-900 dark:text-white">Antar Jemput Sampah</span>
+                                        </div>
+                                        <div class="text-sm font-normal">Indrapuri, Jl. Medan Banda Aceh</div>
+                                    </div>
+                                    <span
+                                        class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
+                                        20:23
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="flex">
+                                <p class="text-lg my-auto mx-7 md:mx-24 font-semibold px-2 text-gray-900 dark:text-white">Rp
+                                    50.000</p>
                             </div>
                         </div>
                     </li>

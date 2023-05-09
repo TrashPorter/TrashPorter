@@ -9,9 +9,17 @@ class ProdukOrderDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'produk_id',
+        'produkorder_id',
+        'jumlah',
+        'jumlah_harga',
+        'gambar',
+    ];
+
     public function produk()
     {
-        return $this->belongsTo('App\Produk', 'produk_id', 'id');
+        return $this->belongsTo(Produk::class, 'produk_id', 'id');
     }
 
     public function produk_order()

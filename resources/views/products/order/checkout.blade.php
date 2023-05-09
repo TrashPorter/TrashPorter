@@ -8,80 +8,91 @@
 </div> --}}
     <div class="top-0 w-full h-full pt-10 overflow-x-hidden overflow-y-auto pd-fixed bg-gray-50 dark:bg-gray-900 bg-opacity-90 sticky-0"
         id="chec-div">
-        <div class="absolute right-0 z-10 w-full h-full overflow-x-hidden transition duration-700 ease-in-out transform translate-x-0"
+        <div class="flex justify-center z-10 w-full h-full overflow-x-hidden transition duration-700 ease-in-out transform translate-x-0"
             id="checkout">
             <div class="flex flex-col items-end justify-end lg:flex-row" id="cart">
-                <div class="w-full h-auto px-4 py-4 overflow-x-hidden overflow-y-hidden bg-white lg:w-1/2 md:w-8/12 lg:px-8 lg:py-14 md:px-6 md:py-8 dark:bg-gray-800 lg:h-screen"
+                <div class="w-full h-auto px-4 py-4 overflow-x-hidden overflow-y-hidden bg-white lg:w-2/3 md:w-8/12 lg:px-8 lg:py-14 md:px-6 md:py-8 dark:bg-gray-800 lg:h-screen"
                     id="scroll">
                     <div class="flex items-center text-gray-500 cursor-pointer hover:text-gray-600 dark:text-white"
                         onclick="checkoutHandler(false)">
-                        <img class="dark:hidden"
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1.svg" alt="previous" />
-                        <img class="hidden dark:block"
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/shopping-cart-1-svg1dark.svg"
-                            alt="previous" />
-                        <a href="/product" class="btn btn-secondary">Back</a>
+
+                        <a href="{{ route('produk.view') }}" class="btn btn-secondary"> Back</a>
 
                     </div>
 
-                    <p class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl dark:text-white">Cart</p>
-                    <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
-                        <div class="flex items-center">
+                    <p class="pt-3 text-3xl font-black leading-10 text-gray-800 lg:text-4xl dark:text-white">Checkout Produk
+                    </p>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($pesanan_detail as $pesan_detail)
+                        <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                            <div class="flex items-center">
 
-                            <div>
-                                {{-- <p class="text-sm font-medium text-gray-900">Item pertama</p> --}}
+                                <div>
+                                    {{-- <p class="text-sm font-medium text-gray-900">Item pertama</p> --}}
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="w-full md:w-4/12 2xl:w-1/4">
-                            <img src="https://i.ibb.co/SX762kX/Rectangle-36-1.png" alt="Black Leather Bag"
-                                class="hidden object-cover object-center h-full md:block" />
-                            <img src="https://i.ibb.co/g9xsdCM/Rectangle-37.pngg" alt="Black Leather Bag"
-                                class="object-cover object-center w-full h-full md:hidden" />
-                        </div>
-                        <div class="flex flex-col justify-center md:pl-3 md:w-8/12 2xl:w-3/4">
-                            <p class="pt-4 text-xs leading-3 text-gray-800 dark:text-white md:pt-0">RF293</p>
-                            <div class="flex items-center justify-between w-full pt-1">
-                                <p class="text-base font-black leading-none text-gray-800 dark:text-white">North wolf bag
+                            <div class="w-full md:w-4/12 2xl:w-1/4">
+                                <img src="{{ url('assets/img') }}/{{ $pesan_detail->gambar }}"
+                                    alt="product{{ $pesan_detail->id }}"
+                                    class="hidden object-cover object-center h-full md:block" />
+                                <img src="{{ url('assets/img') }}/{{ $pesan_detail->gambar }}"
+                                    alt="product{{ $pesan_detail->id }}"
+                                    class="object-cover object-center w-full h-full md:hidden" />
+                            </div>
+                            <div class="flex flex-col justify-center md:pl-3 md:w-8/12 2xl:w-3/4">
+                                <p class="pt-4 text-xs leading-3 text-gray-800 dark:text-white md:pt-0">#Barang
+                                    {{ $no++ }}
                                 </p>
+                                <div class="flex items-center justify-between w-full pt-1">
+                                    <p class="text-base font-black leading-none text-gray-800 dark:text-white">
+                                        {{ $pesan_detail->produk->nama }}
+                                    </p>
 
-                                <div class="flex items-center justify-between">
-                                    <button
-                                        class="px-2 py-1 mr-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                                        onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); if(oldValue > 1){document.querySelector('#input1').value = oldValue - 1; updatePrice(oldValue - 1);}">-</button>
-                                    <input type="text" id="input1" value="1"
-                                        class="w-10 px-1 py-2 mx-auto mr-0 text-center border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                                        min="1" max="10"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2)"
-                                        onchange="updatePrice(parseInt(this.value))">
-                                    <button
-                                        class="px-2 py-1 ml-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                                        onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); document.querySelector('#input1').value = oldValue + 1; updatePrice(oldValue + 1);">+</button>
+                                    <div class="flex items-center justify-between">
+                                        <button
+                                            class="px-2 py-1 mr-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                                            onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); if(oldValue > 1){document.querySelector('#input1').value = oldValue - 1; updatePrice(oldValue - 1);}">-</button>
+                                        <input type="text" id="input1" value="{{ $pesan_detail->jumlah }}"
+                                            class="w-10 px-1 py-2 mx-auto mr-0 text-center border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                                            min="1" max="10"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2)"
+                                            onchange="updatePrice(parseInt(this.value))">
+                                        <button
+                                            class="px-2 py-1 ml-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                                            onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); document.querySelector('#input1').value = oldValue + 1; updatePrice(oldValue + 1);">+</button>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <p class="pt-2 text-xs leading-3 text-gray-600 dark:text-white">Height: 10 inches</p>
-                            <p class="py-4 text-xs leading-3 text-gray-600 dark:text-white">Color: Black</p>
-                            <p class="text-xs leading-3 text-gray-600 w-96 dark:text-white">Composition: 100% calf leather
-                            </p>
-                            <div class="flex items-center justify-between pt-5">
-                                <div class="flex itemms-center">
-                                    <p class="text-xs leading-3 text-gray-800 underline cursor-pointer dark:text-white">Add
-                                        to favorites</p>
-                                    <p class="pl-5 text-xs leading-3 text-red-500 underline cursor-pointer">Remove</p>
+                                <p class="pt-2 text-xs leading-3 text-gray-600 dark:text-white">Harga : Rp.
+                                    {{ number_format($pesan_detail->produk->harga) }}</p>
+
+                                <div class="flex items-center justify-between pt-5">
+                                    <div class="flex items-start">
+                                        <form action="{{ route('produk.checkout.delete', $pesan_detail->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" data-confirm-delete="true"><img
+                                                    src="{{ Vite::asset('public/assets/img/trash.png') }}"
+                                                    alt=""></button>
+                                        </form>
+                                    </div>
+                                    <p id="price"
+                                        class="flex items-end text-base font-black leading-none text-gray-800 dark:text-white">
+                                        Rp {{ number_format($pesan_detail->jumlah_harga) }} </p>
                                 </div>
-                                <p id="price" class="text-base font-black leading-none text-gray-800 dark:text-white">
-                                    Rp90.000</p>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <script></script>
-                    <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                    {{-- <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
                         <div class="flex items-center">
 
                             <div>
-                                {{-- <p class="text-sm font-medium text-gray-900">Item pertama</p> --}}
+                                
                             </div>
                         </div>
                         <div class="w-full md:w-4/12 2xl:w-1/4">
@@ -124,14 +135,13 @@
                                     Rp90.000</p>
                             </div>
                         </div>
-                    </div>
-                    <script></script>
+                    </div> --}}
 
-                    <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
+                    {{-- <div class="py-8 border-t md:flex items-strech md:py-10 lg:py-8 border-gray-50">
                         <div class="flex items-center">
 
                             <div>
-                                {{-- <p class="text-sm font-medium text-gray-900">Item pertama</p> --}}
+                                
                             </div>
                         </div>
                         <div class="w-full md:w-4/12 2xl:w-1/4">
@@ -176,11 +186,11 @@
                                 {{-- <script>
                                         var price0 = querySelector("#price2").value;
                                         document.getElementById("subtotal").innerText = 'Rp' + price0.toLocaleString();
-                                    </script> --}}
+                                    </script> 
                             </div>
                         </div>
-                    </div>
-                    
+                    </div> --}}
+
                 </div>
 
                 <script>
@@ -237,32 +247,17 @@
                         class="flex flex-col justify-between h-auto px-4 py-6 overflow-y-auto lg:h-screen lg:px-8 md:px-7 lg:py-20 md:py-10">
                         <div>
                             <p class="text-3xl font-black leading-9 text-gray-800 lg:text-4xl dark:text-white">Summary</p>
-                            <div class="flex items-center justify-between pt-16">
-                                <p class="text-base leading-none text-gray-800 dark:text-white">Tas</p>
-                                <p id="tas" class="text-base leading-none text-gray-800 dark:text-white">Rp90.000
-                                </p>
-                                {{-- <p id="subtotal2" class="text-base leading-none text-gray-800 dark:text-white">Rp90.000</p> --}}
+                            @foreach ($pesanan_detail as $pesan_detail)
+                                <div class="flex items-center justify-between pt-16">
+                                    <p class="text-base leading-none text-gray-800 dark:text-white">
+                                        {{ $pesan_detail->produk->nama }}</p>
+                                    <p id="tas" class="text-base leading-none text-gray-800 dark:text-white">Rp
+                                        {{ number_format($pesan_detail->jumlah_harga) }}
+                                    </p>
+                                    {{-- <p id="subtotal2" class="text-base leading-none text-gray-800 dark:text-white">Rp90.000</p> --}}
 
-                            </div>
-                            <div class="flex items-center justify-between pt-5">
-                                <p class="text-base leading-none text-gray-800 dark:text-white">Sepatu</p>
-                                {{-- <p id="subtotal" class="text-base leading-none text-gray-800 dark:text-white">Rp90.000</p> --}}
-                                <p id="sepatu" class="text-base leading-none text-gray-800 dark:text-white">Rp90.000
-                                </p>
-
-                            </div>
-
-                            <div class="flex items-center justify-between pt-5">
-                                <p class="text-base leading-none text-gray-800 dark:text-white">Dompet</p>
-                                <p id="dompet" class="text-base leading-none text-gray-800 dark:text-white">RP90.000
-                                </p>
-                            </div>
-
-                            <div class="flex items-center justify-between pt-5">
-                                <p class="text-base leading-none text-gray-800 dark:text-white">Ongkis kirim</p>
-                                <p id="ongkir" class="text-base leading-none text-gray-800 dark:text-white">Rp20.000
-                                </p>
-                            </div>
+                                </div>
+                            @endforeach
 
                         </div>
 
@@ -272,7 +267,8 @@
 
                                 <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
                                 <p id="total"
-                                    class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">tes
+                                    class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">Rp.
+                                    {{ number_format($pesanan->jumlah_harga) }}
                                 </p>
                                 <script>
                                     function total() {
