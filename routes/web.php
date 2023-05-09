@@ -145,6 +145,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
     Route::resource('/produks', ProdukController::class);
+    // Route::post('/produks', [ProdukController::class, 'store']);
     Route::resource('/payments', PaymentController::class);
 });
 
