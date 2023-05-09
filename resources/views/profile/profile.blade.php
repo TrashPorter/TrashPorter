@@ -235,6 +235,14 @@
                                                     placeholder="{{ $user->username }}" />
                                             </div>
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                                <label for="phone"
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Phone Number</label>
+                                                <input tabindex="0" type="text" id="phone" name="phone"
+                                                    required
+                                                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    placeholder="{{ $user->phone }}" />
+                                            </div>
+                                            <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
                                                 <label for="Email"
                                                     class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Email</label>
                                                 <div class="border  shadow-sm rounded flex">
@@ -328,7 +336,7 @@
                                                 alt="cancel">
                                         </div>
                                         <div class="flex justify-end">
-                                            <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12">
+                                            <x-primary-button class="bg-sky-600 mt-24 hover:bg-sky-200 hover:text-sky-600 mt-12">
                                                 {{ __('Save All') }}
                                             </x-primary-button>
                                         </div>
