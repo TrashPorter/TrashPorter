@@ -142,7 +142,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
-    Route::resource('/produk', ProdukController::class);
+    Route::resource('/produks', ProdukController::class);
 });
 
 require __DIR__ . '/auth.php';
