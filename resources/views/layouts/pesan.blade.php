@@ -98,7 +98,7 @@
 
                                             <input type="text" id="harga_botol" name="harga_botol"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 5.000" value="5000" readonly required>
+                                                placeholder="Rp 5.000" value="3000" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_botol"
@@ -130,7 +130,7 @@
 
                                             <input type="text" id="harga_kaleng" name="harga_kaleng"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 8.000" value="8000" readonly required>
+                                                placeholder="Rp 8.000" value="1500" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_kaleng"
@@ -164,7 +164,7 @@
 
                                             <input type="text" id="harga_kardus" name="harga_kardus"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 6.000" value="6000" readonly required>
+                                                placeholder="Rp 6.000" value="500" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_kardus"
@@ -185,7 +185,7 @@
                                                 onclick="h_organik();">
                                         </div>
                                         <div class="text-sm leading-6">
-                                            <label for="organik" class="font-medium">Sampah Organik</label>
+                                            <label for="organik" class="font-medium">Baja</label>
                                         </div>
                                     </div>
 
@@ -197,7 +197,7 @@
 
                                             <input type="text" id="harga_so" name="harga_so"
                                                 class="bg-white border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder-gray-400"
-                                                placeholder="Rp 5.000" value="5000" readonly required>
+                                                placeholder="Rp 5.000" value="1500" readonly required>
                                         </div>
                                         <div>
                                             <label for="jumlah_so"
