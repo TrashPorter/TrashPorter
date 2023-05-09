@@ -153,28 +153,24 @@
                         <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                             <dl class="grid sm:grid-cols-5 gap-x-3">
                                 <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Subtotal:</dt>
-                                <dd class="col-span-2 text-gray-500">$2750.00</dd>
+                                <dd class="col-span-2 text-gray-500">Rp. 25.000</dd>
                             </dl>
 
                             <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Total:</dt>
-                                <dd class="col-span-2 text-gray-500">$2750.00</dd>
+                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Total Income:</dt>
+                                <dd class="col-span-2 text-gray-500">Rp. 25.000</dd>
                             </dl>
 
-                            {{-- <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Tax:</dt>
-                                <dd class="col-span-2 text-gray-500">$39.00</dd>
+                            <div class="flex justify-end">
+                                <hr class="w-2/3  ">
+                            </div>
+                            <dl class="grid sm:grid-cols-5 gap-x-3 ">
+                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200 ">Amount
+                                    paid:</dt>
+                                <dd class="col-span-2 text-gray-500">Rp. 10.000</dd>
                             </dl>
 
-                            <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Amount paid:</dt>
-                                <dd class="col-span-2 text-gray-500">$2789.00</dd>
-                            </dl> --}}
 
-                            {{-- <dl class="grid sm:grid-cols-5 gap-x-3">
-                                <dt class="col-span-3 font-semibold text-gray-800 dark:text-gray-200">Due balance:</dt>
-                                <dd class="col-span-2 text-gray-500">$0.00</dd>
-                            </dl> --}}
                         </div>
                         <!-- End Grid -->
                     </div>
