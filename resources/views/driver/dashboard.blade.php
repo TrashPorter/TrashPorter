@@ -54,44 +54,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $item )
-
-
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="assets/img/aboutus/adid.jpeg"
-                                    alt="Jese image">
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">{{ $item->nama }}</div>
-                                    <div class="font-normal text-gray-500">adid@gmail.com</div>
-                                </div>
-                            </th>
-                            <td class="px-6 py-4">
-                                Indrapuri
-                            </td>
-                            <td class="px-6 py-4">
-                                Ayam goreng (5 Kg)
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $item->datetime }}                           </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    {{-- <span class="status" data-id="{{ $item->id }}"> --}}
+                        @foreach ($data as $item)
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row"
+                                    class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full" src="assets/img/aboutus/adid.jpeg" alt="Jese image">
+                                    <div class="pl-3">
+                                        <div class="text-base font-semibold">{{ $item->nama }}</div>
+                                        <div class="font-normal text-gray-500">{{ $item->email }}</div>
+                                    </div>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $item->alamat }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $item->pesanan }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $item->tanggal }} </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        {{-- <span class="status" data-id="{{ $item->id }}">
                                     <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2" ></div>
-                                    {{-- <div class="status" data-id="{{ $item->id }}"></div> --}}
-                                    {{ $item->kota }}
-                                {{-- </span> --}}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="mx-2">
-                                    <a href=""
+                                    {{-- <div class="status" data-id="{{ $item->id }}"></div>
+                                     --}}
+                                        @if ($item->status == 'Pending')
+                                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
+                                            {{ $item->status }}
+                                        @elseif ($item->status == 'On-process')
+                                            <div class="h-2.5 w-2.5 rounded-full bg-yellow-300 mr-2"></div>
+                                            {{ $item->status }}
+                                        @else
+                                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+                                            {{ $item->status }}
+                                            {{-- </span> --}}
+                                        @endif
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="mx-2">
+                                        @if ($item->status == 'Pending')
+                                        <a href=""
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Take</a>
-                                </div>
-                            </td>
-                        </tr>
+                                        @elseif ($item->status == 'On-process')
+                                        <a href=""
+                                        class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Done</a>
+                                        @else
+                                        <a href=""
+                                        class=""></a>
+                                            {{-- </span> --}}
+                                        @endif
+                                        {{-- <a href=""
+                                            class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Take</a> --}}
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                         {{-- <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -145,21 +163,21 @@
                                 Selasa, 6 Mei 2023 22:23                            </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Done
+                                     Done
                                 </div>
                             </td> --}}
-                            <td class="px-6 py-4 text-right">
-                                {{-- <div class="mx-2">
+                        <td class="px-6 py-4 text-right">
+                            {{-- <div class="mx-2">
                                     <a href=""
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Take</a>
                                 </div> --}}
-                            </td>
+                        </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        
+
 
         <footer class="pt-4">
             <div class="w-full px-6 mx-auto">
