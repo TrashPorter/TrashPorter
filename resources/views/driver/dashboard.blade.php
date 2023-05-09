@@ -1,13 +1,13 @@
 {{-- <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in admin!") }}
                 </div>
@@ -23,9 +23,9 @@
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">
         <!-- row 1 -->
-        <div class="flex flex-wrap -mx-3 w-full">
+        <div class="flex flex-wrap w-full -mx-3">
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
+            <div class="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <caption
                         class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
@@ -54,6 +54,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $item )
+
+
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
@@ -61,7 +64,7 @@
                                 <img class="w-10 h-10 rounded-full" src="assets/img/aboutus/adid.jpeg"
                                     alt="Jese image">
                                 <div class="pl-3">
-                                    <div class="text-base font-semibold">Adid</div>
+                                    <div class="text-base font-semibold">{{ $item->nama }}</div>
                                     <div class="font-normal text-gray-500">adid@gmail.com</div>
                                 </div>
                             </th>
@@ -72,10 +75,14 @@
                                 Ayam goreng (5 Kg)
                             </td>
                             <td class="px-6 py-4">
-                                5 Mei 2023 20:23                            </td>
+                                {{ $item->datetime }}                           </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Pending
+                                    {{-- <span class="status" data-id="{{ $item->id }}"> --}}
+                                    <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2" ></div>
+                                    {{-- <div class="status" data-id="{{ $item->id }}"></div> --}}
+                                    {{ $item->kota }}
+                                {{-- </span> --}}
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-right">
@@ -85,7 +92,8 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr
+                        @endforeach
+                        {{-- <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
                                 class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -128,7 +136,7 @@
                                 </div>
                             </th>
                             <td class="px-6 py-4">
-                                Peunayong 
+                                Peunayong
                             </td>
                             <td class="px-6 py-4">
                                 Mie Aceh (2 Kg)
@@ -139,7 +147,7 @@
                                 <div class="flex items-center">
                                     <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Done
                                 </div>
-                            </td>
+                            </td> --}}
                             <td class="px-6 py-4 text-right">
                                 {{-- <div class="mx-2">
                                     <a href=""
@@ -151,12 +159,13 @@
                 </table>
             </div>
         </div>
+        
 
         <footer class="pt-4">
             <div class="w-full px-6 mx-auto">
                 <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
                     <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                        <div class="leading-normal text-center text-sm text-slate-500 lg:text-left">
+                        <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
                             ©
                             <script>
                                 document.write(new Date().getFullYear() + ",");
@@ -171,22 +180,22 @@
                         <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com"
-                                    class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500"
+                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
                                     target="_blank">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com/presentation"
-                                    class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500"
+                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
                                     target="_blank">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a href="https://creative-tim.com/blog"
-                                    class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500"
+                                    class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
                                     target="_blank">Blog</a>
                             </li>
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com/license"
-                                    class="block px-4 pt-0 pb-1 pr-0 font-normal transition-colors ease-soft-in-out text-sm text-slate-500"
+                                    class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500"
                                     target="_blank">License</a>
                             </li>
                         </ul>
