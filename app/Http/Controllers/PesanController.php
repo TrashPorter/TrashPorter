@@ -8,7 +8,7 @@ use App\Models\Village;
 use App\Models\District;
 
 use App\Models\Province;
-
+use App\Services\Midtrans\CreateSnapTokenService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -142,8 +142,19 @@ class PesanController extends Controller
         $kecamatan = Str::ucfirst($pesanan->kecamatan);
         $desa = Str::ucfirst($pesanan->desa);
 
+        $snapToken = $pesanan->snap_token;
+        if (empty($snapToken)) {
+            // Jika snap token masih NULL, buat token snap dan simpan ke database
+
+            $midtrans = new CreateSnapTokenService($pesanan);
+            $snapToken = $midtrans->getSnapToken();
+
+            $pesanan->snap_token = $snapToken;
+            $pesanan->save();
+        }
+
         $title = 'invoice';
-        return view('layouts.detail', compact('title', 'pesanan', 'provinsi', 'kota', 'kecamatan', 'desa'));
+        return view('layouts.detail', compact('title', 'pesanan', 'provinsi', 'kota', 'kecamatan', 'desa', 'snapToken'));
     }
 
     public function remove($id)
@@ -153,5 +164,12 @@ class PesanController extends Controller
         Alert::success('Deleted', 'Item berhasil dihapus');
         // Get semua data
         return redirect('/pesan');
+    }
+
+    public function show(Pesan $order)
+    {
+
+
+        return view('orders.show', compact('order', 'snapToken'));
     }
 }

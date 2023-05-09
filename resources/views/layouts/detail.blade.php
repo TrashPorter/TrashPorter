@@ -247,24 +247,48 @@
                         onclick="return confirm('yakin?')">Cancel
                         Order</button>
                 </form>
+                @if ($pesanan->status == 0)
+                    <button id="pay-button"
+                        class="focus:outline-none text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-900"
+                        href="#">
+                        Pay
+                    </button>
+                @endif
 
-                <button id="pay-button"
-                    class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-sm text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800 w-20"
-                    href="#">
-                    {{-- <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
-                        <path
-                            d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
-                    </svg> --}}
-                    Pay
-                </button>
             </div>
             <!-- End Buttons -->
         </div>
     </div>
     <!-- End Invoice -->
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
+    </script>
+    <script>
+        const payButton = document.querySelector('#pay-button');
+        payButton.addEventListener('click', function(e) {
+            e.preventDefault();
 
+            snap.pay('{{ $snapToken }}', {
+                // Optional
+                onSuccess: function(result) {
+                    /* You may add your own js here, this is just example */
+                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    console.log(result)
+                },
+                // Optional
+                onPending: function(result) {
+                    /* You may add your own js here, this is just example */
+                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    console.log(result)
+                },
+                // Optional
+                onError: function(result) {
+                    /* You may add your own js here, this is just example */
+                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    console.log(result)
+                }
+            });
+        });
+    </script>
     {{-- <form action="" id="submit_form" method="POST">
         @csrf
         <input type="hidden" name="json" id="json_callback">
@@ -278,19 +302,19 @@
             window.snap.pay('{{ $snap_token }}', {
                 onSuccess: function(result) {
                     /* You may add your own implementation here */
-                    
+
                     console.log(result);
                     send_response_to_form(result);
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */
-                   
+
                     console.log(result);
                     send_response_to_form(result);
                 },
                 onError: function(result) {
                     /* You may add your own implementation here */
-                    
+
                     console.log(result);
                     send_response_to_form(result);
                 },
