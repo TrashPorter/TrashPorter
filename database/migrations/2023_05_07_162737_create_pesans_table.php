@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('pos');
             $table->longText('message');
             $table->integer('ongkir');
+            $table->string('snap_token', 36)->nullable();
             $table->timestamps();
             $table->integer('harga_total');
         });
