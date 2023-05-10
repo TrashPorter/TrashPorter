@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\DB;
 class TPordersController extends Controller
 {
     public function index() {
-        $data = DB::table('t_porders')->get();
+        $data = DB::table('t_porders')->latest()->get();
+
         return view('driver.dashboard', compact('data'));
     }
 
     public function updateStatus()
     {
-        
+
 
     }
     public function take()
