@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TPorder;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,13 +13,20 @@ class TPordersController extends Controller
 
 
         $data = DB::table('t_porders')->latest()->get();
+        // $order = TPorder::all();
 
-        return view('driver.dashboard', compact('data'));
+        // dd($order)
+
+        return view('driver.dashboard', compact('data' ));
     }
 
-    public function s()
+    public function updateStatus($id, $status)
     {
+        $item = TPorder::find($id);
+        $item->status = $status;
+        $item->save();
 
+        return redirect()->back();
 
     }
     public function take()
