@@ -8,7 +8,7 @@ use App\Models\Village;
 use App\Models\District;
 
 use App\Models\Province;
-
+use App\Models\TPorder;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,7 +95,7 @@ class PesanController extends Controller
         $pesanan_baru = Pesan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         if (empty($pesanan_baru)) {
             Pesan::create([
-                'nama' => $request->nama,
+                'name' => $request->nama,
                 'user_id' => Auth::user()->id,
                 'status' => 0,
                 'nomor' => $request->nomor,
@@ -120,6 +120,27 @@ class PesanController extends Controller
                 'message' => $request->message,
                 'ongkir' => $request->ongkir,
                 'harga_total' => $total_harga,
+
+            ]);
+
+            $pesanan = ($botol) ? 'Botol' : ''; // $pesanan = str_rep
+            $pesanan .= ($kaleng) ? ' Kaleng' : '';
+            $pesanan .= ($kardus) ? ' Kardus' : '';
+            $pesanan .= ($organik) ? ' Organik' : '';
+
+            // $pesanan = str_replace(' ', ', ', $pesanan);
+            $alamat = $desa->name . ', ' . $kecamatan->name . ', ' . $kota->name . ', ' . $provinsi->name . ', ' . $request->pos;
+
+
+
+            TPorder::create([
+                'nama'=> $request->nama,
+                'email'=>Auth::user()->email,
+                'alamat'=> $alamat,
+                'pesanan'=> $pesanan,
+                'tanggal'=> $request->datetime,
+                'status'=>'0',
+
             ]);
         } else {
             Alert::warning('Warning', 'Pesanan Anda sebelumnya belum selesai');
@@ -154,4 +175,6 @@ class PesanController extends Controller
         // Get semua data
         return redirect('/pesan');
     }
+
+
 }
