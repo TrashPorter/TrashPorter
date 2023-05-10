@@ -211,7 +211,7 @@
                                 </div>
                             </div>
 
-                            {{-- 
+                            {{--
                     <div class="relative z-0 w-full mb-6 group ml-12 mt-12">
                         <input type="number" name="berat" id="berat"
                             class="block py-2.5 px-0 w-9/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -232,7 +232,7 @@
 
 
                                         var Botol = document.getElementById("jumlah_botol").value;
-                                        TotalBotol = Botol * 5000;
+                                        TotalBotol = Botol * 3000;
                                         document.getElementById("br_botol").innerHTML = Botol + " Kg"
 
                                     } else {
@@ -259,7 +259,7 @@
                                         document.getElementById("sampahkaleng").innerHTML = cart_kaleng;
 
                                         var kaleng = document.getElementById("jumlah_kaleng").value;
-                                        Totalkaleng = kaleng * 8000;
+                                        Totalkaleng = kaleng * 1500;
                                         document.getElementById("br_kaleng").innerHTML = kaleng + " Kg"
 
                                     } else {
@@ -286,7 +286,7 @@
                                         document.getElementById("kertasKardus").innerHTML = cart_kardus;
 
                                         var kardus = document.getElementById("jumlah_kardus").value;
-                                        Totalkardus = kardus * 6000;
+                                        Totalkardus = kardus * 500;
                                         document.getElementById("br_kardus").innerHTML = kardus + " Kg";
 
                                     } else {
@@ -312,7 +312,7 @@
                                         document.getElementById("sampahOrganik").innerHTML = cart_organik;
 
                                         var organik = document.getElementById("jumlah_so").value;
-                                        Totalorganik = organik * 5000;
+                                        Totalorganik = organik * 1500;
                                         document.getElementById("br_so").innerHTML = organik + " Kg";
 
 
