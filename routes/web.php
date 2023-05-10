@@ -130,7 +130,7 @@ Route::middleware(['auth', 'verified', 'role:driver'])->group(function () {
         return view('driver.salary.index');
     })->name('driver.salary.index');
 
-    Route::put('/orders/{id}', [TPordersController::class, 'updateStatus']);
+    Route::get('/driver/update/{id}/{status}', [TPordersController::class, 'updateStatus'] )->name('updateStatus');
 });
 
 Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
