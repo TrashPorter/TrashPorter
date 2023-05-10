@@ -46,27 +46,30 @@
                 class="p-5 text-lg font-semibold text-left text-gray-900 bg-white border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                 Transaksi Terakhir
             </header>
-
+            @foreach ($data as $item)
             <div class="bg-white border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">May 6th,
-                        2023</time></div>
+                <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">
+                    {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</time></div>
+
                 <ol class="bg-white divide-y divider-gray-200 dark:divide-gray-700">
                     <li>
                         <div class="flex justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
                             <div class="flex">
                                 <a href="#" class="items-center block px-8 py-4 pt-3 sm:flex ">
                                     <img class="w-12 h-12 mb-3 mr-3 rounded-full sm:mb-0"
-                                        src="assets/img/aboutus/fatiya.jpeg" alt="Quzza image" />
+                                        src="assets/img/profile.jpg" alt="Quzza image" />
                                     <div class="text-gray-600 dark:text-gray-400">
                                         <div class="text-base font-normal"><span
-                                                class="font-medium text-gray-900 dark:text-white">Quzza</span> memesan <span
+                                                class="font-medium text-gray-900 dark:text-white">{{ $item->nama }}</span> memesan <span
                                                 class="font-medium text-gray-900 dark:text-white">Antar Jemput Sampah</span>
                                         </div>
-                                        <div class="text-sm font-normal">Neusu, Jl. Merak</div>
+                                        <div class="text-sm font-normal">
+                                            {{ $item->alamat }}
+                                        </div>
                                     </div>
                                     <span
                                         class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
-                                        21:23
+                                        {{ \Carbon\Carbon::parse($item->tanggal)->format('H:i:s') }}
                                     </span>
                                 </a>
                             </div>
@@ -76,7 +79,8 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    @endforeach
+                    {{-- <li>
                         <div class="flex justify-between hover:bg-gray-100 dark:hover:bg-gray-700">
                             <div class="flex">
                                 <a href="#" class="items-center block px-8 py-4 pt-3 sm:flex ">
@@ -132,7 +136,7 @@
                                     50.000</p>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                 </ol>
             </div>
         </div>
