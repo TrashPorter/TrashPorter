@@ -97,4 +97,21 @@ class ProdukOrder extends Controller
 
         return back();
     }
+
+    public function confirm()
+    {
+        $pesanan = ModelsProdukOrder::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $pesanan_id = $pesanan->id;
+        $pesanan->status = 1;
+        $pesanan->update();
+
+        $pesanan_details = ProdukOrderDetail::where('produkorder_id', $pesanan_id)->get();
+        foreach ($pesanan_details as $pesanan_detail) {
+            $barang = Produk::where('id', $pesanan_detail->produk_id)->first();
+            $barang->stok = $barang->stok - $pesanan_detail->jumlah;
+            $barang->update();
+        }
+        Alert::success('Pesanan berhasil', 'Success');
+        return back();
+    }
 }

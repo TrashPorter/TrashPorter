@@ -172,4 +172,26 @@ class PesanController extends Controller
 
         return view('orders.show', compact('order', 'snapToken'));
     }
+
+    public function receive(Request $request, $id)
+    {
+        $json = json_decode($request->get('json'));
+        dd($json);
+        if ($json->transaction_status == 'settlement') {
+            $pesanan = Pesan::where('id', $id)->first();
+            dd($pesanan);
+            $pesanan->status = 1;
+            $pesanan->update();
+            Alert::success('Pesan Settled', 'Pesan Settled');
+            return to_route('pesan');
+        } else {
+            $pesanan = Pesan::where('id', $id)->first();
+            $pesanan->status = 2;
+            $pesanan->update();
+            Alert::success('Pesan Settled', 'Pesan Settled');
+            return to_route('pesan');
+        }
+        Alert::error('Error', 'salah');
+        return back();
+    }
 }
