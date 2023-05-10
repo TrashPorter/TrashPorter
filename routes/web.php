@@ -97,6 +97,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/produk-order/{produk}', [ProdukOrder::class, 'pesan'])->name('produk.pesan');
     Route::get('/checkout', [ProdukOrder::class, 'checkout'])->name('produk.checkout');
     Route::delete('/checkout/{id}', [ProdukOrder::class, 'delete'])->name('produk.checkout.delete');
+    // Route::delete('/checkout/{id}', [ProdukOrder::class, 'update'])->name('produk.checkout.update');
+    Route::get('/checkout/confirm', [ProdukOrder::class, 'confirm'])->name('produk.checkout.confirm');
 
     Route::get('/pesan', [PesanController::class, 'index'])->name('pesan');
     Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
@@ -105,7 +107,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
     Route::get('/detailPesan', [PesanController::class, 'invoice'])->name('layouts.detail.pesan');
     Route::delete('/detailPesan/{id}', [PesanController::class, 'remove'])->name('remove.order');
-    Route::post('detailPesan/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+    // Route::post('/detailPesan', [PaymentCallbackController::class, 'receive'])->name('receive.payment');
+    Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 
     Route::resource('detail/bayar', PesanController::class)->only(['show']);
     Route::post('/payment', [WebController::class, 'payment_post']);

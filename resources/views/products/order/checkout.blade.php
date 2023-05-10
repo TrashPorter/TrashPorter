@@ -52,17 +52,17 @@
                                     </p>
 
                                     <div class="flex items-center justify-between">
+
                                         <button
-                                            class="px-2 py-1 mr-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                                            onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); if(oldValue > 1){document.querySelector('#input1').value = oldValue - 1; updatePrice(oldValue - 1);}">-</button>
+                                            class="px-2 py-1 mr-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">-</button>
                                         <input type="text" id="input1" value="{{ $pesan_detail->jumlah }}"
                                             class="w-10 px-1 py-2 mx-auto mr-0 text-center border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                                             min="1" max="10"
                                             oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2)"
                                             onchange="updatePrice(parseInt(this.value))">
                                         <button
-                                            class="px-2 py-1 ml-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                                            onclick="event.preventDefault(); var oldValue = parseInt(document.querySelector('#input1').value); document.querySelector('#input1').value = oldValue + 1; updatePrice(oldValue + 1);">+</button>
+                                            class="px-2 py-1 ml-2 border border-gray-200 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">+</button>
+
                                     </div>
                                 </div>
 
@@ -193,62 +193,14 @@
 
                 </div>
 
-                <script>
-                    function updatePrice2(value) {
-                        const dompet = document.getElementById('dompet');
-                        const price2El = document.getElementById('price2');
-                        let price2 = parseInt(price2El.innerText.replace('Rp', '').replace('.', ''));
-                        price2 = value * 90000;
-                        price2El.innerText = 'Rp' + price2.toLocaleString();
-                        dompet.innerText = 'Rp' + price2.toLocaleString();
-
-                    }
-
-                    function updatePrice1(value) {
-                        const pricePL = document.getElementById('sepatu');
-                        const price1El = document.getElementById('price1');
-                        let price1 = parseInt(price1El.innerText.replace('Rp', '').replace('.', ''));
-                        price1 = value * 90000;
-                        price1El.innerText = 'Rp' + price1.toLocaleString();
-                        pricePL.innerText = 'Rp' + price1.toLocaleString();
-
-                    }
-
-                    function updatePrice(value) {
-                        const priceOL = document.getElementById('tas');
-                        const priceEl = document.getElementById('price');
-                        let price = parseInt(priceEl.innerText.replace('Rp', '').replace('.', ''));
-                        price = value * 90000;
-                        priceEl.innerText = 'Rp' + price.toLocaleString();
-                        priceOL.innerText = 'Rp' + price.toLocaleString();
-
-                    }
-
-                    // function updateSubtotal() {
-                    //     const priceEl = document.getElementById('price');
-                    //     const price1El = document.getElementById('price1');
-                    //     const price2El = document.getElementById('price2');
-                    //     const subtotalEl = document.getElementById('subtotal');
-
-                    //     priceEl.addEventListener('input1', updateSubtotal);
-                    //     price1El.addEventListener('input2', updateSubtotal);
-                    //     price2El.addEventListener('input3', updateSubtotal);
-                    //     subtotalEl.addEventListener('input', updateSubtotal);
-
-                    // }
-
-                    // const checkoutBtn = document.getElementById('total');
-                    // checkoutBtn.addEventListener('click', function() {
-                    //     updateSubtotal();
-                    // });
-                </script>
                 <div class="w-full h-full bg-gray-100 lg:w-96 md:w-8/12 dark:bg-gray-900">
                     <div
                         class="flex flex-col justify-between h-auto px-4 py-6 overflow-y-auto lg:h-screen lg:px-8 md:px-7 lg:py-20 md:py-10">
                         <div>
-                            <p class="text-3xl font-black leading-9 text-gray-800 lg:text-4xl dark:text-white">Summary</p>
+                            <p class="text-3xl font-black leading-9 text-gray-800 lg:text-4xl dark:text-white mb-12">Summary
+                            </p>
                             @foreach ($pesanan_detail as $pesan_detail)
-                                <div class="flex items-center justify-between pt-16">
+                                <div class="flex justify-between items-center pb-3">
                                     <p class="text-base leading-none text-gray-800 dark:text-white">
                                         {{ $pesan_detail->produk->nama }}</p>
                                     <p id="tas" class="text-base leading-none text-gray-800 dark:text-white">Rp
@@ -266,7 +218,7 @@
                             <div class="flex items-center justify-between pt-20 pb-6 lg:pt-5">
 
                                 <p class="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
-                                <p id="total"
+                                <p id=""
                                     class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">Rp.
                                     {{ number_format($pesanan->jumlah_harga) }}
                                 </p>

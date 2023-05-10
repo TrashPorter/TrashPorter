@@ -248,11 +248,16 @@
                         Order</button>
                 </form>
                 @if ($pesanan->status == 0)
+                    {{-- <form id="submit_form" action="{{ route('receive.payment', $pesanan->id) }}" method="POST">
+                        @csrf
+                        @method('PUT') --}}
                     <button id="pay-button"
                         class="focus:outline-none text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-900"
                         href="#">
                         Pay
                     </button>
+                    {{-- <input type="hidden" name="json" id="json_callback">
+                    </form> --}}
                 @endif
 
             </div>
@@ -262,6 +267,10 @@
     <!-- End Invoice -->
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
     </script>
+
+
+
+
     <script>
         const payButton = document.querySelector('#pay-button');
         payButton.addEventListener('click', function(e) {
@@ -272,22 +281,32 @@
                 onSuccess: function(result) {
                     /* You may add your own js here, this is just example */
                     // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
+                    // alert("hai");
+                    console.log(result);
+                    // send_response_to_form(result);
                 },
                 // Optional
                 onPending: function(result) {
                     /* You may add your own js here, this is just example */
                     // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
+                    // alert("hai");
+                    console.log(result);
+                    // send_response_to_form(result);
                 },
                 // Optional
                 onError: function(result) {
                     /* You may add your own js here, this is just example */
                     // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    console.log(result)
+                    console.log(result);
+                    // send_response_to_form(result);
                 }
             });
         });
+
+        // function send_response_to_form(result) {
+        //     document.getElementById('json_callback').value = JSON.stringify(result);
+        //     alert(document.getElementById('json_callback').value);
+        // }
     </script>
     {{-- <form action="" id="submit_form" method="POST">
         @csrf
