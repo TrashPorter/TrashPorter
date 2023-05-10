@@ -96,7 +96,7 @@ class PesanController extends Controller
         $pesanan_baru = Pesan::where('user_id', Auth::user()->id)->where('status', 0)->first();
         if (empty($pesanan_baru)) {
             Pesan::create([
-                'name' => $request->nama,
+                'nama' => $request->nama,
                 'user_id' => Auth::user()->id,
                 'status' => 0,
                 'nomor' => $request->nomor,
@@ -124,6 +124,7 @@ class PesanController extends Controller
 
             ]);
 
+
             $pesanan = ($botol) ? 'Botol' : ''; // $pesanan = str_rep
             $pesanan .= ($kaleng) ? ' Kaleng' : '';
             $pesanan .= ($kardus) ? ' Kardus' : '';
@@ -141,6 +142,7 @@ class PesanController extends Controller
                 'tanggal'=> $request->datetime,
                 'status'=>0,
                 'status_pembayaran'=>'Belum Bayar',
+
 
             ]);
         } else {
