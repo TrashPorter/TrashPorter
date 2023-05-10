@@ -59,7 +59,7 @@
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="assets/img/aboutus/adid.jpeg" alt="Jese image">
+                                    <img class="w-10 h-10 rounded-full" src="assets/img/profile.jpg" alt="Jese image">
                                     <div class="pl-3">
                                         <div class="text-base font-semibold">{{ $item->nama }}</div>
                                         <div class="font-normal text-gray-500">{{ $item->email }}</div>
@@ -69,7 +69,9 @@
                                     {{ $item->alamat }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $item->pesanan }}
+                                    @foreach (explode(' ',$item->pesanan)  as $pesanan)
+                                    {{ $pesanan }} <br>
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $item->tanggal }} </td>
@@ -79,26 +81,41 @@
                                     <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2" ></div>
                                     {{-- <div class="status" data-id="{{ $item->id }}"></div>
                                      --}}
-                                        @if ($item->status == 'Pending')
-                                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
-                                            {{ $item->status }}
-                                        @elseif ($item->status == 'On-process')
-                                            <div class="h-2.5 w-2.5 rounded-full bg-yellow-300 mr-2"></div>
-                                            {{ $item->status }}
+                                        @if ($item->status == '0')
+                                            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2">
+
+                                            </div>
+                                            <div class="flex items-center">
+                                                Pending
+                                           </div>
+
+                                        @elseif ($item->status == '1')
+                                            <div class="h-2.5 w-2.5 rounded-full bg-yellow-300 mr-2">
+
+                                            </div>
+                                            <div class="flex items-center">
+                                                On-proggress
+                                           </div>
+
                                         @else
-                                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
-                                            {{ $item->status }}
+                                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2">
+
+                                            </div>
+                                            <div class="flex items-center">
+                                                Done
+                                           </div>
+
                                             {{-- </span> --}}
                                         @endif
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class="mx-2">
-                                        @if ($item->status == 'Pending')
-                                        <a href=""
+                                        @if ($item->status == 0)
+                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 1]) }} "
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Take</a>
-                                        @elseif ($item->status == 'On-process')
-                                        <a href=""
+                                        @elseif ($item->status == 1)
+                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 2]) }}"
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Done</a>
                                         @else
                                         <a href=""
@@ -165,7 +182,7 @@
                                 <div class="flex items-center">
                                      Done
                                 </div>
-                            </td> --}}
+                            </td>
                         <td class="px-6 py-4 text-right">
                             {{-- <div class="mx-2">
                                     <a href=""
