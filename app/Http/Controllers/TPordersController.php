@@ -29,8 +29,13 @@ class TPordersController extends Controller
         return redirect()->back();
 
     }
-    public function take()
+    public function salary()
     {
+        $data = DB::table('t_porders')->latest()->get();
+        // $order = TPorder::all();
+        $data2 = DB::table('pesans')->latest()->get();
+        // dd($order)
 
+        return view('driver.salary.index', compact('data', 'data2' ));
     }
 }
