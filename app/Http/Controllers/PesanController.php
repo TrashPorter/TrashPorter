@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Pesan;
 use App\Models\Regency;
-use App\Models\Village;
-use App\Models\District;
-
-use App\Models\Province;
 use App\Models\TPorder;
+use App\Models\Village;
+
+use App\Models\District;
+use App\Models\Province;
 use App\Services\Midtrans\CreateSnapTokenService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -133,14 +133,14 @@ class PesanController extends Controller
             $alamat = $desa->name . ', ' . $kecamatan->name . ', ' . $kota->name . ', ' . $provinsi->name . ', ' . $request->pos;
 
 
-
             TPorder::create([
                 'nama'=> $request->nama,
                 'email'=>Auth::user()->email,
                 'alamat'=> $alamat,
                 'pesanan'=> $pesanan,
                 'tanggal'=> $request->datetime,
-                'status'=>'0',
+                'status'=>0,
+                'status_pembayaran'=>'Belum Bayar',
 
             ]);
         } else {
