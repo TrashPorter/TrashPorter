@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('pesanan');
             $table->datetime('tanggal');
             $table->string('status');
+            $table->String('status_pembayaran');
             $table->timestamps();
         });
     }
