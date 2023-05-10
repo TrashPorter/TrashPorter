@@ -8,7 +8,7 @@ use App\Models\Village;
 use App\Models\District;
 
 use App\Models\Province;
-
+use App\Services\Midtrans\CreateSnapTokenService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -142,8 +142,19 @@ class PesanController extends Controller
         $kecamatan = Str::ucfirst($pesanan->kecamatan);
         $desa = Str::ucfirst($pesanan->desa);
 
+        $snapToken = $pesanan->snap_token;
+        if (empty($snapToken)) {
+            // Jika snap token masih NULL, buat token snap dan simpan ke database
+
+            $midtrans = new CreateSnapTokenService($pesanan);
+            $snapToken = $midtrans->getSnapToken();
+
+            $pesanan->snap_token = $snapToken;
+            $pesanan->save();
+        }
+
         $title = 'invoice';
-        return view('layouts.detail', compact('title', 'pesanan', 'provinsi', 'kota', 'kecamatan', 'desa'));
+        return view('layouts.detail', compact('title', 'pesanan', 'provinsi', 'kota', 'kecamatan', 'desa', 'snapToken'));
     }
 
     public function remove($id)
@@ -153,5 +164,34 @@ class PesanController extends Controller
         Alert::success('Deleted', 'Item berhasil dihapus');
         // Get semua data
         return redirect('/pesan');
+    }
+
+    public function show(Pesan $order)
+    {
+
+
+        return view('orders.show', compact('order', 'snapToken'));
+    }
+
+    public function receive(Request $request, $id)
+    {
+        $json = json_decode($request->get('json'));
+        dd($json);
+        if ($json->transaction_status == 'settlement') {
+            $pesanan = Pesan::where('id', $id)->first();
+            dd($pesanan);
+            $pesanan->status = 1;
+            $pesanan->update();
+            Alert::success('Pesan Settled', 'Pesan Settled');
+            return to_route('pesan');
+        } else {
+            $pesanan = Pesan::where('id', $id)->first();
+            $pesanan->status = 2;
+            $pesanan->update();
+            Alert::success('Pesan Settled', 'Pesan Settled');
+            return to_route('pesan');
+        }
+        Alert::error('Error', 'salah');
+        return back();
     }
 }

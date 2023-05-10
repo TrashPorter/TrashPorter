@@ -11,7 +11,7 @@
                     <caption
                         class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                         Product
-                        <a href="{{ route('admin.permissions.create') }}"
+                        <a href="{{ route('admin.produks.create') }}"
                             class="mt-1 px-4 py-2 mb-2 bg-blue-100 text-blue-800 text-xs font-medium mr-2 rounded dark:bg-blue-900 dark:text-blue-300">Add
                             Product</a>
                     </caption>
@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        {{-- @foreach ($produks as $produk)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -56,6 +56,7 @@
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white ">
                                 <img src="{{ Vite::asset('public/assets/img/gandasil_pupuk.jpg') }}" alt="">
+                                <img src="{{ Vite::asset('public/assets/img/' . $produk->gambar) }}" alt="">
                             </td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
@@ -85,39 +86,43 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach --}}
 
-                        {{-- @foreach ($a as $data)
+
+                        @foreach ($produks as $produk)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $data->nama }}
+                                    {{ $produk->nama }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    {{ $data->kategori }}
+                                    {{ $produk->kategori }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    <img src="{{ Vite::asset('public/assets/img/' . $data->gambar) }}" alt="">
+                                    <div class="w-32">
+                                    <img src="{{ Vite::asset('public/assets/img/' . $produk->gambar) }}" alt="">
+                                </div>
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    Rp. {{ $data->harga }}
+                                    Rp. {{ $produk->harga }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    {{ $data->stok }}
+                                    {{ $produk->stok }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    {{ $data->deskripsi }}
+                                    {{ $produk->deskripsi }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class="mx-2">
-                                        <a href=""
+                                        <a href="{{ route('admin.produks.edit', $produk->id) }}"
                                             class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
                                         |
-                                        <form method="POST" class="inline-block" action=""
+                                        <form method="POST" class="inline-block" action="{{ route('admin.produks.destroy', $produk->id) }}"
                                             onsubmit="return confirm('Apakah Anda Yakin?')">
                                             @csrf
                                             @method('DELETE')
@@ -128,7 +133,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

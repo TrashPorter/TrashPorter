@@ -24,7 +24,9 @@
     <script src="{{ asset('backend/flowbite/dist/flowbite.js') }}"></script>
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-icUfK1Cw8CcYal-t"></script>
+        data-client-key="SB-Mid-server-KTlPzWlzhSTyuF1VdtU_RZf2"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gray-50">

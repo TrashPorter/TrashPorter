@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProdukOrder;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ProdukViewController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\ProdukOrder;
-use App\Http\Controllers\ProdukViewController;
-use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +97,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/produk-order/{produk}', [ProdukOrder::class, 'pesan'])->name('produk.pesan');
     Route::get('/checkout', [ProdukOrder::class, 'checkout'])->name('produk.checkout');
     Route::delete('/checkout/{id}', [ProdukOrder::class, 'delete'])->name('produk.checkout.delete');
+    // Route::delete('/checkout/{id}', [ProdukOrder::class, 'update'])->name('produk.checkout.update');
+    Route::get('/checkout/confirm', [ProdukOrder::class, 'confirm'])->name('produk.checkout.confirm');
 
     Route::get('/pesan', [PesanController::class, 'index'])->name('pesan');
     Route::post('/kota', [PesanController::class, 'getKota'])->name('kota');
@@ -104,8 +107,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/detail', [PesanController::class, 'store'])->name('layouts.detail');
     Route::get('/detailPesan', [PesanController::class, 'invoice'])->name('layouts.detail.pesan');
     Route::delete('/detailPesan/{id}', [PesanController::class, 'remove'])->name('remove.order');
+    // Route::post('/detailPesan', [PaymentCallbackController::class, 'receive'])->name('receive.payment');
+    Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 
-    Route::post('/pembayaran', [WebController::class, 'payment']);
+    Route::resource('detail/bayar', PesanController::class)->only(['show']);
     Route::post('/payment', [WebController::class, 'payment_post']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -143,6 +148,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->name('admin.')->prefix('a
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
     Route::resource('/produks', ProdukController::class);
+    // Route::post('/produks', [ProdukController::class, 'store']);
     Route::resource('/payments', PaymentController::class);
 });
 
