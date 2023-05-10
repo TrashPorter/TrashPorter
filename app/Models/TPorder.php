@@ -9,11 +9,15 @@ class TPorder extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'alamat',
         'pesanan',
         'tanggal',
         'status',
+        'status_pembayaran',
+
     ];
+
+    protected $table = 't_porders';
 }
