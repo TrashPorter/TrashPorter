@@ -29,7 +29,7 @@
                 <h5 class="px-2 text-xl font-bold leading-none text-gray-900 dark:text-white">Salary</h5>
                 <p class="px-2 mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Salary Ammount : </p>
                 <p class="text-4xl font-bold text-center text-gray-900 px-28 dark:text-white">
-                    Rp 100.000
+                    Rp {{ number_format(100000 + (count($data) * 5000), 0, ',', '.') }}
                 </p>
                 <div class="flex justify-end px-3 py-1">
                     <a href="#"
