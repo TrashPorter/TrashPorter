@@ -102,16 +102,16 @@
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
                                     <div class="w-32">
-                                    <img src="{{ Vite::asset('public/assets/img/' . $produk->gambar) }}" alt="">
-                                </div>
+                                        <img src="{{ Vite::asset('public/assets/img/' . $produk->gambar) }}" alt="">
+                                    </div>
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    Rp. {{ $produk->harga }}
+                                    Rp. {{ number_format($produk->harga) }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
-                                    {{ $produk->stok }}
+                                    {{ number_format($produk->stok) }}
                                 </td>
                                 <td scope="row"
                                     class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
@@ -119,10 +119,11 @@
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class="mx-2">
-                                        <a href="{{ route('admin.produks.edit', $produks->id) }}"
+                                        <a href="{{ route('admin.produks.edit', $produk->id) }}"
                                             class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Edit</a>
                                         |
-                                        <form method="POST" class="inline-block" action="{{ route('admin.produks.destroy', $produk->id) }}"
+                                        <form method="POST" class="inline-block"
+                                            action="{{ route('admin.produks.destroy', $produk->id) }}"
                                             onsubmit="return confirm('Apakah Anda Yakin?')">
                                             @csrf
                                             @method('DELETE')
