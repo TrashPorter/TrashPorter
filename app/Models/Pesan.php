@@ -14,4 +14,8 @@ class Pesan extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+    public function tporder()
+    {
+        return $this->hasOne('App\TPorder', 'pesan_id', 'id');
+    }
 }
