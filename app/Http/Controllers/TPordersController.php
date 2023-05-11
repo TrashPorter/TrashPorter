@@ -20,10 +20,12 @@ class TPordersController extends Controller
         return view('driver.dashboard', compact('data' ));
     }
 
-    public function updateStatus($id, $status)
+    public function updateStatus($id, $status, $driver_id)
     {
         $item = TPorder::find($id);
         $item->status = $status;
+        // $item-> Auth
+        $item->driver_id = $driver_id;
         $item->save();
 
         return redirect()->back();
