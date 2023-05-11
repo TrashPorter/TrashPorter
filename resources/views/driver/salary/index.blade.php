@@ -29,7 +29,7 @@
                 <h5 class="px-2 text-xl font-bold leading-none text-gray-900 dark:text-white">Salary</h5>
                 <p class="px-2 mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">Salary Ammount : </p>
                 <p class="text-4xl font-bold text-center text-gray-900 px-28 dark:text-white">
-                    Rp {{ number_format(100000 + (count($data) * 2000), 0, ',', '.') }}
+                    Rp {{ number_format(100000 + ($jumlah * 2000), 0, ',', '.') }}
                 </p>
                 <div class="flex justify-end px-3 py-1">
                     <a href="#"
@@ -46,7 +46,8 @@
                 class="p-5 text-lg font-semibold text-left text-gray-900 bg-white border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                 Transaksi Terakhir
             </header>
-            @foreach ($data as $item)
+            @foreach ($data3 as $item)
+
             <div class="bg-white border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-5 bg-gray-50"><time class="text-lg font-semibold text-gray-900 dark:text-white">
                     {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</time></div>
@@ -77,7 +78,7 @@
                                 <p class="px-2 my-auto text-lg font-semibold text-gray-900 mx-7 md:mx-24 dark:text-white">
                                     @foreach ($data2 as $item2)
                                     @if ($item2->nama == $item->nama)
-                                    <p class="px-2 my-auto text-lg font-semibold text-gray-900 mx-7 md:mx-24 dark:text-white">Rp{{ trim($item2->harga_total) }}</p>
+                                    <p class="px-2 my-auto text-lg font-semibold text-gray-900 mx-7 md:mx-24 dark:text-white">Rp{{ number_format($item2->harga_total) }}</p>
                                     @endif
                                 @endforeach
 
