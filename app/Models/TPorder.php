@@ -16,6 +16,7 @@ class TPorder extends Model
         'tanggal',
         'status',
         'status_pembayaran',
+        'driver_id',
 
     ];
 
