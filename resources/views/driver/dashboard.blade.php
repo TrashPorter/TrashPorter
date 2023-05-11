@@ -112,10 +112,11 @@
                                 <td class="px-6 py-4 text-right">
                                     <div class="mx-2">
                                         @if ($item->status == 0)
-                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 1]) }} "
+                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 1, 'driver_id' => Auth::user()->id ]) }} "
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Take</a>
-                                        @elseif ($item->status == 1)
-                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 2]) }}"
+                                        @elseif ($item->status == 1 && $item->driver_id == Auth::user()->id)
+
+                                        <a href=" {{ route('updateStatus', ['id' => $item->id, 'status' => 2, 'driver_id' => Auth::user()->id  ]) }}"
                                         class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Done</a>
                                         @else
                                         <a href=""
