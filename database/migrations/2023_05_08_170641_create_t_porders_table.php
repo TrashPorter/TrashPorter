@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('status');
             $table->String('status_pembayaran');
             $table->integer('driver_id')->default(0);
+            $table->bigInteger('pesan_id')->unsigned()->nullable();
+            $table->foreign('pesan_id')->references('id')->on('pesans')->onDelete('cascade');
             $table->timestamps();
         });
     }
