@@ -133,6 +133,7 @@ class PesanController extends Controller
             // $pesanan = str_replace(' ', ', ', $pesanan);
             $alamat = $desa->name . ', ' . $kecamatan->name . ', ' . $kota->name . ', ' . $provinsi->name . ', ' . $request->pos;
 
+            $pesan_id = \App\Models\Pesan::latest()->first()->id;
 
             TPorder::create([
                 'nama'=> $request->nama,
@@ -141,6 +142,7 @@ class PesanController extends Controller
                 'pesanan'=> $pesanan,
                 'tanggal'=> $request->datetime,
                 'status'=>0,
+                'pesan_id'=>$pesan_id,
                 'status_pembayaran'=>'Belum Bayar',
 
 
