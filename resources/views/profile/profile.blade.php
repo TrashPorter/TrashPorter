@@ -38,49 +38,50 @@
                 <div class="flex flex-wrap w-1/3 ">
                     <div
                         class="flex w-full mb-4 bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                        {{-- <form action="{{ route('bio.update', $bio->id) }}" method="post">
+                        <form action="{{ route('bio.update', $bio->id) }}" method="post">
                             @csrf
-                            @method('patch') --}}
-
+                            @method('PATCH')
                         <div class="flex-auto p-4">
                             <div class="flex -mx-3 pt-2">
                                 <div class="max-w-full px-5">
+                                    @if ($bio->profil==null)
                                     <img class="w-36 rounded-lg" src="{{ url('assets/img/profile.jpg') }}"
-                                        alt="Profil Picture">
+                                    alt="Profil Picture">
+                                    @else
+                                    <img class="w-36 rounded-lg" src="{{ url('assets/img') }}/{{ $bio->profil }}"
+                                    alt="Profil Picture">
+                                    @endif
+                                    
                                 </div>
                                 <div class="px-3 my-auto">
                                     <h5
                                         class=" mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
                                         {{ $user->name }}</h5>
                                     <p class="mb-6 font-bold dark:text-white capitalize">{{ $user->role }}</p>
-                                    <x-primary-button
-                                        class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
-                                        {{ __('Change Picture') }}
-                                    </x-primary-button>
+                                    {{-- <label
+                                            class="text-medium text-gray-500 dark:text-gray-400 duration-300 transform scale-90  -z-10 origin-[0] mb-2"
+                                            for="gambar">Picture</label>
+                                        <input type="file" name="gambar" id="gambar"
+                                            class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                            placeholder=" " required /> --}}
                                 </div>
                             </div>
-                            <div class="mt-8 flex flex-col ml-4 xl:w-4/5 lg:w-1/2 md:w-1/2 w-full">
+                            <div class="mt-8 flex flex-col ml-4 xl:w-full lg:w-1/2 md:w-1/2 w-full">
                                 <label for="biodata"
                                     class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Bio</label>
                                 <textarea id="biodata" name="biodata"
-                                     class="{{--form-control @error('biodata') is-invalid @enderror --}} bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400" 
-                                    placeholder="Let the world know who you are" rows="6" autocomplete="biodata">{{-- {{ $bio->biodata }} --}}</textarea>
+                                    class="w-full bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                    placeholder="Let the world know who you are" rows="6" cols="30" autocomplete="biodata">{{ $bio->bio }}</textarea>
                                 <p class="w-full text-right text-xs pt-1 text-gray-600 dark:text-gray-400">Character Limit:
                                     200</p>
-
-                                {{-- @error('biodata')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
                             </div>
-                            <div class="flex justify-end mr-12 mb-5">
+                            <div class="flex justify-end mb-3">
                                 <x-primary-button
                                     class="flex justify-end  bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12">
                                     {{ __('Save') }}
                                 </x-primary-button>
                             </div>
-                        {{-- </form> --}}
+                            </form>
                         </div>
 
                     </div>
@@ -295,7 +296,7 @@
                                                             alt="mail">
                                                     </div>
                                                     <input tabindex="0" type="text" id="email" name="email"
-                                                        required
+                                                         readonly
                                                         class="form-control @error('email') is-invalid @enderror pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 border-gray-300 dark:border-gray-700 rounded bg-transparent text-gray-600 dark:text-gray-400 "
                                                         value="{{ $user->email }}" autocomplete="email" />
 
@@ -309,13 +310,9 @@
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
                                                 <label for="address"
                                                     class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Alamat</label>
-                                                <textarea id="address" name="address" required {{-- class="form-control @error('address') is-invalid @enderror --}}
+                                                <textarea id="address" name="address" {{-- class="form-control @error('address') is-invalid @enderror --}}
                                                     class="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                                    placeholder="Jl. Nasional No.5" rows="3" autofocus>
-                                                    
-                                                    @if (!empty($alamat->address))
-                                                    {{ $alamat->address }}
-                                                    @endif
+                                                    placeholder="Jl. Nasional No.5" rows="3" autofocus>@if (!empty($alamat->address)){{ $alamat->address }}@endif
                                                 </textarea>
 
                                                 {{-- @error('address')
@@ -379,9 +376,14 @@
                                             <select id="kota" name="kota"
                                                 class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
                                                 @if ($alamat->regency == null)
-                                                    @foreach ($kotas as $kota)
-                                                        <option value="{{ $kota->id }}">{{ $kota->name }}</option>
-                                                    @endforeach
+                                                    @if ($kotas == null)
+                                                        <option value="">Kabupaten/Kota</option>
+                                                    @else
+                                                        @foreach ($kotas as $kota)
+                                                            <option value="{{ $kota->id }}">{{ $kota->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
                                                 @else
                                                     <option value="{{ $alamat->regency_id }}">{{ $alamat->regency }}
                                                     </option>
@@ -397,10 +399,14 @@
                                             <select id="kecamatan" name="kecamatan"
                                                 class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
                                                 @if ($alamat->district == null)
-                                                    @foreach ($kecamatans as $kecamatan)
-                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
-                                                        </option>
-                                                    @endforeach
+                                                    @if ($kecamatans == null)
+                                                        <option value="">Kecamatan</option>
+                                                    @else
+                                                        @foreach ($kecamatans as $kecamatan)
+                                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
                                                 @else
                                                     <option value="{{ $alamat->district_id }}">{{ $alamat->district }}
                                                     </option>
@@ -417,11 +423,16 @@
                                             <select id="desa" name="desa"
                                                 class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
                                                 @if ($alamat->village == null)
-                                                    @foreach ($desas as $desa)
-                                                        <option value="{{ $desa->id }}">{{ $desa->name }}</option>
-                                                    @endforeach
+                                                    @if ($desas == null)
+                                                        <option value="">Desa</option>
+                                                    @else
+                                                        @foreach ($desas as $desa)
+                                                            <option value="{{ $desa->id }}">{{ $desa->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
                                                 @else
-                                                    <option value="{{ $alamat->district_id }}">{{ $alamat->district }}
+                                                    <option value="{{ $alamat->village_id }}">{{ $alamat->village }}
                                                     </option>
                                                     @foreach ($desas as $desa)
                                                         <option value="{{ $desa->id }}">{{ $desa->name }}</option>
@@ -570,8 +581,8 @@
                     success: function(msg) {
                         $('#kota').html(msg);
                         $('#kecamatan').html(
-                            '<option selected disabled>Pilih Kecamatan</option>');
-                        $('#desa').html('<option selected disabled>Pilih Desa</option>');
+                            '<option selected disabled>Kecamatan</option>');
+                        $('#desa').html('<option selected disabled>Desa</option>');
                     },
 
                     error: function(data) {
@@ -594,7 +605,7 @@
 
                     success: function(msg) {
                         $('#kecamatan').html(msg);
-                        $('#desa').html('<option selected disabled>Pilih Desa</option>');
+                        $('#desa').html('<option selected disabled>Desa</option>');
                     },
 
                     error: function(data) {

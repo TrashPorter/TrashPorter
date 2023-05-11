@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Alamat;
+use App\Models\Bio;
 use App\Models\User;
 use App\Models\Province;
 use App\Models\Regency;
@@ -31,16 +32,34 @@ class ProfileController extends Controller
                 'user_id'=> Auth::user()->id,
             ]);
         }
+        $bio = Bio::where('user_id', Auth::user()->id)->first();
+        if(empty($bio)){
+            Bio::create([
+                'user_id'=> Auth::user()->id,
+            ]);
+        }
+
         $provinces = Province::all();
-        $kotas = Regency::where('province_id', $alamat->province_id)->get();
-        // dd($kotas);
-        $kecamatans = District::where('regency_id', $alamat->regency_id)->get();
-        $desas = Village::where('district_id', $alamat->district_id)->get();
+        $kotas=null;
+        if($alamat->province_id != null){
+            $kotas = Regency::where('province_id', $alamat->province_id)->get();
+        }
+
+        $kecamatans=null;
+        if ($alamat->regency_id) {
+            $kecamatans = District::where('regency_id', $alamat->regency_id)->get();
+        }
+        $desas=null;
+        if ($alamat->district_id) {
+            $desas = Village::where('district_id', $alamat->district_id)->get();
+        }
+        
         
         return view('profile.profile', [
             'user' => $request->user(),
             'title' => 'Profile',
             'alamat' => $alamat,
+            'bio' => $bio,
             'provinces' => $provinces,
             'kotas' => $kotas,
             'kecamatans' => $kecamatans,
@@ -144,6 +163,11 @@ class ProfileController extends Controller
 
         // $request->user()->save();
         return Redirect::route('profile.edit');
+    }
+
+    public function updateBio(Request $request,$id){
+        $bio = Bio::where('id', $id)->where('user_id', Auth::user()->id)->first();
+
     }
 
     /**

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('bios', function (Blueprint $table) {
             $table->id();
-            $table->string('profil');
-            $table->text('bio');
+            $table->integer('user_id');
+            $table->string('profil')->nullable();
+            $table->text('bio')->nullable();
+            $table->timestamps();
         });
     }
 
