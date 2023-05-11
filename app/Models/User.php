@@ -57,4 +57,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Pesan', 'user_id', 'id');
     }
+
+    public function alamat()
+    {
+        return $this->hasOne('App\Alamat', 'user_id', 'id');
+    }
+
+    public function bio()
+    {
+        return $this->hasOne('App\Bio', 'user_id', 'id');
+    }
 }

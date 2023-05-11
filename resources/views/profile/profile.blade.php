@@ -6,9 +6,9 @@
         <div class="px-8 py-8 mx-auto">
             <div class="pt-8">
                 <nav class="flex flex-wrap items-center justify-between px-6 py-8" aria-label="Breadcrumb">
-                    <ol class="flex mr-12 sm:mr-16 ">
-                        <li class="leading-normal mr-2">
-                            <a href="#" class="flex items-center">
+                    <ol class="flex mr-12 sm:mr-16 breadcrumb">
+                        <li class="breadcrumb-item leading-normal mr-2">
+                            <a href="/" class="flex items-center">
                                 <svg class="w-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -18,7 +18,7 @@
                                 <span class="text-md font-light ml-3">Home</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="breadcrumb-item" aria-current="page">
                             <div class="flex items-center text-md">
                                 <svg class="w-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -31,55 +31,67 @@
                         </li>
                     </ol>
                 </nav>
-                <h1 class="my-4 mx-6 font-bold text-3xl capitalize">User settings</h1>
+                <h1 class="my-4 mx-6 font-bold text-3xl capitalize">Pengaturan Akun</h1>
             </div>
             <div class="px-8 py-8 flex">
                 <!-- Right Content -->
                 <div class="flex flex-wrap w-1/3 ">
                     <div
                         class="flex w-full mb-4 bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <form action="{{ route('bio.update', $bio->id) }}" method="post">
+                            @csrf
+                            @method('PATCH')
                         <div class="flex-auto p-4">
-                            <div class="flex -mx-3">
-                                <div class="max-w-full px-3">
+                            <div class="flex -mx-3 pt-2">
+                                <div class="max-w-full px-5">
+                                    @if ($bio->profil==null)
                                     <img class="w-36 rounded-lg" src="{{ url('assets/img/profile.jpg') }}"
-                                        alt="Profil Picture">
+                                    alt="Profil Picture">
+                                    @else
+                                    <img class="w-36 rounded-lg" src="{{ url('assets/img') }}/{{ $bio->profil }}"
+                                    alt="Profil Picture">
+                                    @endif
+                                    
                                 </div>
                                 <div class="px-3 my-auto">
                                     <h5
                                         class=" mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
                                         {{ $user->name }}</h5>
                                     <p class="mb-6 font-bold dark:text-white capitalize">{{ $user->role }}</p>
-                                    <x-primary-button
-                                        class="flex justify-center w-full bg-sky-600 hover:bg-sky-200 hover:text-sky-600">
-                                        {{ __('Change Picture') }}
-                                    </x-primary-button>
+                                    {{-- <label
+                                            class="text-medium text-gray-500 dark:text-gray-400 duration-300 transform scale-90  -z-10 origin-[0] mb-2"
+                                            for="gambar">Picture</label>
+                                        <input type="file" name="gambar" id="gambar"
+                                            class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                            placeholder=" " required /> --}}
                                 </div>
                             </div>
-                            <div class="mt-8 flex flex-col ml-4 xl:w-4/5 lg:w-1/2 md:w-1/2 w-full">
-                                <label for="about"
+                            <div class="mt-8 flex flex-col ml-4 xl:w-full lg:w-1/2 md:w-1/2 w-full">
+                                <label for="biodata"
                                     class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Bio</label>
-                                <textarea id="about" name="about" required
-                                    class="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                    placeholder="Let the world know who you are" rows="5"></textarea>
+                                <textarea id="biodata" name="biodata"
+                                    class="w-full bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                    placeholder="Let the world know who you are" rows="6" cols="30" autocomplete="biodata">{{ $bio->bio }}</textarea>
                                 <p class="w-full text-right text-xs pt-1 text-gray-600 dark:text-gray-400">Character Limit:
                                     200</p>
                             </div>
-                            <div class="flex justify-end mr-12 mb-5">
+                            <div class="flex justify-end mb-3">
                                 <x-primary-button
                                     class="flex justify-end  bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12">
                                     {{ __('Save') }}
                                 </x-primary-button>
                             </div>
+                            </form>
                         </div>
 
                     </div>
                     <div class="w-full mb-4">
                         <div
                             class="border-black/12.5 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                            <div class="p-4 pb-0 rounded-t-4">
-                                <h3 class="mb-0 dark:text-white">Social accounts</h3>
+                            <div class="p-4 pb-5 rounded-t-4">
+                                <h3 class="mb-0 dark:text-white uppercase font-medium">Media Sosial</h3>
                             </div>
-                            <div class="flex-auto p-4">
+                            <div class="flex-auto p-4 pl-6">
                                 <ul class="flex flex-col pl-0 mb-0 rounded-lg">
                                     <li
                                         class="relative flex justify-between py-2 pr-4 mb-2 border-0 rounded-t-lg rounded-xl text-inherit">
@@ -97,7 +109,8 @@
                                                 <h6
                                                     class="mb-1 text-sm leading-normal text-slate-700 font-semibold dark:text-white">
                                                     Facebook</h6>
-                                                <span class="text-xs leading-tight dark:text-white/80">Not connected</span>
+                                                <span class="text-xs leading-tight dark:text-white/80">Tidak
+                                                    Terhubung</span>
                                             </div>
                                         </div>
                                         <div class="flex">
@@ -124,7 +137,8 @@
                                                 <h6
                                                     class="mb-1 text-sm leading-normal text-slate-700 font-semibold dark:text-white">
                                                     Twitter</h6>
-                                                <span class="text-xs leading-tight dark:text-white/80">Not connected</span>
+                                                <span class="text-xs leading-tight dark:text-white/80">Tidak
+                                                    Terhubung</span>
                                             </div>
                                         </div>
                                         <div class="flex">
@@ -151,7 +165,8 @@
                                                 <h6
                                                     class="mb-1 text-sm leading-normal text-slate-700 font-semibold dark:text-white">
                                                     GitHub</h6>
-                                                <span class="text-xs leading-tight dark:text-white/80">Not connected</span>
+                                                <span class="text-xs leading-tight dark:text-white/80">Tidak
+                                                    Terhubung</span>
                                             </div>
                                         </div>
                                         <div class="flex">
@@ -182,7 +197,8 @@
                                                 <h6
                                                     class="mb-1 text-sm leading-normal text-slate-700 font-semibold dark:text-white">
                                                     Instagram</h6>
-                                                <span class="text-xs leading-tight dark:text-white/80">Not connected</span>
+                                                <span class="text-xs leading-tight dark:text-white/80">Tidak
+                                                    Terhubung</span>
                                             </div>
                                         </div>
                                         <div class="flex">
@@ -206,38 +222,70 @@
                 </div>
                 <!-- Left Content -->
                 <div class="w-full">
-                    <div class="px-4 mt-0 mb-6">
+                    <div class="px-4 mt-0 mb-4">
                         <div
                             class="relative flex flex-col min-w-0 break-words bg-white border-1 border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl dark:bg-gray-950 border-black-125 rounded-2xl bg-clip-border pb-4">
                             <div class="p-4 pb-0 mb-0 rounded-t-4">
                                 <div class="flex justify-between">
-                                    <h6 class="mb-2 dark:text-white">General Information</h6>
+                                    <h6 class="mb-2 dark:text-white uppercase font-medium">Informasi Akun</h6>
                                 </div>
                             </div>
-                            <div class="bg-white grid grid-cols-2">
-                                <div class="mx-auto pt-4 ml-6 bg-white w-full">
-                                    <div class="container mx-auto">
-                                        <form class="my-6 w-11/12 mx-auto xl:w-full xl:mx-0">
+                            <form class="pt-4 px-4" action="{{ route('profile.update', $alamat->id) }}" method="post">
+                                @csrf
+                                @method('patch')
+
+                                <div class="bg-white grid grid-cols-2">
+                                    <div class="mx-auto pt-4 ml-6 bg-white w-full">
+                                        <div class="container mx-auto">
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
                                                 <label for="name"
-                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Name</label>
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Nama
+                                                    Lengkap</label>
                                                 <input tabindex="0" type="text" id="name" name="name"
                                                     required
-                                                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                                    placeholder="{{ $user->name }}" />
+                                                    class="form-control @error('name') is-invalid @enderror border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    value="{{ $user->name }}" autocomplete="name" />
+
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
                                                 <label for="username"
-                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Username</label>
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Nama
+                                                    Panggilan</label>
                                                 <input tabindex="0" type="text" id="username" name="username"
                                                     required
-                                                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                                    placeholder="{{ $user->username }}" />
+                                                    class="form-control @error('username') is-invalid @enderror border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    value="{{ $user->username }}" autocomplete="username" />
+
+                                                @error('username')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                                <label for="Email"
+                                                <label for="phone"
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Nomor
+                                                    HP</label>
+                                                <input tabindex="0" type="text" id="phone" name="phone"
+                                                    required
+                                                    class="form-control @error('phone') is-invalid @enderror border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    value="{{ $user->phone }}" autocomplete="phone" />
+
+                                                @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                                <label for="email"
                                                     class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Email</label>
-                                                <div class="border  shadow-sm rounded flex">
+                                                <div class="border shadow-sm rounded flex">
                                                     <div tabindex="0"
                                                         class="focus:outline-none px-4 py-3 dark:text-gray-100 flex items-center border-r ">
                                                         <img class="dark:hidden"
@@ -247,107 +295,200 @@
                                                             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg2dark.svg"
                                                             alt="mail">
                                                     </div>
-                                                    <input tabindex="0" type="text" id="Email" name="email"
-                                                        required
-                                                        class="pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-600 dark:text-gray-400"
-                                                        placeholder="{{ $user->email }}" />
+                                                    <input tabindex="0" type="text" id="email" name="email"
+                                                         readonly
+                                                        class="form-control @error('email') is-invalid @enderror pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 border-gray-300 dark:border-gray-700 rounded bg-transparent text-gray-600 dark:text-gray-400 "
+                                                        value="{{ $user->email }}" autocomplete="email" />
+
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                                <label for="StreetAddress"
-                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Street
-                                                    Address</label>
-                                                <input tabindex="0" type="text" id="StreetAddress"
-                                                    name="streetAddress" required
-                                                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded bg-transparent text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                                    placeholder="" />
-                                            </div>
+                                                <label for="address"
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Alamat</label>
+                                                <textarea id="address" name="address" {{-- class="form-control @error('address') is-invalid @enderror --}}
+                                                    class="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    placeholder="Jl. Nasional No.5" rows="3" autofocus>@if (!empty($alamat->address)){{ $alamat->address }}@endif
+                                                </textarea>
 
+                                                {{-- @error('address')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mx-auto mt-[20px] pt-4 ml-6 bg-white w-full">
+
+                                        {{-- <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <label for="City"
+                                                class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">City</label>
+                                            <div class="border border-gray-300 dark:border-gray-700 shadow-sm rounded flex">
+                                                <input tabindex="0" type="text" id="City" name="city" required
+                                                    class="pl-3 py-3 w-full text-sm focus:outline-none border border-transparent focus:border-indigo-700 bg-transparent rounded placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                    placeholder="Los Angeles" />
+                                                <div
+                                                    class="px-4 flex items-center border-l border-gray-300 dark:border-gray-700 flex-col justify-center text-gray-600 dark:text-gray-400">
+                                                    <img class="dark:hidden"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5.svg"
+                                                        alt="up">
+                                                    <img class="dark:hidden transform rotate-180"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5.svg"
+                                                        alt="down">
+                                                    <img class="dark:block hidden"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5dark.svg"
+                                                        alt="up">
+                                                    <img class="dark:block hidden transform rotate-180"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5dark.svg"
+                                                        alt="down">
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <label for="provinsi"
+                                                class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Provinsi</label>
+                                            <select id="provinsi" name="provinsi"
+                                                class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
+                                                @if ($alamat->province == null)
+                                                    @foreach ($provinces as $provinsi)
+                                                        <option value="{{ $provinsi->id }}">{{ $provinsi->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="{{ $alamat->province_id }}">{{ $alamat->province }}
+                                                    </option>
+                                                    @foreach ($provinces as $provinsi)
+                                                        <option value="{{ $provinsi->id }}">{{ $provinsi->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+
+                                            </select>
+                                        </div>
+                                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <label for="kota"
+                                                class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Kabupaten/Kota</label>
+                                            <select id="kota" name="kota"
+                                                class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
+                                                @if ($alamat->regency == null)
+                                                    @if ($kotas == null)
+                                                        <option value="">Kabupaten/Kota</option>
+                                                    @else
+                                                        @foreach ($kotas as $kota)
+                                                            <option value="{{ $kota->id }}">{{ $kota->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
+                                                @else
+                                                    <option value="{{ $alamat->regency_id }}">{{ $alamat->regency }}
+                                                    </option>
+                                                    @foreach ($kotas as $kota)
+                                                        <option value="{{ $kota->id }}">{{ $kota->name }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <label for="kecamatan"
+                                                class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Kecamatan</label>
+                                            <select id="kecamatan" name="kecamatan"
+                                                class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
+                                                @if ($alamat->district == null)
+                                                    @if ($kecamatans == null)
+                                                        <option value="">Kecamatan</option>
+                                                    @else
+                                                        @foreach ($kecamatans as $kecamatan)
+                                                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
+                                                @else
+                                                    <option value="{{ $alamat->district_id }}">{{ $alamat->district }}
+                                                    </option>
+                                                    @foreach ($kecamatans as $kecamatan)
+                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <label for="desa"
+                                                class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Desa</label>
+                                            <select id="desa" name="desa"
+                                                class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400">
+                                                @if ($alamat->village == null)
+                                                    @if ($desas == null)
+                                                        <option value="">Desa</option>
+                                                    @else
+                                                        @foreach ($desas as $desa)
+                                                            <option value="{{ $desa->id }}">{{ $desa->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
+                                                @else
+                                                    <option value="{{ $alamat->village_id }}">{{ $alamat->village }}
+                                                    </option>
+                                                    @foreach ($desas as $desa)
+                                                        <option value="{{ $desa->id }}">{{ $desa->name }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                            <div class="flex items-center pb-2">
+                                                <label for="postalcode"
+                                                    class="text-sm font-bold text-gray-800 dark:text-gray-100">Kode
+                                                    Pos</label>
+                                                {{-- <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
+                                                    <img class="dark:hidden"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4.svg"
+                                                        alt="info">
+                                                    <img class="dark:block hidden"
+                                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4dark.svg"
+                                                        alt="info">
+                                                </div> --}}
+                                            </div>
+                                            <input tabindex="0" type="tel" name="postalcode" required
+                                                id="postalcode" pattern="[0-9]{5}"
+                                                class="bg-transparent border border-gray-300 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                @if ($alamat->postalcode == null) placeholder="23127"
+                                                @else
+                                                    value="{{ $alamat->postalcode }}" @endif />
+                                            {{-- class="border-red-400" 
+                                                <div class="flex justify-between items-center pt-1 text-red-700">
+                                                <p class="text-xs">Incorrect Zip Code</p>
+                                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg6.svg"
+                                                    alt="cancel">
+                                            </div> --}}
+                                            <div class="flex justify-end">
+                                                <x-primary-button
+                                                    class="bg-sky-600 mt-12 hover:bg-sky-200 hover:text-sky-600 mt-12">
+                                                    {{ __('Save All') }}
+                                                </x-primary-button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mx-auto mt-[20px] pt-4 ml-6 bg-white w-full">
-
-                                    <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                        <label for="City"
-                                            class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">City</label>
-                                        <div class="border border-gray-300 dark:border-gray-700 shadow-sm rounded flex">
-                                            <input tabindex="0" type="text" id="City" name="city" required
-                                                class="pl-3 py-3 w-full text-sm focus:outline-none border border-transparent focus:border-indigo-700 bg-transparent rounded placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                                placeholder="Los Angeles" />
-                                            <div
-                                                class="px-4 flex items-center border-l border-gray-300 dark:border-gray-700 flex-col justify-center text-gray-600 dark:text-gray-400">
-                                                <img class="dark:hidden"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5.svg"
-                                                    alt="up">
-                                                <img class="dark:hidden transform rotate-180"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5.svg"
-                                                    alt="down">
-                                                <img class="dark:block hidden"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5dark.svg"
-                                                    alt="up">
-                                                <img class="dark:block hidden transform rotate-180"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg5dark.svg"
-                                                    alt="down">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                        <label for="State/Province"
-                                            class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">State/Province</label>
-                                        <input tabindex="0" type="text" id="State/Province" name="state" required
-                                            class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                            placeholder="California" />
-                                    </div>
-                                    <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                        <label for="Country"
-                                            class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Country</label>
-                                        <input tabindex="0" type="text" id="Country" name="country" required
-                                            class="border bg-transparent border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                            placeholder="United States" />
-                                    </div>
-                                    <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                        <div class="flex items-center pb-2">
-                                            <label for="ZIP"
-                                                class="text-sm font-bold text-gray-800 dark:text-gray-100">ZIP/Postal
-                                                Code</label>
-                                            <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
-                                                <img class="dark:hidden"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4.svg"
-                                                    alt="info">
-                                                <img class="dark:block hidden"
-                                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4dark.svg"
-                                                    alt="info">
-                                            </div>
-                                        </div>
-                                        <input tabindex="0" type="text" name="zip" required id="ZIP"
-                                            class="bg-transparent border border-red-400 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
-                                            placeholder="86745" />
-                                        <div class="flex justify-between items-center pt-1 text-red-700">
-                                            <p class="text-xs">Incorrect Zip Code</p>
-                                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg6.svg"
-                                                alt="cancel">
-                                        </div>
-                                        <div class="flex justify-end">
-                                            <x-primary-button class="bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12">
-                                                {{ __('Save All') }}
-                                            </x-primary-button>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
+                    </form>
                     <div class="px-4 mt-0 mb-6">
                         <div
-                            class="relative flex flex-col min-w-0 break-words bg-white border-1 border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl dark:bg-gray-950 border-black-125 rounded-2xl bg-clip-border pb-4">
+                            class="relative flex flex-col min-w-0 break-words bg-white border-1 border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl dark:bg-gray-950 border-black-125 rounded-2xl bg-clip-border pb-4 ">
                             <div class="p-4 pb-0 mb-0 rounded-t-4">
                                 <div class="flex justify-between">
-                                    <h6 class="mb-2 dark:text-white">Password information</h6>
+                                    <h6 class="mb-2 dark:text-white uppercase font-medium">Pengaturan Password</h6>
                                 </div>
                             </div>
                             <div class="bg-white grid grid-cols-2">
-                                <div class="mx-auto pt-4 ml-6 bg-white w-full">
+                                <div class="mx-auto pt-4 px-4 ml-6 bg-white w-full">
                                     <div class="container mx-auto">
                                         <form method="post" action="{{ route('password.update') }}"
                                             class="my-6 w-11/12 mx-auto xl:w-full xl:mx-0">
@@ -355,8 +496,8 @@
                                             @method('put')
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
                                                 <label for="current_password"
-                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Current
-                                                    Password</label>
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Password
+                                                    Sekarang</label>
                                                 <input tabindex="0" type="password" id="current_password"
                                                     name="current_password" required
                                                     class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
@@ -364,32 +505,34 @@
                                                 <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
                                             </div>
                                             <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                                                <label for="password_confirmation"
-                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Confirm
-                                                    Password</label>
-                                                <input tabindex="0" type="password" id="password_confirmation"
-                                                    name="password_confirmation" required
-                                                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                                <label for="password"
+                                                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+                                                    Password Baru</label>
+                                                <input tabindex="0" type="password" id="password" name="password"
+                                                    required
+                                                    class="border border-gray-300 dark:border-gray-700 pl-3 pt-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
                                                     placeholder="••••••••" />
-                                                <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+                                                <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+
                                             </div>
                                     </div>
                                 </div>
-                                <div class="mx-auto mt-[20px] pt-4 ml-6 bg-white w-full">
+                                <div class="mx-auto mt-[20px] pt-4  ml-6 bg-white w-full">
                                     <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-3">
-                                        <label for="password"
-                                            class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">New
+                                        <label for="password_confirmation"
+                                            class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Konfirmasi
                                             Password</label>
-                                        <input tabindex="0" type="password" id="password" name="password" required
-                                            class="border border-gray-300 dark:border-gray-700 pl-3 pt-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
+                                        <input tabindex="0" type="password" id="password_confirmation"
+                                            name="password_confirmation" required
+                                            class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-600 dark:text-gray-400"
                                             placeholder="••••••••" />
-                                        <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+                                        <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
                                     </div>
                                     <div class="xl:w-1/2 lg:w-1/2 md:w-1/2 flex flex-col mb-4 ml-3">
                                     </div>
                                     <div class="flex justify-center">
                                         <x-primary-button
-                                            class="flex justify-end  bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12 mb-5">
+                                            class="flex justify-end mr-16 bg-sky-600 hover:bg-sky-200 hover:text-sky-600 mt-12 mb-5">
                                             {{ __('Save All') }}
                                         </x-primary-button>
 
@@ -406,6 +549,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         {{-- <div class="">
                         <span class="">
@@ -419,5 +563,79 @@
                         <a href="#" class="">Disconnect</a>
                     </div> --}}
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#provinsi").on('change', function() {
+                let id_provinsi = $('#provinsi').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('kota') }}",
+                    data: {
+                        "id_prov": id_provinsi,
+                        '_token': '{{ csrf_token() }}'
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#kota').html(msg);
+                        $('#kecamatan').html(
+                            '<option selected disabled>Kecamatan</option>');
+                        $('#desa').html('<option selected disabled>Desa</option>');
+                    },
+
+                    error: function(data) {
+                        console.log('error', data);
+                    },
+                })
+            });
+
+            $("#kota").on('change', function() {
+                let id_kota = $('#kota').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('kecamatan') }}",
+                    data: {
+                        "id_kota": id_kota,
+                        '_token': '{{ csrf_token() }}'
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#kecamatan').html(msg);
+                        $('#desa').html('<option selected disabled>Desa</option>');
+                    },
+
+                    error: function(data) {
+                        console.log('error', data);
+                    },
+                })
+            });
+
+            $("#kecamatan").on('change', function() {
+                let id_kecamatan = $('#kecamatan').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('desa') }}",
+                    data: {
+                        "id_kecamatan": id_kecamatan,
+                        '_token': '{{ csrf_token() }}'
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#desa').html(msg);
+                    },
+
+                    error: function(data) {
+                        console.log('error', data);
+                    },
+                })
+            });
+        });
+    </script>
     @include('layouts.partials.footer')
 @endsection
