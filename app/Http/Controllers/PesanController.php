@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Pesan;
 use App\Models\Regency;
+use App\Models\TPorder;
 use App\Models\Village;
-use App\Models\District;
 
+use App\Models\District;
 use App\Models\Province;
 use App\Services\Midtrans\CreateSnapTokenService;
 use Illuminate\Support\Str;
@@ -120,6 +121,29 @@ class PesanController extends Controller
                 'message' => $request->message,
                 'ongkir' => $request->ongkir,
                 'harga_total' => $total_harga,
+
+            ]);
+
+
+            $pesanan = ($botol) ? 'Botol' : ''; // $pesanan = str_rep
+            $pesanan .= ($kaleng) ? ' Kaleng' : '';
+            $pesanan .= ($kardus) ? ' Kardus' : '';
+            $pesanan .= ($organik) ? ' Organik' : '';
+
+            // $pesanan = str_replace(' ', ', ', $pesanan);
+            $alamat = $desa->name . ', ' . $kecamatan->name . ', ' . $kota->name . ', ' . $provinsi->name . ', ' . $request->pos;
+
+
+            TPorder::create([
+                'nama'=> $request->nama,
+                'email'=>Auth::user()->email,
+                'alamat'=> $alamat,
+                'pesanan'=> $pesanan,
+                'tanggal'=> $request->datetime,
+                'status'=>0,
+                'status_pembayaran'=>'Belum Bayar',
+
+
             ]);
         } else {
             Alert::warning('Warning', 'Pesanan Anda sebelumnya belum selesai');
