@@ -16,8 +16,15 @@ class TPorder extends Model
         'tanggal',
         'status',
         'status_pembayaran',
+        'driver_id',
+        'pesan_id',
 
     ];
 
     protected $table = 't_porders';
+
+    public function pesan()
+    {
+        return $this->belongsTo('App\Pesan', 'pesan_id', 'id');
+    }
 }
