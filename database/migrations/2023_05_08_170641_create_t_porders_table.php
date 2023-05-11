@@ -20,6 +20,7 @@ return new class extends Migration
             $table->datetime('tanggal');
             $table->integer('status');
             $table->String('status_pembayaran');
+            $table->integer('driver_id')->default(0);
             $table->timestamps();
         });
     }
