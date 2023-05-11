@@ -15,10 +15,13 @@
                     dan driver. TrashPorter melayani antar jemput sampah dan penjualan hasil penjualan hasil pengelolaan
                     sampah. </p>
                 <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4 justify-center">
+                    @can('pesan-tp')
                     <a href="/pesan"
-                        class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 hover:text-sky-500 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Order
-                        Now
-                    </a>
+                    class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-gray-900 border border-gray-200 rounded-lg sm:w-auto hover:bg-gray-100 hover:text-sky-500 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Order
+                    Now
+                </a>
+                    @endcan
+                    
                 </div>
             </div>
             <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -457,7 +460,7 @@
                     Ingin menjadi mitra kami?</h2>
                 <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Bergabung bersama kami dalam
                     ekpedisi penjemputan sampah.</p>
-                <a href="#"
+                <a href="{{ route('register') }}"
                     class="text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none dark:focus:ring-sky-800">Bergabung
                     mitra</a>
             </div>

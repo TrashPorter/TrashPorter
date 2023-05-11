@@ -6,6 +6,7 @@ use App\Models\Produk;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProdukController extends Controller
 {
@@ -39,15 +40,16 @@ class ProdukController extends Controller
             'harga' => $request->harga,
             'stok' => $request->stok,
         ]);
-
-        return to_route('admin.produks.index')->with('message', 'Product Added Successfully');
+        Alert::success('Added', 'Produk berhasil ditambahkan');
+        return to_route('admin.produks.index');
     }
 
-    public function destroy(Produk $produks)
+    public function destroy($id)
     {
-        $nama = $produks->nama;
+        $produks = Produk::where('id', $id)->first();
         $produks->delete();
-        return back()->with('message', 'Product ' . $nama . ' Deleted');
+        Alert::error('Deleted', 'Item deleted');
+        return back();
     }
 
     public function edit(Produk $produk)
@@ -56,10 +58,10 @@ class ProdukController extends Controller
         return view('admin.produk.edit', compact('produk'));
     }
 
-    public function update(Request $request, Produk $produks)
+    public function update(Request $request, $id)
     {
-
-        $data = ' ';
+        $produks = Produk::where('id', $id)->first();
+        $data = '';
         if ($request->hasFile('gambar')) {
             $request->file('gambar')->move('assets/img/', $request->file('gambar')->getClientOriginalName());
             $data = $request->file('gambar')->getClientOriginalName();
@@ -67,15 +69,29 @@ class ProdukController extends Controller
 
         // $validation = $request->validate(['name' => 'required', 'min:3']);
         // $produks->update($validation);
-        $produks->nama = $request->nama;
-        $produks->deskripsi = $request->deskripsi;
-        $produks->slug =  Str::slug($request->nama, '-');
-        $produks->kategori = $request->kategori;
-        $produks->harga = $request->harga;
-        $produks->stok = $request->stok;
-        $produks->gambar = $data;
+        if (isset($request->nama)) {
+            $produks->nama = $request->nama;
+            $produks->slug =  Str::slug($request->nama, '-');
+        }
+        if (isset($request->deskripsi)) {
+            $produks->deskripsi = $request->deskripsi;
+        }
+        if (isset($request->kategori)) {
+            $produks->kategori = $request->kategori;
+        }
+        if (isset($request->harga)) {
+            $produks->harga = $request->harga;
+        }
+        if (isset($request->stok)) {
+            $produks->stok = $request->stok;
+        }
+        if ($data != '') {
+            $produks->gambar = $data;
+        }
+
 
         $produks->update();
-        return to_route('admin.produks.index')->with('message', 'Product Updated Successfully');
+        Alert::success('Updated', 'Berhasil diUpdate');
+        return to_route('admin.produks.index');
     }
 }

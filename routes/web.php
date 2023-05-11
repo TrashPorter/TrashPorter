@@ -15,6 +15,7 @@ use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Driver\DashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\BioController;
 use App\Http\Controllers\TPordersController;
 
 /*
@@ -115,7 +116,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/payment', [WebController::class, 'payment_post']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/bio/{id}', [BioController::class, 'update'])->name('bio.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

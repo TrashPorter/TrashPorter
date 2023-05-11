@@ -83,8 +83,7 @@
                                 <div>
                                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Products</p>
                                     <h5 class="mb-0 font-bold">
-                                        +3,462
-                                        <span class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>
+                                        {{ $produk }}
                                     </h5>
                                 </div>
                             </div>
@@ -106,10 +105,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">On Order</p>
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">TP On Order</p>
                                     <h5 class="mb-0 font-bold">
-                                        $103,430
-                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>
+                                        {{ $tp_order }}
+
                                     </h5>
                                 </div>
                             </div>
