@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TPorder;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TPordersController extends Controller
@@ -38,6 +39,8 @@ class TPordersController extends Controller
         $data2 = DB::table('pesans')->latest()->get();
         // dd($order)
 
-        return view('driver.salary.index', compact('data', 'data2' ));
+        $jumlah = TPorder::where('driver_id',Auth::user()->id)->where('status', 2)->count();
+        $data3 = TPorder::where('driver_id',Auth::user()->id)->where('status', 2)->get();
+        return view('driver.salary.index', compact('data', 'data2', 'data3', 'jumlah' ));
     }
 }
