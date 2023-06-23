@@ -29,11 +29,11 @@ pre-requisite
 
 #### Clone repositori ini terlebih dahulu di dalam folder htdocs
 ```bash
-  https://github.com/TrashPorter/INF206-2023-DY1-TrashPorter.git
+  https://github.com/TrashPorter/TrashPorter.git
 ```
 #### Masuk ke dalam folder
 ```bash
-  cd INF206-2023-DY1-TrashPorter
+  cd TrashPorter
 ```
 #### Jalankan composer Install
 ```bash
